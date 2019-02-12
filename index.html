@@ -73,12 +73,22 @@
     <article id="post-todolist" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/hexo-demo/2019/02/12/todolist/" class="article-date">
-  <time datetime="2019-02-12T12:13:26.594Z" itemprop="datePublished">2019-02-12</time>
+  <time datetime="2019-02-12T12:27:35.929Z" itemprop="datePublished">2019-02-12</time>
 </a>
     
   </div>
   <div class="article-inner">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2019/02/12/todolist/">todolist</a>
+    </h1>
+  
+
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -113,7 +123,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2019/02/12/todolist/" data-id="cjs1qorhj0000xiuijtlsvhie" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2019/02/12/todolist/" data-id="cjs1qrvc20000zwui3clivba2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -149,7 +159,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-boot】application.properties/" data-id="cjs1qorjl002pxiuiqa08mf7k" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-boot】application.properties/" data-id="cjs1qrven002uzwui3xtchi9z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring-boot/">spring-boot</a></li></ul>
@@ -193,7 +203,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【consul】docker配置/" data-id="cjs1qorhs0002xiuirhsqygxo" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【consul】docker配置/" data-id="cjs1qrvcc0002zwuihiv3hnnn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/consul/">consul</a></li></ul>
@@ -205,9 +215,9 @@
 
 
   
-    <article id="post-【feign】不支持在Get请求中使用对象传参" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-【docker】创建java容器" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/hexo-demo/2018/11/05/【feign】不支持在Get请求中使用对象传参/" class="article-date">
+    <a href="/hexo-demo/2018/11/05/【docker】创建java容器/" class="article-date">
   <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
 </a>
     
@@ -219,7 +229,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/hexo-demo/2018/11/05/【feign】不支持在Get请求中使用对象传参/">【feign】不支持在Get请求中使用对象传参</a>
+      <a class="article-title" href="/hexo-demo/2018/11/05/【docker】创建java容器/">【docker】创建java容器</a>
     </h1>
   
 
@@ -227,76 +237,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>解决方法：</p>
-<ol>
-<li><p>改用 POST</p>
-</li>
-<li><p>改用 Map</p>
-</li>
-<li><p>自定义 Encoder</p>
-<ul>
-<li>@see <a href="feign-request-object.md">feign-request-object</a></li>
-<li>@see <a href="https://github.com/OpenFeign/feign/issues/520" target="_blank" rel="noopener">https://github.com/OpenFeign/feign/issues/520</a></li>
+        <h2 id="创建jre镜像"><a href="#创建jre镜像" class="headerlink" title="创建jre镜像"></a>创建jre镜像</h2><ul>
+<li>Dockerfile / jre8</li>
 </ul>
-</li>
-</ol>
-<h3 id="一点延伸"><a href="#一点延伸" class="headerlink" title="一点延伸"></a>一点延伸</h3><blockquote>
-<p>quote: <a href="https://source.coveo.com/2016/07/21/feign-request-object/" target="_blank" rel="noopener">https://source.coveo.com/2016/07/21/feign-request-object/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM daocloud.io/library/java:8u111-jre-alpine</span><br><span class="line">MAINTAINER 624498030@qq.com</span><br><span class="line">ARG DOCKER_HOST_IP</span><br><span class="line">ENV DOCKER_HOST_IP=$DOCKER_HOST_IP</span><br><span class="line">RUN echo &quot;docker host ip found1: $DOCKER_HOST_IP&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>构建 oasis/java 的镜像</li>
+</ul>
+<blockquote>
+<p>因为consul服务里要用到服务本身的内网IP（区别于镜像内部IP），<br>所以单独构建了 oasis/java 的镜像，将服务器IP映射到容器内</p>
 </blockquote>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line">Using request objects with Feign</span><br><span class="line">BY JONATHAN ROCHETTE — JULY 21, 2016</span><br><span class="line">We recently decided to move our functional tests stack from python to Java, mainly to make coding them easier (our project’s backend is coded in Java) and thus increase the number of tests getting written. We needed a few things to make this possible and one of them was a complete and comprehensive Java client for the Usage Analytics API. Since a lot of the Java API clients we use internaly are built with Netflix’s Feign, I decided to give it a go.</span><br><span class="line"></span><br><span class="line">After playing with Feign a little, I started to really like the tool. Writing an HTTP client with it is pretty easy, and it would not be a lot of work to maintain. I only had one major concern: there was no out of the box support for request objects.</span><br><span class="line"></span><br><span class="line">Using request objects is a simple pattern that help maintain methods with many optional parameters, which is the case for some our API’s methods. Without request objects, calling a method would look like this:</span><br><span class="line"></span><br><span class="line">statsApi.getCombinedData(from,</span><br><span class="line">                         to,</span><br><span class="line">                         dimensions,</span><br><span class="line">                         metrics,</span><br><span class="line">                         null,</span><br><span class="line">                         null,</span><br><span class="line">                         null,</span><br><span class="line">                         null,</span><br><span class="line">                         true,</span><br><span class="line">                         null,</span><br><span class="line">                         null,</span><br><span class="line">                         null);</span><br><span class="line">Not looking so good, right? Using a request object transforms the method call into this:</span><br><span class="line"></span><br><span class="line">statsApi.getCombinedData(new GetCombinedDataRequest(from,</span><br><span class="line">                                                    to,</span><br><span class="line">                                                    dimensions,</span><br><span class="line">                                                    metrics)</span><br><span class="line">                         .withIncludeMetadata(true));</span><br><span class="line">Way better!</span><br><span class="line"></span><br><span class="line">For the request objects, we settled for a constructor that would take the required parameters of the API call in arguments. The optional parameters can then be added to the request with setters or via the fluent interface pattern.</span><br><span class="line"></span><br><span class="line">So, this is all very nice, but it does not fix my initial concern with Feign. I have some really nice request objects, but I cannot use any of them, as they are not supported. But, since Feign is very easily extendable, I simply added support for the request objects via a homemade encoder. And thus, the ReflectionEncoder was born.</span><br><span class="line"></span><br><span class="line">public class ReflectionEncoder implements Encoder</span><br><span class="line">&#123;</span><br><span class="line">    private static final String DEFAULT_DATETIME_FORMAT = &quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSSZZ&quot;;</span><br><span class="line">    private ObjectMapper mapper;</span><br><span class="line">    private Encoder fallbackEncoder;</span><br><span class="line"></span><br><span class="line">    public ReflectionEncoder(ObjectMapper mapper,</span><br><span class="line">                             Encoder fallbackEncoder)</span><br><span class="line">    &#123;</span><br><span class="line">        this.mapper = mapper;</span><br><span class="line">        this.fallbackEncoder = fallbackEncoder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void encode(Object parametersObject, Type bodyType, RequestTemplate template)</span><br><span class="line">      throws EncodeException &#123;</span><br><span class="line">      if (Request.class.isAssignableFrom(parametersObject.getClass())) &#123;</span><br><span class="line">        Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();</span><br><span class="line">        try &#123;</span><br><span class="line">          // Prepare the requestTemplate</span><br><span class="line">          for (Method method : parametersObject.getClass().getMethods()) &#123;</span><br><span class="line">            if (method.isAnnotationPresent(QueryParam.class)) &#123;</span><br><span class="line">              String key = method.getAnnotation(QueryParam.class).value();</span><br><span class="line">              Object value = method.invoke(parametersObject);</span><br><span class="line">              if (value != null) &#123;</span><br><span class="line">                if (Collection.class.isAssignableFrom(method.getReturnType())) &#123;</span><br><span class="line">                  value =</span><br><span class="line">                      ((Collection&lt;?&gt;) value)</span><br><span class="line">                          .stream()</span><br><span class="line">                          .map(v -&gt; String.valueOf(v))</span><br><span class="line">                          .collect(Collectors.toList());</span><br><span class="line">                &#125; else if (DateTime.class.isAssignableFrom(method.getReturnType())) &#123;</span><br><span class="line">                  value = ((DateTime) value).toString(DEFAULT_DATETIME_FORMAT);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                  value = String.valueOf(value);</span><br><span class="line">                &#125;</span><br><span class="line">                params.put(key, value);</span><br><span class="line">                template.query(key, keyToTemplate(key));</span><br><span class="line">              &#125;</span><br><span class="line">            &#125; else if (method.isAnnotationPresent(PathParam.class)) &#123;</span><br><span class="line">              String key = method.getAnnotation(PathParam.class).value();</span><br><span class="line">              Object value = method.invoke(parametersObject);</span><br><span class="line">              if (value != null) &#123;</span><br><span class="line">                params.put(key, String.valueOf(value));</span><br><span class="line">              &#125;</span><br><span class="line">            &#125; else if (method.isAnnotationPresent(BodyParam.class)) &#123;</span><br><span class="line">              template.body(mapper.writeValueAsString(method.invoke(parametersObject)));</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          // Replace templates with actual values</span><br><span class="line">          template.resolve(params);</span><br><span class="line">        &#125; catch (</span><br><span class="line">            IllegalAccessException</span><br><span class="line">            | IllegalArgumentException</span><br><span class="line">            | InvocationTargetException</span><br><span class="line">            | JsonProcessingException e) &#123;</span><br><span class="line">          throw new EncodeException(&quot;Could not encode parameter object correctly&quot;, e);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        fallbackEncoder.encode(parametersObject, bodyType, template);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private String keyToTemplate(String key)</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;&#123;&quot; + key + &quot;&#125;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">It may look complicated, but it’s in fact pretty simple. Here is how it works: if the object received by the encoder is of the right type, it will use reflection to find the getters of the object, and depending on the annotation, inject the parameter at the right place in the RequestTemplate. Otherwise, it will use a fallback encoder.</span><br><span class="line"></span><br><span class="line">Now, simply set the ReflectionEncoder in your client class with the builder provided by Feign and you are ready to go!</span><br><span class="line"></span><br><span class="line">Here is a complete example of a simple client using request objects.</span><br><span class="line"></span><br><span class="line">public interface CustomDimensionsApi extends ClientFactory.Api</span><br><span class="line">&#123;</span><br><span class="line">    @RequestLine(&quot;PUT /&quot; + ApiVersion.VERSION + &quot;/dimensions/custom/&#123;apiName&#125;&quot;)</span><br><span class="line">    DimensionResponse editDimension(EditDimensionRequest request);</span><br><span class="line">&#125;</span><br><span class="line">public class EditDimensionRequest extends BaseRequest</span><br><span class="line">&#123;</span><br><span class="line">    private String apiName;</span><br><span class="line">    private Boolean updatePastEvents;</span><br><span class="line">    private CustomDimensionModel customDimensionModel;</span><br><span class="line"></span><br><span class="line">    public EditDimensionRequest(String apiName,</span><br><span class="line">                                CustomDimensionModel customDimensionModel)</span><br><span class="line">    &#123;</span><br><span class="line">        this.apiName = apiName;</span><br><span class="line">        this.customDimensionModel = customDimensionModel;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @PathParam(&quot;apiName&quot;)</span><br><span class="line">    public String getApiName() &#123; return apiName; &#125;</span><br><span class="line">    public void setApiName(String apiName) &#123; this.apiName = apiName; &#125;</span><br><span class="line"></span><br><span class="line">    @QueryParam(&quot;updatePastEvents&quot;)</span><br><span class="line">    public Boolean getUpdatePastEvents() &#123; return updatePastEvents; &#125;</span><br><span class="line">    public void setUpdatePastEvents(Boolean updatePastEvents) &#123; this.updatePastEvents = updatePastEvents; &#125;</span><br><span class="line"></span><br><span class="line">    @BodyParam</span><br><span class="line">    public CustomDimensionModel getCustomDimensionModel() &#123; return customDimensionModel; &#125;</span><br><span class="line">    public void setCustomDimensionModel(CustomDimensionModel customDimensionModel) &#123; this.customDimensionModel = customDimensionModel; &#125;</span><br><span class="line"></span><br><span class="line">    public EditDimensionRequest withUpdatePastEvents(Boolean updatePastEvents)&#123;</span><br><span class="line">        setUpdatePastEvents(updatePastEvents); return this;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">There you have it: a very simple HTTP client built with Feign, using a request object. It made coding our functional tests way easier and made them much cleaner. The next steps for us would be to combine that with better exception handling (awesome post by my friend Jacques-Etienne Beaudet, go check it out) and we would be unstoppable!</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【feign】不支持在Get请求中使用对象传参/" data-id="cjs1qorhw0004xiui2p9lq971" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/feign/">feign</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring-cloud/">spring-cloud</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-【hystrix】探索" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/hexo-demo/2018/11/05/【hystrix】探索/" class="article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/hexo-demo/2018/11/05/【hystrix】探索/">【hystrix】探索</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="断路器"><a href="#断路器" class="headerlink" title="断路器"></a>断路器</h1><p>作用: 防止一个服务接口错误可能会导致级联故障. </p>
-<p>触发条件: 当<strong>一个周期</strong>内, 单个接口调用次数超过<strong>请求调用阈值</strong>, 或失败率达到<strong>失败百分比阈值</strong>,<br>断路器将会打开, 并且请求会失败.</p>
-<p>降级: 为了防止失败和断路, 开发中可以提供一个回调函数.<br>回调函数可以是另一个受Hystrix保护的接口, 静态数据或空值. </p>
-<p><img src="https://raw.githubusercontent.com/spring-cloud/spring-cloud-netflix/1.4.x/docs/src/main/asciidoc/images/HystrixFallback.png" alt=""></p>
-<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><p>引入依赖:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;spring-cloud-starter-netflix-hystrix&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
-<p>启用:</p>
-<p><code>@EnableCircuitBreaker</code></p>
-<p>See <a href="https://github.com/Netflix/Hystrix/tree/master/hystrix-contrib/hystrix-javanica#configuration" target="_blank" rel="noopener">here</a> for more.</p>
-<p>See the <a href="https://github.com/Netflix/Hystrix/wiki/Configuration" target="_blank" rel="noopener">Hystrix wiki</a> for details on the properties available.</p>
+<p>把本机外网IP映射到镜像内</p>
+<p><code>docker build --tag=oasis/java:latest --build-arg DOCKER_HOST_IP=$(ifconfig eth0 | grep inet | awk &#39;{print $2}&#39;) .</code></p>
+<h2 id="构建容器"><a href="#构建容器" class="headerlink" title="构建容器"></a>构建容器</h2><p>自行替换</p>
+<ul>
+<li>${service-name} 服务名称</li>
+<li>${outer-port}:${inner-port} 服务器端口:容器内端口</li>
+<li>${container-name} 容器名字</li>
+<li>${hotname} 主机名</li>
+<li>${project-name} 项目打包后的名字</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;2&apos;</span><br><span class="line">services:</span><br><span class="line">  $&#123;service-name&#125;:</span><br><span class="line">    image: oasis/java:latest</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;$&#123;outer-port&#125;:$&#123;inner-port&#125;&quot;</span><br><span class="line">      - &quot;$&#123;debug-port&#125;:$&#123;debug-port&#125;&quot;</span><br><span class="line">    container_name : $&#123;container-name&#125;</span><br><span class="line">    hostname: $&#123;hostname&#125;</span><br><span class="line">    mem_limit: 3000m</span><br><span class="line">    stdin_open: true</span><br><span class="line">    tty: true</span><br><span class="line">    working_dir: /opt/app</span><br><span class="line">    command: java -Dfile.encoding=UTF-8 -Duser.timezone=GMT+08 -Dspring.profiles.active=prod -jar -Xmx512M $&#123;project-name&#125;.jar</span><br><span class="line">    volumes:</span><br><span class="line">      - /data1/auto_upline/$&#123;project-name&#125;:/opt/app</span><br><span class="line">      - /etc/localtime:/etc/localtime:ro</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【hystrix】探索/" data-id="cjs1qorhy0005xiuisswfljlm" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【docker】创建java容器/" data-id="cjs1qrvcg0004zwuih282d9ik" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/docker/">docker</a></li></ul>
+
     </footer>
   </div>
   
@@ -336,7 +306,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【docker】杀不死的docker/" data-id="cjs1qorhz0006xiuituceoae5" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【docker】杀不死的docker/" data-id="cjs1qrvci0005zwuicvoqhiuu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/docker/">docker</a></li></ul>
@@ -422,7 +392,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【guava】EventBus/" data-id="cjs1qori10008xiuicjzilsz0" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【guava】EventBus/" data-id="cjs1qrvcj0006zwuiq29ofprd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/eventbus/">eventbus</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/guava/">guava</a></li></ul>
@@ -434,9 +404,9 @@
 
 
   
-    <article id="post-【docker】创建java容器" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-【feign】不支持在Get请求中使用对象传参" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/hexo-demo/2018/11/05/【docker】创建java容器/" class="article-date">
+    <a href="/hexo-demo/2018/11/05/【feign】不支持在Get请求中使用对象传参/" class="article-date">
   <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
 </a>
     
@@ -448,7 +418,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/hexo-demo/2018/11/05/【docker】创建java容器/">【docker】创建java容器</a>
+      <a class="article-title" href="/hexo-demo/2018/11/05/【feign】不支持在Get请求中使用对象传参/">【feign】不支持在Get请求中使用对象传参</a>
     </h1>
   
 
@@ -456,35 +426,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="创建jre镜像"><a href="#创建jre镜像" class="headerlink" title="创建jre镜像"></a>创建jre镜像</h2><ul>
-<li>Dockerfile / jre8</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM daocloud.io/library/java:8u111-jre-alpine</span><br><span class="line">MAINTAINER 624498030@qq.com</span><br><span class="line">ARG DOCKER_HOST_IP</span><br><span class="line">ENV DOCKER_HOST_IP=$DOCKER_HOST_IP</span><br><span class="line">RUN echo &quot;docker host ip found1: $DOCKER_HOST_IP&quot;</span><br></pre></td></tr></table></figure>
+        <p>解决方法：</p>
+<ol>
+<li><p>改用 POST</p>
+</li>
+<li><p>改用 Map</p>
+</li>
+<li><p>自定义 Encoder</p>
 <ul>
-<li>构建 oasis/java 的镜像</li>
+<li>@see <a href="feign-request-object.md">feign-request-object</a></li>
+<li>@see <a href="https://github.com/OpenFeign/feign/issues/520" target="_blank" rel="noopener">https://github.com/OpenFeign/feign/issues/520</a></li>
 </ul>
-<blockquote>
-<p>因为consul服务里要用到服务本身的内网IP（区别于镜像内部IP），<br>所以单独构建了 oasis/java 的镜像，将服务器IP映射到容器内</p>
+</li>
+</ol>
+<h3 id="一点延伸"><a href="#一点延伸" class="headerlink" title="一点延伸"></a>一点延伸</h3><blockquote>
+<p>quote: <a href="https://source.coveo.com/2016/07/21/feign-request-object/" target="_blank" rel="noopener">https://source.coveo.com/2016/07/21/feign-request-object/</a></p>
 </blockquote>
-<p>把本机外网IP映射到镜像内</p>
-<p><code>docker build --tag=oasis/java:latest --build-arg DOCKER_HOST_IP=$(ifconfig eth0 | grep inet | awk &#39;{print $2}&#39;) .</code></p>
-<h2 id="构建容器"><a href="#构建容器" class="headerlink" title="构建容器"></a>构建容器</h2><p>自行替换</p>
-<ul>
-<li>${service-name} 服务名称</li>
-<li>${outer-port}:${inner-port} 服务器端口:容器内端口</li>
-<li>${container-name} 容器名字</li>
-<li>${hotname} 主机名</li>
-<li>${project-name} 项目打包后的名字</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;2&apos;</span><br><span class="line">services:</span><br><span class="line">  $&#123;service-name&#125;:</span><br><span class="line">    image: oasis/java:latest</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;$&#123;outer-port&#125;:$&#123;inner-port&#125;&quot;</span><br><span class="line">      - &quot;$&#123;debug-port&#125;:$&#123;debug-port&#125;&quot;</span><br><span class="line">    container_name : $&#123;container-name&#125;</span><br><span class="line">    hostname: $&#123;hostname&#125;</span><br><span class="line">    mem_limit: 3000m</span><br><span class="line">    stdin_open: true</span><br><span class="line">    tty: true</span><br><span class="line">    working_dir: /opt/app</span><br><span class="line">    command: java -Dfile.encoding=UTF-8 -Duser.timezone=GMT+08 -Dspring.profiles.active=prod -jar -Xmx512M $&#123;project-name&#125;.jar</span><br><span class="line">    volumes:</span><br><span class="line">      - /data1/auto_upline/$&#123;project-name&#125;:/opt/app</span><br><span class="line">      - /etc/localtime:/etc/localtime:ro</span><br></pre></td></tr></table></figure>
-
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line">Using request objects with Feign</span><br><span class="line">BY JONATHAN ROCHETTE — JULY 21, 2016</span><br><span class="line">We recently decided to move our functional tests stack from python to Java, mainly to make coding them easier (our project’s backend is coded in Java) and thus increase the number of tests getting written. We needed a few things to make this possible and one of them was a complete and comprehensive Java client for the Usage Analytics API. Since a lot of the Java API clients we use internaly are built with Netflix’s Feign, I decided to give it a go.</span><br><span class="line"></span><br><span class="line">After playing with Feign a little, I started to really like the tool. Writing an HTTP client with it is pretty easy, and it would not be a lot of work to maintain. I only had one major concern: there was no out of the box support for request objects.</span><br><span class="line"></span><br><span class="line">Using request objects is a simple pattern that help maintain methods with many optional parameters, which is the case for some our API’s methods. Without request objects, calling a method would look like this:</span><br><span class="line"></span><br><span class="line">statsApi.getCombinedData(from,</span><br><span class="line">                         to,</span><br><span class="line">                         dimensions,</span><br><span class="line">                         metrics,</span><br><span class="line">                         null,</span><br><span class="line">                         null,</span><br><span class="line">                         null,</span><br><span class="line">                         null,</span><br><span class="line">                         true,</span><br><span class="line">                         null,</span><br><span class="line">                         null,</span><br><span class="line">                         null);</span><br><span class="line">Not looking so good, right? Using a request object transforms the method call into this:</span><br><span class="line"></span><br><span class="line">statsApi.getCombinedData(new GetCombinedDataRequest(from,</span><br><span class="line">                                                    to,</span><br><span class="line">                                                    dimensions,</span><br><span class="line">                                                    metrics)</span><br><span class="line">                         .withIncludeMetadata(true));</span><br><span class="line">Way better!</span><br><span class="line"></span><br><span class="line">For the request objects, we settled for a constructor that would take the required parameters of the API call in arguments. The optional parameters can then be added to the request with setters or via the fluent interface pattern.</span><br><span class="line"></span><br><span class="line">So, this is all very nice, but it does not fix my initial concern with Feign. I have some really nice request objects, but I cannot use any of them, as they are not supported. But, since Feign is very easily extendable, I simply added support for the request objects via a homemade encoder. And thus, the ReflectionEncoder was born.</span><br><span class="line"></span><br><span class="line">public class ReflectionEncoder implements Encoder</span><br><span class="line">&#123;</span><br><span class="line">    private static final String DEFAULT_DATETIME_FORMAT = &quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSSZZ&quot;;</span><br><span class="line">    private ObjectMapper mapper;</span><br><span class="line">    private Encoder fallbackEncoder;</span><br><span class="line"></span><br><span class="line">    public ReflectionEncoder(ObjectMapper mapper,</span><br><span class="line">                             Encoder fallbackEncoder)</span><br><span class="line">    &#123;</span><br><span class="line">        this.mapper = mapper;</span><br><span class="line">        this.fallbackEncoder = fallbackEncoder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void encode(Object parametersObject, Type bodyType, RequestTemplate template)</span><br><span class="line">      throws EncodeException &#123;</span><br><span class="line">      if (Request.class.isAssignableFrom(parametersObject.getClass())) &#123;</span><br><span class="line">        Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();</span><br><span class="line">        try &#123;</span><br><span class="line">          // Prepare the requestTemplate</span><br><span class="line">          for (Method method : parametersObject.getClass().getMethods()) &#123;</span><br><span class="line">            if (method.isAnnotationPresent(QueryParam.class)) &#123;</span><br><span class="line">              String key = method.getAnnotation(QueryParam.class).value();</span><br><span class="line">              Object value = method.invoke(parametersObject);</span><br><span class="line">              if (value != null) &#123;</span><br><span class="line">                if (Collection.class.isAssignableFrom(method.getReturnType())) &#123;</span><br><span class="line">                  value =</span><br><span class="line">                      ((Collection&lt;?&gt;) value)</span><br><span class="line">                          .stream()</span><br><span class="line">                          .map(v -&gt; String.valueOf(v))</span><br><span class="line">                          .collect(Collectors.toList());</span><br><span class="line">                &#125; else if (DateTime.class.isAssignableFrom(method.getReturnType())) &#123;</span><br><span class="line">                  value = ((DateTime) value).toString(DEFAULT_DATETIME_FORMAT);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                  value = String.valueOf(value);</span><br><span class="line">                &#125;</span><br><span class="line">                params.put(key, value);</span><br><span class="line">                template.query(key, keyToTemplate(key));</span><br><span class="line">              &#125;</span><br><span class="line">            &#125; else if (method.isAnnotationPresent(PathParam.class)) &#123;</span><br><span class="line">              String key = method.getAnnotation(PathParam.class).value();</span><br><span class="line">              Object value = method.invoke(parametersObject);</span><br><span class="line">              if (value != null) &#123;</span><br><span class="line">                params.put(key, String.valueOf(value));</span><br><span class="line">              &#125;</span><br><span class="line">            &#125; else if (method.isAnnotationPresent(BodyParam.class)) &#123;</span><br><span class="line">              template.body(mapper.writeValueAsString(method.invoke(parametersObject)));</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          // Replace templates with actual values</span><br><span class="line">          template.resolve(params);</span><br><span class="line">        &#125; catch (</span><br><span class="line">            IllegalAccessException</span><br><span class="line">            | IllegalArgumentException</span><br><span class="line">            | InvocationTargetException</span><br><span class="line">            | JsonProcessingException e) &#123;</span><br><span class="line">          throw new EncodeException(&quot;Could not encode parameter object correctly&quot;, e);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        fallbackEncoder.encode(parametersObject, bodyType, template);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private String keyToTemplate(String key)</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;&#123;&quot; + key + &quot;&#125;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">It may look complicated, but it’s in fact pretty simple. Here is how it works: if the object received by the encoder is of the right type, it will use reflection to find the getters of the object, and depending on the annotation, inject the parameter at the right place in the RequestTemplate. Otherwise, it will use a fallback encoder.</span><br><span class="line"></span><br><span class="line">Now, simply set the ReflectionEncoder in your client class with the builder provided by Feign and you are ready to go!</span><br><span class="line"></span><br><span class="line">Here is a complete example of a simple client using request objects.</span><br><span class="line"></span><br><span class="line">public interface CustomDimensionsApi extends ClientFactory.Api</span><br><span class="line">&#123;</span><br><span class="line">    @RequestLine(&quot;PUT /&quot; + ApiVersion.VERSION + &quot;/dimensions/custom/&#123;apiName&#125;&quot;)</span><br><span class="line">    DimensionResponse editDimension(EditDimensionRequest request);</span><br><span class="line">&#125;</span><br><span class="line">public class EditDimensionRequest extends BaseRequest</span><br><span class="line">&#123;</span><br><span class="line">    private String apiName;</span><br><span class="line">    private Boolean updatePastEvents;</span><br><span class="line">    private CustomDimensionModel customDimensionModel;</span><br><span class="line"></span><br><span class="line">    public EditDimensionRequest(String apiName,</span><br><span class="line">                                CustomDimensionModel customDimensionModel)</span><br><span class="line">    &#123;</span><br><span class="line">        this.apiName = apiName;</span><br><span class="line">        this.customDimensionModel = customDimensionModel;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @PathParam(&quot;apiName&quot;)</span><br><span class="line">    public String getApiName() &#123; return apiName; &#125;</span><br><span class="line">    public void setApiName(String apiName) &#123; this.apiName = apiName; &#125;</span><br><span class="line"></span><br><span class="line">    @QueryParam(&quot;updatePastEvents&quot;)</span><br><span class="line">    public Boolean getUpdatePastEvents() &#123; return updatePastEvents; &#125;</span><br><span class="line">    public void setUpdatePastEvents(Boolean updatePastEvents) &#123; this.updatePastEvents = updatePastEvents; &#125;</span><br><span class="line"></span><br><span class="line">    @BodyParam</span><br><span class="line">    public CustomDimensionModel getCustomDimensionModel() &#123; return customDimensionModel; &#125;</span><br><span class="line">    public void setCustomDimensionModel(CustomDimensionModel customDimensionModel) &#123; this.customDimensionModel = customDimensionModel; &#125;</span><br><span class="line"></span><br><span class="line">    public EditDimensionRequest withUpdatePastEvents(Boolean updatePastEvents)&#123;</span><br><span class="line">        setUpdatePastEvents(updatePastEvents); return this;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">There you have it: a very simple HTTP client built with Feign, using a request object. It made coding our functional tests way easier and made them much cleaner. The next steps for us would be to combine that with better exception handling (awesome post by my friend Jacques-Etienne Beaudet, go check it out) and we would be unstoppable!</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【docker】创建java容器/" data-id="cjs1qori20009xiui26wc98qj" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【feign】不支持在Get请求中使用对象传参/" data-id="cjs1qrvck0008zwuin845fqlz" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/docker/">docker</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/feign/">feign</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring-cloud/">spring-cloud</a></li></ul>
 
     </footer>
   </div>
@@ -525,11 +490,56 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【mgo】mgo源码解读——cluster/" data-id="cjs1qori4000bxiuigrd9tssg" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【mgo】mgo源码解读——cluster/" data-id="cjs1qrvcl0009zwui4r1swp9i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/mgo/">mgo</a></li></ul>
 
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【hystrix】探索" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【hystrix】探索/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【hystrix】探索/">【hystrix】探索</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="断路器"><a href="#断路器" class="headerlink" title="断路器"></a>断路器</h1><p>作用: 防止一个服务接口错误可能会导致级联故障. </p>
+<p>触发条件: 当<strong>一个周期</strong>内, 单个接口调用次数超过<strong>请求调用阈值</strong>, 或失败率达到<strong>失败百分比阈值</strong>,<br>断路器将会打开, 并且请求会失败.</p>
+<p>降级: 为了防止失败和断路, 开发中可以提供一个回调函数.<br>回调函数可以是另一个受Hystrix保护的接口, 静态数据或空值. </p>
+<p><img src="https://raw.githubusercontent.com/spring-cloud/spring-cloud-netflix/1.4.x/docs/src/main/asciidoc/images/HystrixFallback.png" alt=""></p>
+<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><p>引入依赖:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;spring-cloud-starter-netflix-hystrix&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<p>启用:</p>
+<p><code>@EnableCircuitBreaker</code></p>
+<p>See <a href="https://github.com/Netflix/Hystrix/tree/master/hystrix-contrib/hystrix-javanica#configuration" target="_blank" rel="noopener">here</a> for more.</p>
+<p>See the <a href="https://github.com/Netflix/Hystrix/wiki/Configuration" target="_blank" rel="noopener">Hystrix wiki</a> for details on the properties available.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【hystrix】探索/" data-id="cjs1qrvcm000bzwui4go1eyst" class="article-share-link">Share</a>
+      
+      
     </footer>
   </div>
   
@@ -569,7 +579,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【mybatis】通用mapper注册流程/" data-id="cjs1qori7000dxiuitzbel4l8" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【mybatis】通用mapper注册流程/" data-id="cjs1qrvcq000dzwui8j7imdo3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/mybatis/">mybatis</a></li></ul>
@@ -631,7 +641,7 @@
       <ul>
         
           <li>
-            <a href="/hexo-demo/2019/02/12/todolist/">(no title)</a>
+            <a href="/hexo-demo/2019/02/12/todolist/">todolist</a>
           </li>
         
           <li>
@@ -643,11 +653,11 @@
           </li>
         
           <li>
-            <a href="/hexo-demo/2018/11/05/【feign】不支持在Get请求中使用对象传参/">【feign】不支持在Get请求中使用对象传参</a>
+            <a href="/hexo-demo/2018/11/05/【docker】创建java容器/">【docker】创建java容器</a>
           </li>
         
           <li>
-            <a href="/hexo-demo/2018/11/05/【hystrix】探索/">【hystrix】探索</a>
+            <a href="/hexo-demo/2018/11/05/【docker】杀不死的docker/">【docker】杀不死的docker</a>
           </li>
         
       </ul>
