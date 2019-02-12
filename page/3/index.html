@@ -70,69 +70,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-【spring】基于hikari的多数据源配置" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/hexo-demo/2018/11/05/【spring】基于hikari的多数据源配置/" class="article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/hexo-demo/2018/11/05/【spring】基于hikari的多数据源配置/">【spring】基于hikari的多数据源配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>问题：<code>mgmt</code>项目目前配置了多数据源，当手动配置 <code>HikariDataSource</code> 时，会出现 DataSource 使用的是 Tomcat 的 <code>DataSource</code></p>
-</blockquote>
-<h1 id="使用-Hikari-实现多数据源"><a href="#使用-Hikari-实现多数据源" class="headerlink" title="使用 Hikari 实现多数据源"></a>使用 Hikari 实现多数据源</h1><h2 id="检查数据源是否为-Hikari"><a href="#检查数据源是否为-Hikari" class="headerlink" title="检查数据源是否为 Hikari"></a>检查数据源是否为 Hikari</h2><p><code>ApplicationContext.getBeansOfType(DataSource.class)</code> 是否为 <code>HikariDataSource</code>，并在debug时，查看属性<code>pool</code>是否为 <code>HikariPool-x</code> ，</p>
-<p>如果检查不是 Hikari（有可能是 tomcat.DataSource），可按如下步骤配置</p>
-<h2 id="配置-HikariDataSource"><a href="#配置-HikariDataSource" class="headerlink" title="配置 HikariDataSource"></a>配置 HikariDataSource</h2><ul>
-<li>DataSourceConfig</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 一个默认的 DataSource</span><br><span class="line">@ConfigurationProperties(prefix = &quot;spring.datasource.hikari&quot;)</span><br><span class="line">public DataSource dataSource(DataSourceProperties properties) &#123;</span><br><span class="line">   return properties.initializeDataSourceBuilder().type(HikariDataSource.class).build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 第二个 DataSource</span><br><span class="line">@ConfigurationProperties(prefix = &quot;spring.datasource2.hikari&quot;)</span><br><span class="line">public DataSource dataSource(DataSourceProperties properties) &#123;</span><br><span class="line">   return properties.initializeDataSourceBuilder().type(HikariDataSource.class).build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>application.yml</li>
-</ul>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 这里使用了模板，可以省去一些公共配置</span></span><br><span class="line"><span class="attr">  tpl_datasource:</span> <span class="meta">&amp;tpl_datasource</span></span><br><span class="line"><span class="attr">    type:</span> <span class="string">com.zaxxer.hikari.HikariDataSource</span></span><br><span class="line"><span class="attr">    driver-class-name:</span> <span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">    url:</span> <span class="string">$url</span></span><br><span class="line"><span class="attr">    username:</span> <span class="string">$username</span></span><br><span class="line"><span class="attr">    password:</span> <span class="string">$pwd</span></span><br><span class="line"><span class="attr">    maximum-pool-size:</span> <span class="number">23</span></span><br><span class="line"><span class="attr">    connection-timeout:</span> <span class="number">55000</span></span><br><span class="line"><span class="attr">    idle-timeout:</span> <span class="number">33000</span></span><br><span class="line"><span class="attr">    testOnBorrow:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    maxLifetime:</span> <span class="number">11000</span>                  <span class="comment">#30分钟，服务器wait_timeout设置为30分钟了</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 默认的datasource，其他ds会继承该配置，有点像模板</span></span><br><span class="line"><span class="attr">  datasource:</span></span><br><span class="line">    <span class="string">&lt;&lt;:</span> <span class="meta">*tpl_datasource</span></span><br><span class="line"><span class="attr">    username:</span> <span class="string">root</span>                      <span class="comment"># 其他ds会继承</span></span><br><span class="line"><span class="attr">    password:</span> <span class="string">oasisadmin</span>                <span class="comment"># 其他ds会继承</span></span><br><span class="line"><span class="attr">    hikari:</span></span><br><span class="line"><span class="attr">      jdbc-url:</span> <span class="attr">jdbc:mysql://xxx/oasis_mgmt?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;autoReconnect=true&amp;autoReconnectForPools=true</span></span><br><span class="line"><span class="attr">      connection-init-sql:</span> <span class="string">select</span> <span class="number">1</span></span><br><span class="line"><span class="attr">      leakDetectionThreshold:</span> <span class="number">5000</span>      <span class="comment">#2s 后connection还不回归pool，则提示可能的connection leak</span></span><br><span class="line"><span class="attr">      connectionTimeout:</span> <span class="number">5000</span> <span class="comment">#5s,get connection from pool</span></span><br><span class="line"><span class="attr">      maxLifetime:</span> <span class="number">21000</span>                <span class="comment">#30分钟，服务器wait_timeout设置为30分钟了</span></span><br><span class="line"><span class="attr">      maximum-pool-size:</span> <span class="number">24</span></span><br><span class="line"><span class="attr">      data-source-properties:</span></span><br><span class="line"><span class="attr">        cachePrepStmts:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">        prepStmtCacheSize:</span> <span class="number">250</span></span><br><span class="line"><span class="attr">        prepStmtCacheSqlLimit:</span> <span class="number">2048</span></span><br><span class="line"><span class="attr">        useServerPrepStmts:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  datasource_mom:</span></span><br><span class="line">    <span class="string">&lt;&lt;:</span> <span class="meta">*tpl_datasource</span></span><br><span class="line"><span class="attr">    hikari:</span></span><br><span class="line"><span class="attr">      jdbc-url:</span> <span class="attr">jdbc:mysql://xxx/oasis_mom_formal?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;autoReconnect=true&amp;autoReconnectForPools=true</span></span><br><span class="line"><span class="attr">      connection-init-sql:</span> <span class="string">select</span> <span class="number">1</span></span><br><span class="line"><span class="attr">      leakDetectionThreshold:</span> <span class="number">5000</span>      <span class="comment">#2s 后connection还不回归pool，则提示可能的connection leak</span></span><br><span class="line"><span class="attr">      connectionTimeout:</span> <span class="number">5000</span>           <span class="comment">#5s,get connection from pool</span></span><br><span class="line"><span class="attr">      maxLifetime:</span> <span class="number">21000</span>                <span class="comment">#30分钟，服务器wait_timeout设置为30分钟了</span></span><br><span class="line"><span class="attr">      maximum-pool-size:</span> <span class="number">24</span></span><br><span class="line"><span class="attr">      data-source-properties:</span></span><br><span class="line"><span class="attr">        cachePrepStmts:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">        prepStmtCacheSize:</span> <span class="number">250</span></span><br><span class="line"><span class="attr">        prepStmtCacheSqlLimit:</span> <span class="number">2048</span></span><br><span class="line"><span class="attr">        useServerPrepStmts:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>由于 hikari使用的是 jdbc-url，所以 <code>spring.datasource.hikari.jdbc-url</code> 在每个 ds 中都要单独配置</p>
-</li>
-<li><p>由于上一条，所以 hikari 的配置无法使用 tpl模板 的方式让其他地方使用，<code>spring.datasource.hikari.*</code> 也都要单独配置</p>
-</li>
-<li><p><code>spring.datasource.*</code> 里面的配置，所有ds默认都会使用，比如 <code>hikari.jdbc-url</code> 如果没有配置，则默认使用 <code>spring.datasource.url</code></p>
-</li>
-</ul>
-<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><ul>
-<li>org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration</li>
-<li><a href="https://gist.github.com/rhamedy/b3cb936061cc03acdfe21358b86a5bc6" target="_blank" rel="noopener">Configure HikariCP with Spring Boot JPA Hibernate and PostgreSQL as a database</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【spring】基于hikari的多数据源配置/" data-id="cjs1qrvda000yzwuif3yeii7r" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/hikari/">hikari</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring/">spring</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-【技术栈】" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/hexo-demo/2018/11/05/【技术栈】/" class="article-date">
@@ -143,6 +80,11 @@
   <div class="article-inner">
     
     
+      {% if post.top %}
+        <i class="fa fa-thumb-tack"></i>
+        <font color="7D26CD">置顶</font>
+        <span class="post-meta-divider">|</span>
+      {% endif %}
       <header class="article-header">
         
   
@@ -191,9 +133,179 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【技术栈】/" data-id="cjs1qrvdb0011zwui27xtq7x6" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【技术栈】/" data-id="cjs1qz4cy001150uiuthodr7m" class="article-share-link">Share</a>
       
       
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【spring-cloud】部署" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【spring-cloud】部署/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      {% if post.top %}
+        <i class="fa fa-thumb-tack"></i>
+        <font color="7D26CD">置顶</font>
+        <span class="post-meta-divider">|</span>
+      {% endif %}
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【spring-cloud】部署/">【spring-cloud】部署</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="构建docker容器"><a href="#构建docker容器" class="headerlink" title="构建docker容器"></a>构建docker容器</h2><p><a href="../docker/how-to-build-container.md">如何构建容器</a></p>
+<h2 id="优雅关闭服务"><a href="#优雅关闭服务" class="headerlink" title="优雅关闭服务"></a>优雅关闭服务</h2><p><a href="/spring-boot/优雅关闭服务.md">优雅关闭服务</a></p>
+<h2 id="远程调试"><a href="#远程调试" class="headerlink" title="远程调试"></a>远程调试</h2><p>修改完成后，请修改文档：<a href="../oasis-ct/基础服务列表.md">基础服务列表</a></p>
+<p>启动时，加上 <code>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=[debug port]</code></p>
+<p>注意加上远程调试前，也要在docker中配置调试端口的<strong>映射</strong></p>
+<p>下面是一个完整的配置:</p>
+<blockquote>
+<p>java<br>-Dfile.encoding=UTF-8<br>-Duser.timezone=GMT+08<br>-Dspring.profiles.active=[profile]<br>-Xdebug<br>-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=[debug port]<br>-jar [jar]</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-cloud】部署/" data-id="cjs1qz4cz001350uiejnxco8v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring-cloud/">spring-cloud</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【项目管理】git使用规范" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【项目管理】git使用规范/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      {% if post.top %}
+        <i class="fa fa-thumb-tack"></i>
+        <font color="7D26CD">置顶</font>
+        <span class="post-meta-divider">|</span>
+      {% endif %}
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【项目管理】git使用规范/">【项目管理】git使用规范</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在开工之前，我们约定一下git的开发流程，详细的可以参考这篇文章:<br><a href="https://blog.csdn.net/u012562943/article/details/79754587" target="_blank" rel="noopener">https://blog.csdn.net/u012562943/article/details/79754587</a></p>
+<p>基本原则：</p>
+<p><img src="res/git.png" alt="Git"></p>
+<p>1 分支解释：</p>
+<ul>
+<li><p>master 是受保护的分支，今后是稳定版本，用于build和线上部署，是稳定分支，不可以push。只有当代码经过验证以后，负责人才可以合并到该分支；</p>
+</li>
+<li><p>dev 分支是大家可以进行开发集成和测试的分支，原则上接受pull和push，本次大家都在 dev 分支上开发；</p>
+</li>
+</ul>
+<p>2 需要开发一个 feature 或者版本的时候，从master中创建一个分支出来，在本地进行开发，开发完毕后合并到测试（dev）分支进行验证，验证通过后才可以合并到master进行上线；</p>
+<p>  大体步骤：</p>
+<ul>
+<li>创建项目</li>
+<li>从 master 分支上开出若干环境分支，如：dev(对应测试环境), sim, online</li>
+<li>开始一个任务的 时候从gitlab界面上开feature分支(create from master), 命名规范建议是feature/jira-123</li>
+<li>在开发者本机执 行: git fetch</li>
+<li>在开发者本机执 行: git checkout origin feature/xxxx</li>
+<li>提交代码: git commit …</li>
+<li>测试验证 feature 分支是否正常；</li>
+<li>推送 feature 分支：git push origin feature/xxxx</li>
+<li><p>在 GOGS 界面上合并 feature 分支到对应的环境分支</p>
+<p>注意：</p>
+</li>
+<li><p>从 master 分支开出分支，以及合并到master这个过程建议在GOGS界面上面来做，而不是在命令行中；</p>
+</li>
+<li>本次本着迅速开发原则，dev 分支是一个初始分支，大家可以直接pull和push；但为了保证不相互冲突，鼓励大家创建自己的 feature 分支；</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】git使用规范/" data-id="cjs1qz4d0001650uierhklq0p" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【服务架构】微服务与分布式的区别" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【服务架构】微服务与分布式的区别/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      {% if post.top %}
+        <i class="fa fa-thumb-tack"></i>
+        <font color="7D26CD">置顶</font>
+        <span class="post-meta-divider">|</span>
+      {% endif %}
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【服务架构】微服务与分布式的区别/">【服务架构】微服务与分布式的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>微服务:</p>
+<p>  分散能力</p>
+<p>分布式:</p>
+<p>  分散压力</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【服务架构】微服务与分布式的区别/" data-id="cjs1qz4d1001850uif73sr6yv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/服务架构/">服务架构</a></li></ul>
+
     </footer>
   </div>
   
@@ -211,6 +323,11 @@
   <div class="article-inner">
     
     
+      {% if post.top %}
+        <i class="fa fa-thumb-tack"></i>
+        <font color="7D26CD">置顶</font>
+        <span class="post-meta-divider">|</span>
+      {% endif %}
       <header class="article-header">
         
   
@@ -259,118 +376,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【技术调研】分布式任务调度框架调研/" data-id="cjs1qrvdc0012zwui8tnifj4l" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【技术调研】分布式任务调度框架调研/" data-id="cjs1qz4d3001a50ui8590p9x9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/elastic-job/">elastic-job</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-【服务架构】微服务与分布式的区别" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/hexo-demo/2018/11/05/【服务架构】微服务与分布式的区别/" class="article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/hexo-demo/2018/11/05/【服务架构】微服务与分布式的区别/">【服务架构】微服务与分布式的区别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>微服务:</p>
-<p>  分散能力</p>
-<p>分布式:</p>
-<p>  分散压力</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【服务架构】微服务与分布式的区别/" data-id="cjs1qrvdd0014zwui1zrrzqay" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/服务架构/">服务架构</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-【项目管理】git使用规范" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/hexo-demo/2018/11/05/【项目管理】git使用规范/" class="article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/hexo-demo/2018/11/05/【项目管理】git使用规范/">【项目管理】git使用规范</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在开工之前，我们约定一下git的开发流程，详细的可以参考这篇文章:<br><a href="https://blog.csdn.net/u012562943/article/details/79754587" target="_blank" rel="noopener">https://blog.csdn.net/u012562943/article/details/79754587</a></p>
-<p>基本原则：</p>
-<p><img src="res/git.png" alt="Git"></p>
-<p>1 分支解释：</p>
-<ul>
-<li><p>master 是受保护的分支，今后是稳定版本，用于build和线上部署，是稳定分支，不可以push。只有当代码经过验证以后，负责人才可以合并到该分支；</p>
-</li>
-<li><p>dev 分支是大家可以进行开发集成和测试的分支，原则上接受pull和push，本次大家都在 dev 分支上开发；</p>
-</li>
-</ul>
-<p>2 需要开发一个 feature 或者版本的时候，从master中创建一个分支出来，在本地进行开发，开发完毕后合并到测试（dev）分支进行验证，验证通过后才可以合并到master进行上线；</p>
-<p>  大体步骤：</p>
-<ul>
-<li>创建项目</li>
-<li>从 master 分支上开出若干环境分支，如：dev(对应测试环境), sim, online</li>
-<li>开始一个任务的 时候从gitlab界面上开feature分支(create from master), 命名规范建议是feature/jira-123</li>
-<li>在开发者本机执 行: git fetch</li>
-<li>在开发者本机执 行: git checkout origin feature/xxxx</li>
-<li>提交代码: git commit …</li>
-<li>测试验证 feature 分支是否正常；</li>
-<li>推送 feature 分支：git push origin feature/xxxx</li>
-<li><p>在 GOGS 界面上合并 feature 分支到对应的环境分支</p>
-<p>注意：</p>
-</li>
-<li><p>从 master 分支开出分支，以及合并到master这个过程建议在GOGS界面上面来做，而不是在命令行中；</p>
-</li>
-<li>本次本着迅速开发原则，dev 分支是一个初始分支，大家可以直接pull和push；但为了保证不相互冲突，鼓励大家创建自己的 feature 分支；</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】git使用规范/" data-id="cjs1qrvde0016zwuid50cuzpy" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
 
     </footer>
   </div>
@@ -389,6 +398,11 @@
   <div class="article-inner">
     
     
+      {% if post.top %}
+        <i class="fa fa-thumb-tack"></i>
+        <font color="7D26CD">置顶</font>
+        <span class="post-meta-divider">|</span>
+      {% endif %}
       <header class="article-header">
         
   
@@ -420,7 +434,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】spring-cloud接口定义规范/" data-id="cjs1qrvdf0018zwui7mm35hc1" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】spring-cloud接口定义规范/" data-id="cjs1qz4d5001d50uidf96qj01" class="article-share-link">Share</a>
       
       
     </footer>
@@ -440,6 +454,11 @@
   <div class="article-inner">
     
     
+      {% if post.top %}
+        <i class="fa fa-thumb-tack"></i>
+        <font color="7D26CD">置顶</font>
+        <span class="post-meta-divider">|</span>
+      {% endif %}
       <header class="article-header">
         
   
@@ -494,7 +513,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】开发规范/" data-id="cjs1qrvdg001azwui5dwgh2r5" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】开发规范/" data-id="cjs1qz4d6001e50uij8x3vdlb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
@@ -516,6 +535,11 @@
   <div class="article-inner">
     
     
+      {% if post.top %}
+        <i class="fa fa-thumb-tack"></i>
+        <font color="7D26CD">置顶</font>
+        <span class="post-meta-divider">|</span>
+      {% endif %}
       <header class="article-header">
         
   
@@ -548,7 +572,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】接口设计/" data-id="cjs1qrvdh001bzwuitynwk0lr" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】接口设计/" data-id="cjs1qz4d7001g50ui6009gp7b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
@@ -570,6 +594,11 @@
   <div class="article-inner">
     
     
+      {% if post.top %}
+        <i class="fa fa-thumb-tack"></i>
+        <font color="7D26CD">置顶</font>
+        <span class="post-meta-divider">|</span>
+      {% endif %}
       <header class="article-header">
         
   
@@ -604,7 +633,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】数据库规范/" data-id="cjs1qrvdi001dzwui2qdhjuui" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】数据库规范/" data-id="cjs1qz4d8001i50uijki0mg05" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
@@ -626,6 +655,11 @@
   <div class="article-inner">
     
     
+      {% if post.top %}
+        <i class="fa fa-thumb-tack"></i>
+        <font color="7D26CD">置顶</font>
+        <span class="post-meta-divider">|</span>
+      {% endif %}
       <header class="article-header">
         
   
@@ -743,7 +777,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】错误代码定义/" data-id="cjs1qrvdi001fzwuimay4fzwf" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】错误代码定义/" data-id="cjs1qz4d9001l50uih12cs0ju" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
@@ -813,7 +847,7 @@
           </li>
         
           <li>
-            <a href="/hexo-demo/2018/11/05/【consul】docker配置/">【consul】docker配置</a>
+            <a href="/hexo-demo/2018/11/05/【docker】杀不死的docker/">【docker】杀不死的docker</a>
           </li>
         
           <li>
@@ -821,7 +855,7 @@
           </li>
         
           <li>
-            <a href="/hexo-demo/2018/11/05/【docker】杀不死的docker/">【docker】杀不死的docker</a>
+            <a href="/hexo-demo/2018/11/05/【consul】docker配置/">【consul】docker配置</a>
           </li>
         
       </ul>
