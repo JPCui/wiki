@@ -70,9 +70,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-【spring-cloud】问题记录" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-【技术调研】分布式任务调度框架调研" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/hexo-demo/2018/11/05/【spring-cloud】问题记录/" class="article-date">
+    <a href="/hexo-demo/2018/11/05/【技术调研】分布式任务调度框架调研/" class="article-date">
   <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
 </a>
     
@@ -84,7 +84,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/hexo-demo/2018/11/05/【spring-cloud】问题记录/">【spring-cloud】问题记录</a>
+      <a class="article-title" href="/hexo-demo/2018/11/05/【技术调研】分布式任务调度框架调研/">【技术调研】分布式任务调度框架调研</a>
     </h1>
   
 
@@ -92,33 +92,46 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><p>feign 请求 get 后返回 post 404 error</p>
-<ul>
-<li>检查请求路径是否正确</li>
-<li>检查是否Get请求参数为对象，@see <a href="feign%20not%20support%20object%20param%20by%20GET.md">feign not support object param by GET</a></li>
-</ul>
-</li>
-<li><p>feign 参数中有 Date 参数时，保证客户端和服务端格式一样</p>
-<p>spring boot 下配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  jackson:</span><br><span class="line">    date-format: yyyy-MM-dd HH:mm:ss</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>@FeignClient 被注册为 RequestHandler，导致与服务接口 duplicate</li>
-</ul>
-<blockquote>
-<p>@FeignClient with top level @RequestMapping annotation is also registered as Spring MVC handler</p>
-</blockquote>
-<p>see: <a href="https://github.com/spring-cloud/spring-cloud-netflix/issues/466" target="_blank" rel="noopener">https://github.com/spring-cloud/spring-cloud-netflix/issues/466</a></p>
+        <h2 id="现有框架对比"><a href="#现有框架对比" class="headerlink" title="现有框架对比"></a>现有框架对比</h2><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Elastic-Job</th>
+<th>Quartz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>负载均衡</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>容错</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>分片/分片一致性/分布式并行调度</td>
+<td>√</td>
+<td>×</td>
+</tr>
+<tr>
+<td>运营平台</td>
+<td>√</td>
+<td>×</td>
+</tr>
+</tbody>
+</table>
+<p>分片一致性: 同一个分片在分布式环境下, 只有一个实例运行</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-cloud】问题记录/" data-id="cjs1qdqc6000z5juipcgdayvh" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【技术调研】分布式任务调度框架调研/" data-id="cjs1qoriq0011xiuidpjal2se" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring-cloud/">spring-cloud</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/elastic-job/">elastic-job</a></li></ul>
 
     </footer>
   </div>
@@ -185,7 +198,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【技术栈】/" data-id="cjs1qdqc700125juihk8uehn7" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【技术栈】/" data-id="cjs1qorir0014xiuipgp0zm0j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -195,9 +208,9 @@
 
 
   
-    <article id="post-【服务架构】微服务与分布式的区别" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-【spring】基于hikari的多数据源配置" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/hexo-demo/2018/11/05/【服务架构】微服务与分布式的区别/" class="article-date">
+    <a href="/hexo-demo/2018/11/05/【spring】基于hikari的多数据源配置/" class="article-date">
   <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
 </a>
     
@@ -209,7 +222,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/hexo-demo/2018/11/05/【服务架构】微服务与分布式的区别/">【服务架构】微服务与分布式的区别</a>
+      <a class="article-title" href="/hexo-demo/2018/11/05/【spring】基于hikari的多数据源配置/">【spring】基于hikari的多数据源配置</a>
     </h1>
   
 
@@ -217,88 +230,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>微服务:</p>
-<p>  分散能力</p>
-<p>分布式:</p>
-<p>  分散压力</p>
+        <blockquote>
+<p>问题：<code>mgmt</code>项目目前配置了多数据源，当手动配置 <code>HikariDataSource</code> 时，会出现 DataSource 使用的是 Tomcat 的 <code>DataSource</code></p>
+</blockquote>
+<h1 id="使用-Hikari-实现多数据源"><a href="#使用-Hikari-实现多数据源" class="headerlink" title="使用 Hikari 实现多数据源"></a>使用 Hikari 实现多数据源</h1><h2 id="检查数据源是否为-Hikari"><a href="#检查数据源是否为-Hikari" class="headerlink" title="检查数据源是否为 Hikari"></a>检查数据源是否为 Hikari</h2><p><code>ApplicationContext.getBeansOfType(DataSource.class)</code> 是否为 <code>HikariDataSource</code>，并在debug时，查看属性<code>pool</code>是否为 <code>HikariPool-x</code> ，</p>
+<p>如果检查不是 Hikari（有可能是 tomcat.DataSource），可按如下步骤配置</p>
+<h2 id="配置-HikariDataSource"><a href="#配置-HikariDataSource" class="headerlink" title="配置 HikariDataSource"></a>配置 HikariDataSource</h2><ul>
+<li>DataSourceConfig</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 一个默认的 DataSource</span><br><span class="line">@ConfigurationProperties(prefix = &quot;spring.datasource.hikari&quot;)</span><br><span class="line">public DataSource dataSource(DataSourceProperties properties) &#123;</span><br><span class="line">   return properties.initializeDataSourceBuilder().type(HikariDataSource.class).build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 第二个 DataSource</span><br><span class="line">@ConfigurationProperties(prefix = &quot;spring.datasource2.hikari&quot;)</span><br><span class="line">public DataSource dataSource(DataSourceProperties properties) &#123;</span><br><span class="line">   return properties.initializeDataSourceBuilder().type(HikariDataSource.class).build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>application.yml</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 这里使用了模板，可以省去一些公共配置</span></span><br><span class="line"><span class="attr">  tpl_datasource:</span> <span class="meta">&amp;tpl_datasource</span></span><br><span class="line"><span class="attr">    type:</span> <span class="string">com.zaxxer.hikari.HikariDataSource</span></span><br><span class="line"><span class="attr">    driver-class-name:</span> <span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">    url:</span> <span class="string">$url</span></span><br><span class="line"><span class="attr">    username:</span> <span class="string">$username</span></span><br><span class="line"><span class="attr">    password:</span> <span class="string">$pwd</span></span><br><span class="line"><span class="attr">    maximum-pool-size:</span> <span class="number">23</span></span><br><span class="line"><span class="attr">    connection-timeout:</span> <span class="number">55000</span></span><br><span class="line"><span class="attr">    idle-timeout:</span> <span class="number">33000</span></span><br><span class="line"><span class="attr">    testOnBorrow:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    maxLifetime:</span> <span class="number">11000</span>                  <span class="comment">#30分钟，服务器wait_timeout设置为30分钟了</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 默认的datasource，其他ds会继承该配置，有点像模板</span></span><br><span class="line"><span class="attr">  datasource:</span></span><br><span class="line">    <span class="string">&lt;&lt;:</span> <span class="meta">*tpl_datasource</span></span><br><span class="line"><span class="attr">    username:</span> <span class="string">root</span>                      <span class="comment"># 其他ds会继承</span></span><br><span class="line"><span class="attr">    password:</span> <span class="string">oasisadmin</span>                <span class="comment"># 其他ds会继承</span></span><br><span class="line"><span class="attr">    hikari:</span></span><br><span class="line"><span class="attr">      jdbc-url:</span> <span class="attr">jdbc:mysql://xxx/oasis_mgmt?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;autoReconnect=true&amp;autoReconnectForPools=true</span></span><br><span class="line"><span class="attr">      connection-init-sql:</span> <span class="string">select</span> <span class="number">1</span></span><br><span class="line"><span class="attr">      leakDetectionThreshold:</span> <span class="number">5000</span>      <span class="comment">#2s 后connection还不回归pool，则提示可能的connection leak</span></span><br><span class="line"><span class="attr">      connectionTimeout:</span> <span class="number">5000</span> <span class="comment">#5s,get connection from pool</span></span><br><span class="line"><span class="attr">      maxLifetime:</span> <span class="number">21000</span>                <span class="comment">#30分钟，服务器wait_timeout设置为30分钟了</span></span><br><span class="line"><span class="attr">      maximum-pool-size:</span> <span class="number">24</span></span><br><span class="line"><span class="attr">      data-source-properties:</span></span><br><span class="line"><span class="attr">        cachePrepStmts:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">        prepStmtCacheSize:</span> <span class="number">250</span></span><br><span class="line"><span class="attr">        prepStmtCacheSqlLimit:</span> <span class="number">2048</span></span><br><span class="line"><span class="attr">        useServerPrepStmts:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  datasource_mom:</span></span><br><span class="line">    <span class="string">&lt;&lt;:</span> <span class="meta">*tpl_datasource</span></span><br><span class="line"><span class="attr">    hikari:</span></span><br><span class="line"><span class="attr">      jdbc-url:</span> <span class="attr">jdbc:mysql://xxx/oasis_mom_formal?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;autoReconnect=true&amp;autoReconnectForPools=true</span></span><br><span class="line"><span class="attr">      connection-init-sql:</span> <span class="string">select</span> <span class="number">1</span></span><br><span class="line"><span class="attr">      leakDetectionThreshold:</span> <span class="number">5000</span>      <span class="comment">#2s 后connection还不回归pool，则提示可能的connection leak</span></span><br><span class="line"><span class="attr">      connectionTimeout:</span> <span class="number">5000</span>           <span class="comment">#5s,get connection from pool</span></span><br><span class="line"><span class="attr">      maxLifetime:</span> <span class="number">21000</span>                <span class="comment">#30分钟，服务器wait_timeout设置为30分钟了</span></span><br><span class="line"><span class="attr">      maximum-pool-size:</span> <span class="number">24</span></span><br><span class="line"><span class="attr">      data-source-properties:</span></span><br><span class="line"><span class="attr">        cachePrepStmts:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">        prepStmtCacheSize:</span> <span class="number">250</span></span><br><span class="line"><span class="attr">        prepStmtCacheSqlLimit:</span> <span class="number">2048</span></span><br><span class="line"><span class="attr">        useServerPrepStmts:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>由于 hikari使用的是 jdbc-url，所以 <code>spring.datasource.hikari.jdbc-url</code> 在每个 ds 中都要单独配置</p>
+</li>
+<li><p>由于上一条，所以 hikari 的配置无法使用 tpl模板 的方式让其他地方使用，<code>spring.datasource.hikari.*</code> 也都要单独配置</p>
+</li>
+<li><p><code>spring.datasource.*</code> 里面的配置，所有ds默认都会使用，比如 <code>hikari.jdbc-url</code> 如果没有配置，则默认使用 <code>spring.datasource.url</code></p>
+</li>
+</ul>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><ul>
+<li>org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration</li>
+<li><a href="https://gist.github.com/rhamedy/b3cb936061cc03acdfe21358b86a5bc6" target="_blank" rel="noopener">Configure HikariCP with Spring Boot JPA Hibernate and PostgreSQL as a database</a></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【服务架构】微服务与分布式的区别/" data-id="cjs1qdqc800145juita2uuq9d" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【spring】基于hikari的多数据源配置/" data-id="cjs1qorit0016xiuiuvc7wbhe" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/服务架构/">服务架构</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-【技术调研】分布式任务调度框架调研" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/hexo-demo/2018/11/05/【技术调研】分布式任务调度框架调研/" class="article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/hexo-demo/2018/11/05/【技术调研】分布式任务调度框架调研/">【技术调研】分布式任务调度框架调研</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="现有框架对比"><a href="#现有框架对比" class="headerlink" title="现有框架对比"></a>现有框架对比</h2><table>
-<thead>
-<tr>
-<th>Feature</th>
-<th>Elastic-Job</th>
-<th>Quartz</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>负载均衡</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td>容错</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td>分片/分片一致性/分布式并行调度</td>
-<td>√</td>
-<td>×</td>
-</tr>
-<tr>
-<td>运营平台</td>
-<td>√</td>
-<td>×</td>
-</tr>
-</tbody>
-</table>
-<p>分片一致性: 同一个分片在分布式环境下, 只有一个实例运行</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【技术调研】分布式任务调度框架调研/" data-id="cjs1qdqc900175juiz1pb6swx" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/elastic-job/">elastic-job</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/hikari/">hikari</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring/">spring</a></li></ul>
 
     </footer>
   </div>
@@ -361,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】git使用规范/" data-id="cjs1qdqca00195jui4rw6z8yy" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】git使用规范/" data-id="cjs1qoriu0019xiui6ozojwkv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
@@ -373,9 +337,9 @@
 
 
   
-    <article id="post-【项目管理】spring-cloud接口定义规范" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-【服务架构】微服务与分布式的区别" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/hexo-demo/2018/11/05/【项目管理】spring-cloud接口定义规范/" class="article-date">
+    <a href="/hexo-demo/2018/11/05/【服务架构】微服务与分布式的区别/" class="article-date">
   <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
 </a>
     
@@ -387,7 +351,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/hexo-demo/2018/11/05/【项目管理】spring-cloud接口定义规范/">【项目管理】spring-cloud接口定义规范</a>
+      <a class="article-title" href="/hexo-demo/2018/11/05/【服务架构】微服务与分布式的区别/">【服务架构】微服务与分布式的区别</a>
     </h1>
   
 
@@ -395,28 +359,75 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>接口分两种, 一种是服务间调用, 一种是前端调用</p>
-<p>建议 server 接口放在 controller.server 包下面</p>
-<p>server 接口禁止外网访问,所以访问路径最好区分开放接口访问路径</p>
-<h2 id="调用者配置"><a href="#调用者配置" class="headerlink" title="调用者配置"></a>调用者配置</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="string">[server]:</span></span><br><span class="line">    <span class="comment"># 服务的serviceId</span></span><br><span class="line"><span class="attr">    serviceId:</span> <span class="string">...</span></span><br><span class="line">    <span class="comment"># 服务的请求url（ip:port），方便本地调试</span></span><br><span class="line"><span class="attr">    url:</span> <span class="string">...</span></span><br></pre></td></tr></table></figure>
-<h2 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h2><p>写api的时候建议这样写，方便以后调用者调试，调用方通过Configuration注入：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient</span>(value = <span class="string">"$&#123;server.pay.serviceId:oasis-ct-pay-server&#125;"</span>, url = <span class="string">"$&#123;server.pay.url:&#125;"</span>)</span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/pay-server"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PayCenterInterface</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>接口是否配置 @FeignClient，调用方也有不同的配置方式：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br><span class="line"><span class="comment">// 1) 支付中心配置了 @FiegnClient，会自动扫描指定包下的 接口</span></span><br><span class="line"><span class="meta">@EnableFeignClients</span>(&#123;<span class="string">"cn.oasis.pay.service"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServerConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2) PayCenterInterface 没有配置 @FeignClient</span></span><br><span class="line">    <span class="meta">@FeignClient</span>(value = <span class="string">"$&#123;server.pay.serviceId:oasis-ct-pay-server&#125;"</span>, url = <span class="string">"$&#123;server.pay.url:&#125;"</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PayServer</span> <span class="keyword">extends</span> <span class="title">PayCenterInterface</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><ul>
-<li><p>偶尔会发现接口重复定义的错误(@FeignClient)</p>
-<p>  微服务接口(@FeignClient)定义的时候, 不要在类名上加 <code>@RequestMapping</code>, spring会扫描该注解, 并将所有方法映射 <code>mappingRegistry</code> 里</p>
-<p>  原理:</p>
-<p>  <code>org.springframework.web.servlet.handler.AbstractHandlerMethodMapping#initHandlerMethods</code><br>  获取所有的bean, 筛选出controller方法, 见<code>org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#isHandler</code>,<br>  所有 <code>@Controller</code> <strong>或</strong> <code>@RequestMapping</code> 的bean都将会扫描到, 这里解答了上面接口重复定义的问题,<br>  注册mapping: <code>org.springframework.web.servlet.handler.AbstractHandlerMethodMapping#registerHandlerMethod</code></p>
-</li>
-</ul>
+        <p>微服务:</p>
+<p>  分散能力</p>
+<p>分布式:</p>
+<p>  分散压力</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】spring-cloud接口定义规范/" data-id="cjs1qdqcb001b5juincowj3tl" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【服务架构】微服务与分布式的区别/" data-id="cjs1qoriv001bxiui1h11ey46" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/服务架构/">服务架构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【项目管理】数据库规范" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【项目管理】数据库规范/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【项目管理】数据库规范/">【项目管理】数据库规范</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1 建库</p>
+<p>最好每种业务，有自己的库，不要都放在同一个库里。</p>
+<p>同业务下有日志表，最好能建立（业务名_log) 这样的库，已便于以后拆分，能够很容易的将日志表剥离出来。</p>
+<p>2 建表</p>
+<ul>
+<li>统一用小写字母，用”_”进行分割，对相关功能的表应当使用相同前缀，如crm_xxx，前缀通常为库名或依赖主实体对象</li>
+<li>控制库名，表名，字段名的长度</li>
+<li>默认，都是innodb引擎</li>
+<li>默认字符集都是utf8mb4</li>
+<li>表都要有自增id 作为主键</li>
+<li>尽量不要用外键，</li>
+<li>禁用存储过程，触发器</li>
+<li>字段都要有comment，default值，not null</li>
+<li>log表提前规划好分表或者归档规则。</li>
+<li>不要跨库多表查询。</li>
+</ul>
+<p>3 索引</p>
+<p>按查询条件，大家提前规划下索引，不能裸上表。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】数据库规范/" data-id="cjs1qorix001dxiuie9z6xm3d" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+
     </footer>
   </div>
   
@@ -488,11 +499,62 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】开发规范/" data-id="cjs1qdqcc001d5juip4fujqre" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】开发规范/" data-id="cjs1qoriy001fxiui4zwrry1g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
 
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【项目管理】spring-cloud接口定义规范" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【项目管理】spring-cloud接口定义规范/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【项目管理】spring-cloud接口定义规范/">【项目管理】spring-cloud接口定义规范</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>接口分两种, 一种是服务间调用, 一种是前端调用</p>
+<p>建议 server 接口放在 controller.server 包下面</p>
+<p>server 接口禁止外网访问,所以访问路径最好区分开放接口访问路径</p>
+<h2 id="调用者配置"><a href="#调用者配置" class="headerlink" title="调用者配置"></a>调用者配置</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="string">[server]:</span></span><br><span class="line">    <span class="comment"># 服务的serviceId</span></span><br><span class="line"><span class="attr">    serviceId:</span> <span class="string">...</span></span><br><span class="line">    <span class="comment"># 服务的请求url（ip:port），方便本地调试</span></span><br><span class="line"><span class="attr">    url:</span> <span class="string">...</span></span><br></pre></td></tr></table></figure>
+<h2 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h2><p>写api的时候建议这样写，方便以后调用者调试，调用方通过Configuration注入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient</span>(value = <span class="string">"$&#123;server.pay.serviceId:oasis-ct-pay-server&#125;"</span>, url = <span class="string">"$&#123;server.pay.url:&#125;"</span>)</span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/pay-server"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PayCenterInterface</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接口是否配置 @FeignClient，调用方也有不同的配置方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br><span class="line"><span class="comment">// 1) 支付中心配置了 @FiegnClient，会自动扫描指定包下的 接口</span></span><br><span class="line"><span class="meta">@EnableFeignClients</span>(&#123;<span class="string">"cn.oasis.pay.service"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServerConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2) PayCenterInterface 没有配置 @FeignClient</span></span><br><span class="line">    <span class="meta">@FeignClient</span>(value = <span class="string">"$&#123;server.pay.serviceId:oasis-ct-pay-server&#125;"</span>, url = <span class="string">"$&#123;server.pay.url:&#125;"</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PayServer</span> <span class="keyword">extends</span> <span class="title">PayCenterInterface</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><ul>
+<li><p>偶尔会发现接口重复定义的错误(@FeignClient)</p>
+<p>  微服务接口(@FeignClient)定义的时候, 不要在类名上加 <code>@RequestMapping</code>, spring会扫描该注解, 并将所有方法映射 <code>mappingRegistry</code> 里</p>
+<p>  原理:</p>
+<p>  <code>org.springframework.web.servlet.handler.AbstractHandlerMethodMapping#initHandlerMethods</code><br>  获取所有的bean, 筛选出controller方法, 见<code>org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#isHandler</code>,<br>  所有 <code>@Controller</code> <strong>或</strong> <code>@RequestMapping</code> 的bean都将会扫描到, 这里解答了上面接口重复定义的问题,<br>  注册mapping: <code>org.springframework.web.servlet.handler.AbstractHandlerMethodMapping#registerHandlerMethod</code></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】spring-cloud接口定义规范/" data-id="cjs1qoriz001gxiuir3veg6r3" class="article-share-link">Share</a>
+      
+      
     </footer>
   </div>
   
@@ -542,63 +604,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】接口设计/" data-id="cjs1qdqcc001e5jui9m5ozly4" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-【项目管理】数据库规范" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/hexo-demo/2018/11/05/【项目管理】数据库规范/" class="article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/hexo-demo/2018/11/05/【项目管理】数据库规范/">【项目管理】数据库规范</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1 建库</p>
-<p>最好每种业务，有自己的库，不要都放在同一个库里。</p>
-<p>同业务下有日志表，最好能建立（业务名_log) 这样的库，已便于以后拆分，能够很容易的将日志表剥离出来。</p>
-<p>2 建表</p>
-<ul>
-<li>统一用小写字母，用”_”进行分割，对相关功能的表应当使用相同前缀，如crm_xxx，前缀通常为库名或依赖主实体对象</li>
-<li>控制库名，表名，字段名的长度</li>
-<li>默认，都是innodb引擎</li>
-<li>默认字符集都是utf8mb4</li>
-<li>表都要有自增id 作为主键</li>
-<li>尽量不要用外键，</li>
-<li>禁用存储过程，触发器</li>
-<li>字段都要有comment，default值，not null</li>
-<li>log表提前规划好分表或者归档规则。</li>
-<li>不要跨库多表查询。</li>
-</ul>
-<p>3 索引</p>
-<p>按查询条件，大家提前规划下索引，不能裸上表。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】数据库规范/" data-id="cjs1qdqcd001g5juino2tevdy" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】接口设计/" data-id="cjs1qorj0001ixiuik6z4zcct" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
@@ -737,7 +743,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】错误代码定义/" data-id="cjs1qdqce001i5juiqk3l65tq" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】错误代码定义/" data-id="cjs1qorj1001kxiuiedt76h85" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
@@ -811,11 +817,11 @@
           </li>
         
           <li>
-            <a href="/hexo-demo/2018/11/05/【docker】创建java容器/">【docker】创建java容器</a>
+            <a href="/hexo-demo/2018/11/05/【feign】不支持在Get请求中使用对象传参/">【feign】不支持在Get请求中使用对象传参</a>
           </li>
         
           <li>
-            <a href="/hexo-demo/2018/11/05/【docker】杀不死的docker/">【docker】杀不死的docker</a>
+            <a href="/hexo-demo/2018/11/05/【hystrix】探索/">【hystrix】探索</a>
           </li>
         
       </ul>
