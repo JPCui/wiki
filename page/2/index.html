@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>wiki</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="just like a wiki">
+<meta name="keywords" content="wiki">
+<meta property="og:type" content="website">
+<meta property="og:title" content="wiki">
+<meta property="og:url" content="https://jpcui.github.io/hexo-demo/page/2/index.html">
+<meta property="og:site_name" content="wiki">
+<meta property="og:description" content="just like a wiki">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="wiki">
+<meta name="twitter:description" content="just like a wiki">
+  
+    <link rel="alternate" href="/hexo-demo/atom.xml" title="wiki" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/hexo-demo/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/hexo-demo/" id="logo">wiki</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/hexo-demo/" id="subtitle">just like a wiki</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/hexo-demo/">Home</a>
+        
+          <a class="main-nav-link" href="/hexo-demo/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/hexo-demo/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jpcui.github.io/hexo-demo"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-【项目管理】错误代码定义" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【项目管理】错误代码定义/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【项目管理】错误代码定义/">【项目管理】错误代码定义</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="通用异常代码"><a href="#通用异常代码" class="headerlink" title="通用异常代码"></a>通用异常代码</h3><table>
+<thead>
+<tr>
+<th>代码</th>
+<th>错误信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-440001</td>
+<td>服务内部错误</td>
+</tr>
+<tr>
+<td>-440002</td>
+<td>服务内部错误</td>
+</tr>
+<tr>
+<td>——-</td>
+<td></td>
+</tr>
+<tr>
+<td>-330001</td>
+<td>无效参数</td>
+</tr>
+<tr>
+<td>-330002</td>
+<td>缺少参数</td>
+</tr>
+<tr>
+<td>-330003</td>
+<td>资源不存在</td>
+</tr>
+<tr>
+<td>-330004</td>
+<td>未登录</td>
+</tr>
+<tr>
+<td>-330005</td>
+<td>请求类型不支持</td>
+</tr>
+<tr>
+<td>-330006</td>
+<td>非法操作</td>
+</tr>
+<tr>
+<td>-330007</td>
+<td>未注册</td>
+</tr>
+</tbody>
+</table>
+<h3 id="服务异常定义规则"><a href="#服务异常定义规则" class="headerlink" title="服务异常定义规则"></a>服务异常定义规则</h3><p>异常代码长度为7位，组成：服务代码（2） + 业务代码（2） + 错误代码（3）</p>
+<p>比如：</p>
+<p>消息服务中发送邮件失败：1101001</p>
+<ul>
+<li>11 代表消息服务</li>
+<li>01 代表邮件业务</li>
+<li>001 代表邮件发送失败</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th>服务代码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>oasis-ct-message</td>
+<td>11</td>
+</tr>
+<tr>
+<td>oasis-ct-pay</td>
+<td>12</td>
+</tr>
+<tr>
+<td>oasis-ct-order</td>
+<td>13</td>
+</tr>
+<tr>
+<td>oasis-ct-assets</td>
+<td>14</td>
+</tr>
+<tr>
+<td>oasis-ct-product</td>
+<td>15</td>
+</tr>
+<tr>
+<td>oasis-ct-promotion</td>
+<td>16</td>
+</tr>
+<tr>
+<td>oasis-ct-medicine</td>
+<td>17</td>
+</tr>
+<tr>
+<td>oasis-ct-thirdpartner</td>
+<td>18</td>
+</tr>
+</tbody>
+</table>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://open.weibo.com/wiki/Error_code" target="_blank" rel="noopener">微博错误码定义</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】错误代码定义/" data-id="cjs1lb9y7000mwnui4sms33m2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【项目管理】git使用规范" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【项目管理】git使用规范/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【项目管理】git使用规范/">【项目管理】git使用规范</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在开工之前，我们约定一下git的开发流程，详细的可以参考这篇文章:<br><a href="https://blog.csdn.net/u012562943/article/details/79754587" target="_blank" rel="noopener">https://blog.csdn.net/u012562943/article/details/79754587</a></p>
+<p>基本原则：</p>
+<p><img src="res/git.png" alt="Git"></p>
+<p>1 分支解释：</p>
+<ul>
+<li><p>master 是受保护的分支，今后是稳定版本，用于build和线上部署，是稳定分支，不可以push。只有当代码经过验证以后，负责人才可以合并到该分支；</p>
+</li>
+<li><p>dev 分支是大家可以进行开发集成和测试的分支，原则上接受pull和push，本次大家都在 dev 分支上开发；</p>
+</li>
+</ul>
+<p>2 需要开发一个 feature 或者版本的时候，从master中创建一个分支出来，在本地进行开发，开发完毕后合并到测试（dev）分支进行验证，验证通过后才可以合并到master进行上线；</p>
+<p>  大体步骤：</p>
+<ul>
+<li>创建项目</li>
+<li>从 master 分支上开出若干环境分支，如：dev(对应测试环境), sim, online</li>
+<li>开始一个任务的 时候从gitlab界面上开feature分支(create from master), 命名规范建议是feature/jira-123</li>
+<li>在开发者本机执 行: git fetch</li>
+<li>在开发者本机执 行: git checkout origin feature/xxxx</li>
+<li>提交代码: git commit …</li>
+<li>测试验证 feature 分支是否正常；</li>
+<li>推送 feature 分支：git push origin feature/xxxx</li>
+<li><p>在 GOGS 界面上合并 feature 分支到对应的环境分支</p>
+<p>注意：</p>
+</li>
+<li><p>从 master 分支开出分支，以及合并到master这个过程建议在GOGS界面上面来做，而不是在命令行中；</p>
+</li>
+<li>本次本着迅速开发原则，dev 分支是一个初始分支，大家可以直接pull和push；但为了保证不相互冲突，鼓励大家创建自己的 feature 分支；</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】git使用规范/" data-id="cjs1lb9y9000ownui4g99css4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【项目管理】接口设计" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【项目管理】接口设计/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【项目管理】接口设计/">【项目管理】接口设计</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="服务接口设计"><a href="#服务接口设计" class="headerlink" title="服务接口设计"></a>服务接口设计</h1><ul>
+<li><p>swagger 地址</p>
+</li>
+<li><p>是否需要redis</p>
+</li>
+<li><p>是否幂等</p>
+</li>
+<li><p>时序图（服务调用）</p>
+</li>
+<li><p>接口URL</p>
+</li>
+<li><p>接口参数</p>
+</li>
+<li><p>接口返回值</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】接口设计/" data-id="cjs1lb9ya000qwnui55l1mw8h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-技术栈" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/技术栈/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/技术栈/">技术栈</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>所需技能</p>
+<ul>
+<li><p><a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/" target="_blank" rel="noopener">spring framework</a></p>
+</li>
+<li><p><a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/" target="_blank" rel="noopener">spring boot</a></p>
+</li>
+<li><p><a href="https://projects.spring.io/spring-cloud/" target="_blank" rel="noopener">spring cloud</a></p>
+</li>
+<li><p><a href="http://www.mybatis.org/mybatis-3/zh/index.html" target="_blank" rel="noopener">mybatis</a></p>
+</li>
+<li><p><a href="http://www.redis.cn/update.html" target="_blank" rel="noopener">redis</a></p>
+</li>
+<li><p><a href="http://www.ituring.com.cn/article/56870" target="_blank" rel="noopener">git</a></p>
+</li>
+<li><p><a href="http://www.yiibai.com/maven/" target="_blank" rel="noopener">maven</a></p>
+</li>
+</ul>
+</li>
+<li><p>其他技能</p>
+<ul>
+<li><p><a href="https://zookeeper.apache.org/" target="_blank" rel="noopener">zookeeper</a></p>
+</li>
+<li><p><a href="https://ifeve.com/tcc/" target="_blank" rel="noopener">TCC</a></p>
+</li>
+<li><p><a href="http://dubbo.io/User+Guide-zh.htm" target="_blank" rel="noopener">dubbo</a></p>
+</li>
+<li><p><a href="http://www.axonframework.org/" target="_blank" rel="noopener">axon framework</a></p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/技术栈/" data-id="cjs1lb9yb000twnuit8a2v6ex" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/hexo-demo/">&laquo; Prev</a><a class="page-number" href="/hexo-demo/">1</a><span class="page-number current">2</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/elastic-job/">elastic-job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/eventbus/">eventbus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/fileinput/">fileinput</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/guava/">guava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/hikari/">hikari</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-data/">spring-data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/hexo-demo/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/hexo-demo/tags/elastic-job/" style="font-size: 10px;">elastic-job</a> <a href="/hexo-demo/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/hexo-demo/tags/fileinput/" style="font-size: 10px;">fileinput</a> <a href="/hexo-demo/tags/git/" style="font-size: 10px;">git</a> <a href="/hexo-demo/tags/guava/" style="font-size: 10px;">guava</a> <a href="/hexo-demo/tags/hikari/" style="font-size: 10px;">hikari</a> <a href="/hexo-demo/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/hexo-demo/tags/redis/" style="font-size: 10px;">redis</a> <a href="/hexo-demo/tags/spring/" style="font-size: 10px;">spring</a> <a href="/hexo-demo/tags/spring-data/" style="font-size: 10px;">spring-data</a> <a href="/hexo-demo/tags/项目管理/" style="font-size: 20px;">项目管理</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/hexo-demo/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【项目管理】开发规范/">【项目管理】开发规范</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/t/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【bootstrap】file-input/">【bootstrap】file-input</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【mybatis】通用mapper注册流程/">【mybatis】通用mapper注册流程</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【redis】RedisTemplate的一点疑问/">【redis】RedisTemplate的一点疑问</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Sucre Cui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/hexo-demo/" class="mobile-nav-link">Home</a>
+  
+    <a href="/hexo-demo/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/hexo-demo/fancybox/jquery.fancybox.css">
+  <script src="/hexo-demo/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/hexo-demo/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

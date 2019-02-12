@@ -5,19 +5,20 @@
   
 
   
-  <title>Tag: bootstrap | wiki</title>
+  <title>【redis】RedisTemplate的一点疑问 | wiki</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="just like a wiki">
-<meta name="keywords" content="wiki">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wiki">
-<meta property="og:url" content="https://jpcui.github.io/hexo-demo/tags/bootstrap/index.html">
+  <meta name="description" content="最近老是看到 redis 从pool里获取/释放的频繁操作日志, 跟踪业务发现, 每调用一次 RestTemplate.execute(callback), 都会从连接池里获取jedis连接 频繁获取和释放连接, 会很浪费资源.在获取资源时, 会经过下面几个操作:  获取空闲对象(takeObject/pollObject) 激活对象(activateObject) 检查对象是否可用(testOn">
+<meta name="keywords" content="redis,spring-data">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【redis】RedisTemplate的一点疑问">
+<meta property="og:url" content="https://jpcui.github.io/hexo-demo/2018/11/05/【redis】RedisTemplate的一点疑问/index.html">
 <meta property="og:site_name" content="wiki">
-<meta property="og:description" content="just like a wiki">
+<meta property="og:description" content="最近老是看到 redis 从pool里获取/释放的频繁操作日志, 跟踪业务发现, 每调用一次 RestTemplate.execute(callback), 都会从连接池里获取jedis连接 频繁获取和释放连接, 会很浪费资源.在获取资源时, 会经过下面几个操作:  获取空闲对象(takeObject/pollObject) 激活对象(activateObject) 检查对象是否可用(testOn">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-12T09:49:22.605Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wiki">
-<meta name="twitter:description" content="just like a wiki">
+<meta name="twitter:title" content="【redis】RedisTemplate的一点疑问">
+<meta name="twitter:description" content="最近老是看到 redis 从pool里获取/释放的频繁操作日志, 跟踪业务发现, 每调用一次 RestTemplate.execute(callback), 都会从连接池里获取jedis连接 频繁获取和释放连接, 会很浪费资源.在获取资源时, 会经过下面几个操作:  获取空闲对象(takeObject/pollObject) 激活对象(activateObject) 检查对象是否可用(testOn">
   
     <link rel="alternate" href="/hexo-demo/atom.xml" title="wiki" type="application/atom+xml">
   
@@ -68,40 +69,82 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/hexo-demo/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/hexo-demo/2018/11/05/【bootstrap】file-input/" class="archive-article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">Nov 5</time>
+        <section id="main"><article id="post-【redis】RedisTemplate的一点疑问" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【redis】RedisTemplate的一点疑问/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hexo-demo/2018/11/05/【bootstrap】file-input/">【bootstrap】file-input</a>
+    <h1 class="article-title" itemprop="name">
+      【redis】RedisTemplate的一点疑问
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近老是看到 redis 从pool里获取/释放的频繁操作日志, 跟踪业务发现, 每调用一次 RestTemplate.execute(callback), 都会从连接池里获取jedis连接</p>
+<p>频繁获取和释放连接, 会很浪费资源.<br>在获取资源时, 会经过下面几个操作:</p>
+<ul>
+<li>获取空闲对象(takeObject/pollObject)</li>
+<li>激活对象(activateObject)</li>
+<li>检查对象是否可用(testOnBorrow/testOnCreate/validateObject)</li>
+<li>修改统计状态(updateStatsBorrow)</li>
+</ul>
+<p>释放资源时:</p>
+<ul>
+<li>检查对象是否可用(testOnReturn/validateObject)<ul>
+<li>如果不可用, 销毁(destroy), ensureIdle(1, false)</li>
+</ul>
+</li>
+<li>钝化对象(passivateObject), 意思就是刚对象刚被使用过, 让他休息一下</li>
+<li>归还对象(addFirst/addLast)</li>
+<li>修改统计状态(updateStatsBorrow)</li>
+</ul>
+<p>当然你可以把业务放在callback里处理, 感觉又不太爽, 所以还是把jedis重新封装一下, 毕竟 <a href="/oasis-ct/oasis-ct-core">oasis-ct-core</a> 里封装的 <a href="/oasis-ct/oasis-ct-core/src/master/src/main/java/cn/oasis/core/config/RedisConfiguration.java">RedisDao/RedisService</a> 也很差, 序列化的方式使用的也比较乱.</p>
+<p>这里来看下rap的一个issue, 值得借鉴:<br><a href="https://github.com/thx/RAP/pull/1008" target="_blank" rel="noopener">https://github.com/thx/RAP/pull/1008</a><br>解决:<br><a href="https://github.com/thx/RAP/commit/ebd22f2b095b9cb6983a9945e5297a4ace9d439a" target="_blank" rel="noopener">https://github.com/thx/RAP/commit/ebd22f2b095b9cb6983a9945e5297a4ace9d439a</a></p>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【redis】RedisTemplate的一点疑问/" data-id="cjs1lb9xx000ewnuiu63uyjo4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring-data/">spring-data</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/hexo-demo/2018/11/05/【mybatis】通用mapper注册流程/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          【mybatis】通用mapper注册流程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/hexo-demo/2018/11/05/【项目管理】spring-cloud接口定义规范/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【项目管理】spring-cloud接口定义规范</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         

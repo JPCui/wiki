@@ -5,19 +5,20 @@
   
 
   
-  <title>Tag: bootstrap | wiki</title>
+  <title>【技术调研】分布式任务调度框架调研 | wiki</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="just like a wiki">
-<meta name="keywords" content="wiki">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wiki">
-<meta property="og:url" content="https://jpcui.github.io/hexo-demo/tags/bootstrap/index.html">
+  <meta name="description" content="现有框架对比   Feature Elastic-Job Quartz     负载均衡 √ √   容错 √ √   分片/分片一致性/分布式并行调度 √ ×   运营平台 √ ×    分片一致性: 同一个分片在分布式环境下, 只有一个实例运行">
+<meta name="keywords" content="elastic-job">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【技术调研】分布式任务调度框架调研">
+<meta property="og:url" content="https://jpcui.github.io/hexo-demo/2018/11/05/【技术调研】分布式任务调度框架调研/index.html">
 <meta property="og:site_name" content="wiki">
-<meta property="og:description" content="just like a wiki">
+<meta property="og:description" content="现有框架对比   Feature Elastic-Job Quartz     负载均衡 √ √   容错 √ √   分片/分片一致性/分布式并行调度 √ ×   运营平台 √ ×    分片一致性: 同一个分片在分布式环境下, 只有一个实例运行">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-12T09:47:04.066Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wiki">
-<meta name="twitter:description" content="just like a wiki">
+<meta name="twitter:title" content="【技术调研】分布式任务调度框架调研">
+<meta name="twitter:description" content="现有框架对比   Feature Elastic-Job Quartz     负载均衡 √ √   容错 √ √   分片/分片一致性/分布式并行调度 √ ×   运营平台 √ ×    分片一致性: 同一个分片在分布式环境下, 只有一个实例运行">
   
     <link rel="alternate" href="/hexo-demo/atom.xml" title="wiki" type="application/atom+xml">
   
@@ -68,40 +69,94 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/hexo-demo/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/hexo-demo/2018/11/05/【bootstrap】file-input/" class="archive-article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">Nov 5</time>
+        <section id="main"><article id="post-【技术调研】分布式任务调度框架调研" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【技术调研】分布式任务调度框架调研/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hexo-demo/2018/11/05/【bootstrap】file-input/">【bootstrap】file-input</a>
+    <h1 class="article-title" itemprop="name">
+      【技术调研】分布式任务调度框架调研
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="现有框架对比"><a href="#现有框架对比" class="headerlink" title="现有框架对比"></a>现有框架对比</h2><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Elastic-Job</th>
+<th>Quartz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>负载均衡</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>容错</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>分片/分片一致性/分布式并行调度</td>
+<td>√</td>
+<td>×</td>
+</tr>
+<tr>
+<td>运营平台</td>
+<td>√</td>
+<td>×</td>
+</tr>
+</tbody>
+</table>
+<p>分片一致性: 同一个分片在分布式环境下, 只有一个实例运行</p>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【技术调研】分布式任务调度框架调研/" data-id="cjs1lb9y2000jwnui75ej51qy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/elastic-job/">elastic-job</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/hexo-demo/2018/11/05/【guava】EventBus/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          【guava】EventBus
+        
+      </div>
+    </a>
+  
+  
+    <a href="/hexo-demo/2018/11/05/【项目管理】数据库规范/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【项目管理】数据库规范</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         

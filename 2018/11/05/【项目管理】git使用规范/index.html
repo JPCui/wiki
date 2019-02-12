@@ -5,19 +5,22 @@
   
 
   
-  <title>Tag: bootstrap | wiki</title>
+  <title>【项目管理】git使用规范 | wiki</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="just like a wiki">
-<meta name="keywords" content="wiki">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wiki">
-<meta property="og:url" content="https://jpcui.github.io/hexo-demo/tags/bootstrap/index.html">
+  <meta name="description" content="在开工之前，我们约定一下git的开发流程，详细的可以参考这篇文章:https://blog.csdn.net/u012562943/article/details/79754587 基本原则：  1 分支解释：  master 是受保护的分支，今后是稳定版本，用于build和线上部署，是稳定分支，不可以push。只有当代码经过验证以后，负责人才可以合并到该分支；  dev 分支是大家可以进行开发集">
+<meta name="keywords" content="项目管理,git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【项目管理】git使用规范">
+<meta property="og:url" content="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】git使用规范/index.html">
 <meta property="og:site_name" content="wiki">
-<meta property="og:description" content="just like a wiki">
+<meta property="og:description" content="在开工之前，我们约定一下git的开发流程，详细的可以参考这篇文章:https://blog.csdn.net/u012562943/article/details/79754587 基本原则：  1 分支解释：  master 是受保护的分支，今后是稳定版本，用于build和线上部署，是稳定分支，不可以push。只有当代码经过验证以后，负责人才可以合并到该分支；  dev 分支是大家可以进行开发集">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】git使用规范/res/git.png">
+<meta property="og:updated_time" content="2019-02-12T09:47:35.350Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wiki">
-<meta name="twitter:description" content="just like a wiki">
+<meta name="twitter:title" content="【项目管理】git使用规范">
+<meta name="twitter:description" content="在开工之前，我们约定一下git的开发流程，详细的可以参考这篇文章:https://blog.csdn.net/u012562943/article/details/79754587 基本原则：  1 分支解释：  master 是受保护的分支，今后是稳定版本，用于build和线上部署，是稳定分支，不可以push。只有当代码经过验证以后，负责人才可以合并到该分支；  dev 分支是大家可以进行开发集">
+<meta name="twitter:image" content="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】git使用规范/res/git.png">
   
     <link rel="alternate" href="/hexo-demo/atom.xml" title="wiki" type="application/atom+xml">
   
@@ -68,40 +71,90 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/hexo-demo/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/hexo-demo/2018/11/05/【bootstrap】file-input/" class="archive-article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">Nov 5</time>
+        <section id="main"><article id="post-【项目管理】git使用规范" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【项目管理】git使用规范/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hexo-demo/2018/11/05/【bootstrap】file-input/">【bootstrap】file-input</a>
+    <h1 class="article-title" itemprop="name">
+      【项目管理】git使用规范
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在开工之前，我们约定一下git的开发流程，详细的可以参考这篇文章:<br><a href="https://blog.csdn.net/u012562943/article/details/79754587" target="_blank" rel="noopener">https://blog.csdn.net/u012562943/article/details/79754587</a></p>
+<p>基本原则：</p>
+<p><img src="res/git.png" alt="Git"></p>
+<p>1 分支解释：</p>
+<ul>
+<li><p>master 是受保护的分支，今后是稳定版本，用于build和线上部署，是稳定分支，不可以push。只有当代码经过验证以后，负责人才可以合并到该分支；</p>
+</li>
+<li><p>dev 分支是大家可以进行开发集成和测试的分支，原则上接受pull和push，本次大家都在 dev 分支上开发；</p>
+</li>
+</ul>
+<p>2 需要开发一个 feature 或者版本的时候，从master中创建一个分支出来，在本地进行开发，开发完毕后合并到测试（dev）分支进行验证，验证通过后才可以合并到master进行上线；</p>
+<p>  大体步骤：</p>
+<ul>
+<li>创建项目</li>
+<li>从 master 分支上开出若干环境分支，如：dev(对应测试环境), sim, online</li>
+<li>开始一个任务的 时候从gitlab界面上开feature分支(create from master), 命名规范建议是feature/jira-123</li>
+<li>在开发者本机执 行: git fetch</li>
+<li>在开发者本机执 行: git checkout origin feature/xxxx</li>
+<li>提交代码: git commit …</li>
+<li>测试验证 feature 分支是否正常；</li>
+<li>推送 feature 分支：git push origin feature/xxxx</li>
+<li><p>在 GOGS 界面上合并 feature 分支到对应的环境分支</p>
+<p>注意：</p>
+</li>
+<li><p>从 master 分支开出分支，以及合并到master这个过程建议在GOGS界面上面来做，而不是在命令行中；</p>
+</li>
+<li>本次本着迅速开发原则，dev 分支是一个初始分支，大家可以直接pull和push；但为了保证不相互冲突，鼓励大家创建自己的 feature 分支；</li>
+</ul>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】git使用规范/" data-id="cjs1lb9y9000ownui4g99css4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/hexo-demo/2018/11/05/【项目管理】错误代码定义/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          【项目管理】错误代码定义
+        
+      </div>
+    </a>
+  
+  
+    <a href="/hexo-demo/2018/11/05/【项目管理】接口设计/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【项目管理】接口设计</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
