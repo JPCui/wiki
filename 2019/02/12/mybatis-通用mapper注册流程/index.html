@@ -5,19 +5,20 @@
   
 
   
-  <title>Tag: bootstrap,file-input | wiki</title>
+  <title>wiki</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="just like a wiki">
+  <meta name="description" content="https://github.com/abel533/Mapper/oasis-o2o/Mapper  通用mapper注册流程使用咱们自己的mapper扩展插件时, 想自定义mapper实现批量插入(见:InsertListMapper), 发现无法实例化 SpecialProvider,  org.apache.ibatis.builder.BuilderException: Error i">
 <meta name="keywords" content="wiki">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="wiki">
-<meta property="og:url" content="https://jpcui.github.io/hexo-demo/tags/bootstrap-file-input/index.html">
+<meta property="og:url" content="https://jpcui.github.io/hexo-demo/2019/02/12/mybatis-通用mapper注册流程/index.html">
 <meta property="og:site_name" content="wiki">
-<meta property="og:description" content="just like a wiki">
+<meta property="og:description" content="https://github.com/abel533/Mapper/oasis-o2o/Mapper  通用mapper注册流程使用咱们自己的mapper扩展插件时, 想自定义mapper实现批量插入(见:InsertListMapper), 发现无法实例化 SpecialProvider,  org.apache.ibatis.builder.BuilderException: Error i">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-12T09:30:01.014Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wiki">
-<meta name="twitter:description" content="just like a wiki">
+<meta name="twitter:description" content="https://github.com/abel533/Mapper/oasis-o2o/Mapper  通用mapper注册流程使用咱们自己的mapper扩展插件时, 想自定义mapper实现批量插入(见:InsertListMapper), 发现无法实例化 SpecialProvider,  org.apache.ibatis.builder.BuilderException: Error i">
   
     <link rel="alternate" href="/hexo-demo/atom.xml" title="wiki" type="application/atom+xml">
   
@@ -68,40 +69,47 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/hexo-demo/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/hexo-demo/2018/11/05/bootstrap-file-input/" class="archive-article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">Nov 5</time>
+        <section id="main"><article id="post-mybatis-通用mapper注册流程" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2019/02/12/mybatis-通用mapper注册流程/" class="article-date">
+  <time datetime="2019-02-12T09:30:01.014Z" itemprop="datePublished">2019-02-12</time>
 </a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hexo-demo/2018/11/05/bootstrap-file-input/">bootstrap-file-input</a>
-    </h1>
-  
-
-    </header>
+    
   </div>
-</article>
-  
-  
-    </div></section>
-  
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a href="https://github.com/abel533/Mapper" target="_blank" rel="noopener">https://github.com/abel533/Mapper</a><br>/oasis-o2o/Mapper</p>
+</blockquote>
+<h2 id="通用mapper注册流程"><a href="#通用mapper注册流程" class="headerlink" title="通用mapper注册流程"></a>通用mapper注册流程</h2><p>使用咱们自己的mapper扩展插件时, 想自定义mapper实现批量插入(见:InsertListMapper), 发现无法实例化 <code>SpecialProvider</code>, </p>
+<p><code>org.apache.ibatis.builder.BuilderException: Error invoking SqlProvider method</code></p>
+<p>研究其mapper注册流程发现, 在 <code>MapperScannerConfigurer</code> 中未配置 <code>mappers</code> 时, 默认注册 <code>tk.mybatis.mapper.common.Mapper</code>, 代码见 <code>tk.mybatis.mapper.mapperhelper.MapperHelper#ifEmptyRegisterDefaultInterface</code>, 如果指定了 <code>mappers</code>, 则在 <code>setProperties</code> 时就开始注册了, 代码见 <code>tk.mybatis.mapper.mapperhelper.MapperHelper#setProperties</code></p>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2019/02/12/mybatis-通用mapper注册流程/" data-id="cjs1kgeem0003ivui92rwn56f" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/hexo-demo/2018/11/05/bootstrap-file-input/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">bootstrap-file-input</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
@@ -114,7 +122,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/bootstrap-file-input/">bootstrap,file-input</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/guava-eventbus/">guava eventbus</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/eventbus/">eventbus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/fileinput/">fileinput</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/guava/">guava</a></li></ul>
     </div>
   </div>
 
@@ -124,7 +132,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/hexo-demo/tags/bootstrap-file-input/" style="font-size: 10px;">bootstrap,file-input</a> <a href="/hexo-demo/tags/guava-eventbus/" style="font-size: 10px;">guava eventbus</a>
+      <a href="/hexo-demo/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/hexo-demo/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/hexo-demo/tags/fileinput/" style="font-size: 10px;">fileinput</a> <a href="/hexo-demo/tags/guava/" style="font-size: 10px;">guava</a>
     </div>
   </div>
 
@@ -146,7 +154,7 @@
       <ul>
         
           <li>
-            <a href="/hexo-demo/2019/02/12/hello-world/">Hello World</a>
+            <a href="/hexo-demo/2019/02/12/mybatis-通用mapper注册流程/">(no title)</a>
           </li>
         
           <li>
