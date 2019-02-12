@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>【spring-cloud】在网关中配置swagger | wiki</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="TODO LIST [1/2] 在你的服务中配置swagger接口的地址  在 application.yml 中配置 springfox.documentation.swagger.v2.path: /{server path}/api-docs {server path} 为你的服务在网关中配置的上下文路径，比如下面的订单服务在网关的配置中，上下文路径为order-server： 1234or">
+<meta name="keywords" content="spring-cloud">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【spring-cloud】在网关中配置swagger">
+<meta property="og:url" content="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-cloud】在网关中配置swagger/index.html">
+<meta property="og:site_name" content="wiki">
+<meta property="og:description" content="TODO LIST [1/2] 在你的服务中配置swagger接口的地址  在 application.yml 中配置 springfox.documentation.swagger.v2.path: /{server path}/api-docs {server path} 为你的服务在网关中配置的上下文路径，比如下面的订单服务在网关的配置中，上下文路径为order-server： 1234or">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-12T12:11:41.520Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【spring-cloud】在网关中配置swagger">
+<meta name="twitter:description" content="TODO LIST [1/2] 在你的服务中配置swagger接口的地址  在 application.yml 中配置 springfox.documentation.swagger.v2.path: /{server path}/api-docs {server path} 为你的服务在网关中配置的上下文路径，比如下面的订单服务在网关的配置中，上下文路径为order-server： 1234or">
+  
+    <link rel="alternate" href="/hexo-demo/atom.xml" title="wiki" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/hexo-demo/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/hexo-demo/" id="logo">wiki</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/hexo-demo/" id="subtitle">just like a wiki</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/hexo-demo/">Home</a>
+        
+          <a class="main-nav-link" href="/hexo-demo/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/hexo-demo/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jpcui.github.io/hexo-demo"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-【spring-cloud】在网关中配置swagger" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【spring-cloud】在网关中配置swagger/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【spring-cloud】在网关中配置swagger
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="TODO-LIST"><a href="#TODO-LIST" class="headerlink" title="TODO LIST"></a>TODO LIST</h2><ul>
+<li>[1/2] 在你的服务中配置swagger接口的地址</li>
+</ul>
+<p>在 application.yml 中配置</p>
+<p><code>springfox.documentation.swagger.v2.path: /{server path}/api-docs</code></p>
+<p><code>{server path}</code> 为你的服务在网关中配置的上下文路径，比如下面的订单服务在网关的配置中，上下文路径为<strong>order-server</strong>：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">order:</span></span><br><span class="line"><span class="attr">  path:</span> <span class="string">/order-server/**</span></span><br><span class="line"><span class="attr">  serviceId:</span> <span class="string">oasis-ct-order-server</span></span><br><span class="line"><span class="attr">  stripPrefix:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>[2/2] 在网关中配置接口访问URI</li>
+</ul>
+<p>在 <code>application.yml</code> 中如下配置：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">swagger:</span></span><br><span class="line"><span class="attr">  apis:</span></span><br><span class="line">    <span class="comment"># 订单系统</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">order-server</span></span><br><span class="line"><span class="attr">      location:</span> <span class="string">/order-server/api-docs</span></span><br><span class="line">    <span class="comment"># 支付系统</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">pay-server</span></span><br><span class="line"><span class="attr">      location:</span> <span class="string">/pay/api-docs</span></span><br><span class="line"><span class="string">```</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">## 原理</span></span><br><span class="line"></span><br><span class="line"><span class="string">swagger的请求处理器</span> <span class="string">`Swagger2Controller`</span> <span class="string">中有个默认接口URI</span> <span class="string">`DEFAULT_URL`，下面的注解用于替换默认URI：</span></span><br><span class="line"><span class="string">```text</span></span><br><span class="line"><span class="string">@PropertySourcedMapping(</span></span><br><span class="line">      <span class="string">value</span> <span class="string">=</span> <span class="string">"$&#123;springfox.documentation.swagger.v2.path&#125;"</span><span class="string">,</span></span><br><span class="line">      <span class="string">propertyKey</span> <span class="string">=</span> <span class="string">"springfox.documentation.swagger.v2.path"</span><span class="string">)</span></span><br></pre></td></tr></table></figure></p>
+<p>具体该注解处理方法，见 <code>PropertySourcedRequestMappingHandlerMapping</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-cloud】在网关中配置swagger/" data-id="cjs1qdqc0000r5jui161t6yn7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring-cloud/">spring-cloud</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/hexo-demo/2018/11/05/【项目管理】intellij-java-google-style-sucre/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          intellij-java-google-style-sucre
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/beego/">beego</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/consul/">consul</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/elastic-job/">elastic-job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/eventbus/">eventbus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/feign/">feign</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/fileinput/">fileinput</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/guava/">guava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/hikari/">hikari</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/mgo/">mgo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-boot/">spring-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-cloud/">spring-cloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-data/">spring-data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/服务架构/">服务架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/hexo-demo/tags/beego/" style="font-size: 10px;">beego</a> <a href="/hexo-demo/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/hexo-demo/tags/consul/" style="font-size: 10px;">consul</a> <a href="/hexo-demo/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/hexo-demo/tags/elastic-job/" style="font-size: 10px;">elastic-job</a> <a href="/hexo-demo/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/hexo-demo/tags/feign/" style="font-size: 10px;">feign</a> <a href="/hexo-demo/tags/fileinput/" style="font-size: 10px;">fileinput</a> <a href="/hexo-demo/tags/git/" style="font-size: 10px;">git</a> <a href="/hexo-demo/tags/golang/" style="font-size: 12.5px;">golang</a> <a href="/hexo-demo/tags/guava/" style="font-size: 10px;">guava</a> <a href="/hexo-demo/tags/hikari/" style="font-size: 10px;">hikari</a> <a href="/hexo-demo/tags/mgo/" style="font-size: 10px;">mgo</a> <a href="/hexo-demo/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/hexo-demo/tags/php/" style="font-size: 10px;">php</a> <a href="/hexo-demo/tags/redis/" style="font-size: 10px;">redis</a> <a href="/hexo-demo/tags/spring/" style="font-size: 10px;">spring</a> <a href="/hexo-demo/tags/spring-boot/" style="font-size: 15px;">spring-boot</a> <a href="/hexo-demo/tags/spring-cloud/" style="font-size: 20px;">spring-cloud</a> <a href="/hexo-demo/tags/spring-data/" style="font-size: 10px;">spring-data</a> <a href="/hexo-demo/tags/服务架构/" style="font-size: 10px;">服务架构</a> <a href="/hexo-demo/tags/项目管理/" style="font-size: 17.5px;">项目管理</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/hexo-demo/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-demo/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/hexo-demo/2019/02/12/todolist/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【spring-boot】application.properties/">【spring-boot】application.properties</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【consul】docker配置/">【consul】docker配置</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【docker】创建java容器/">【docker】创建java容器</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【docker】杀不死的docker/">【docker】杀不死的docker</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Sucre Cui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/hexo-demo/" class="mobile-nav-link">Home</a>
+  
+    <a href="/hexo-demo/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/hexo-demo/fancybox/jquery.fancybox.css">
+  <script src="/hexo-demo/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/hexo-demo/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>【spring-boot】如何优雅关闭服务 | wiki</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="借助 spring-boot开启优雅关闭终端：endpoints.shutdown.enabled: true 调用接口： POST /shutdown 用docker实现 docker stop/restart [-t seconds] [container_id] 发送中断信号，不会接收新的请求，之前的请求会继续运行  新请求无法创建连接：因为服务不再接收新的请求，所以会报503：Servic">
+<meta name="keywords" content="spring-boot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【spring-boot】如何优雅关闭服务">
+<meta property="og:url" content="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-boot】如何优雅关闭服务/index.html">
+<meta property="og:site_name" content="wiki">
+<meta property="og:description" content="借助 spring-boot开启优雅关闭终端：endpoints.shutdown.enabled: true 调用接口： POST /shutdown 用docker实现 docker stop/restart [-t seconds] [container_id] 发送中断信号，不会接收新的请求，之前的请求会继续运行  新请求无法创建连接：因为服务不再接收新的请求，所以会报503：Servic">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-12T11:59:55.862Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【spring-boot】如何优雅关闭服务">
+<meta name="twitter:description" content="借助 spring-boot开启优雅关闭终端：endpoints.shutdown.enabled: true 调用接口： POST /shutdown 用docker实现 docker stop/restart [-t seconds] [container_id] 发送中断信号，不会接收新的请求，之前的请求会继续运行  新请求无法创建连接：因为服务不再接收新的请求，所以会报503：Servic">
+  
+    <link rel="alternate" href="/hexo-demo/atom.xml" title="wiki" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/hexo-demo/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/hexo-demo/" id="logo">wiki</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/hexo-demo/" id="subtitle">just like a wiki</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/hexo-demo/">Home</a>
+        
+          <a class="main-nav-link" href="/hexo-demo/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/hexo-demo/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jpcui.github.io/hexo-demo"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-【spring-boot】如何优雅关闭服务" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【spring-boot】如何优雅关闭服务/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【spring-boot】如何优雅关闭服务
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="借助-spring-boot"><a href="#借助-spring-boot" class="headerlink" title="借助 spring-boot"></a>借助 spring-boot</h2><p>开启优雅关闭终端：<code>endpoints.shutdown.enabled: true</code></p>
+<p>调用接口： <code>POST /shutdown</code></p>
+<h2 id="用docker实现"><a href="#用docker实现" class="headerlink" title="用docker实现"></a>用docker实现</h2><ul>
+<li><p>docker stop/restart [-t seconds] [container_id]</p>
+<p>发送中断信号，不会接收新的请求，之前的请求会继续运行</p>
+<ul>
+<li><p>新请求无法创建连接：因为服务不再接收新的请求，所以会报503：Service Unavailable，<br>建议Client设置一个合适的 <strong>连接超时时间</strong></p>
+</li>
+<li><p>超时时间[-t]：到达超时时间后，服务仍会立即中断，所以最好 <strong>设置一个合适的超时时间</strong></p>
+</li>
+<li><p>日志：接收到中断信号后，log不会再打印，但 <code>log.isXXXEnabled()</code> 仍返回 <code>true</code>！<br>所以不要用log作为判断请求中断的标记，而是用<code>System.out.print</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="代码解决"><a href="#代码解决" class="headerlink" title="代码解决"></a>代码解决</h2><blockquote>
+<p>该方法只是手动关闭服务线程，前几种方法已经可以做到，不建议使用</p>
+</blockquote>
+<ul>
+<li><p>实现</p>
+<p>自定义 <a href="#GracefulShutdownConfiguration"><code>GracefulShutdownConfiguration</code></a></p>
+<p>通过 <code>@ImportAutoConfiguration(GracefulShutdownConfiguration.class)</code> 启用配置</p>
+</li>
+<li><p>问题：停止后服务仍未关闭，用<code>jstack</code>看到仍然有线程在执行（基于我当前的服务）：</p>
+<ul>
+<li><p>org.springframework.cloud.consul.config.ConfigWatch</p>
+<p>解决：<code>spring.cloud.consul.config.watch.enabled: false</code></p>
+<p>但是有些服务是需要开启的</p>
+<p>查看源码，该线程默认要等待55s来判断结束状态，时间较长</p>
+</li>
+<li><p>ch.qos.logback.classic.AsyncAppender</p>
+<p>解决：logback-spring 里加上</p>
+<p><code>&lt;shutdownHook class=&quot;ch.qos.logback.core.hook.DelayingShutdownHook&quot;/&gt;</code></p>
+<p><code>ShutdownHookBase#close</code> 里会调用 <code>Context.stop()</code> 进行关闭</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><p><a href="http://docs.api.xiaomi.com/app-engine-v2/bestpractice-pod-prestop.html" target="_blank" rel="noopener">应用优雅停止最佳实践</a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/4e13db951895" target="_blank" rel="noopener">spring boot 2.0 实现优雅停机</a></p>
+</li>
+<li><p>spring boot issue: <a href="https://github.com/spring-projects/spring-boot/issues/4657" target="_blank" rel="noopener">Shut down embedded servlet container gracefully</a></p>
+</li>
+<li><p>A graceful shutdown starter for Spring-Boot: <a href="https://github.com/corentin59/spring-boot-graceful-shutdown" target="_blank" rel="noopener">spring-boot-graceful-shutdown</a></p>
+</li>
+<li><p>graceful shutdown by impl <code>TomcatConnectorCustomizer</code>: <a href="https://dzone.com/articles/graceful-shutdown-spring-boot-applications" target="_blank" rel="noopener">Graceful Shutdown Spring Boot Applications</a></p>
+</li>
+<li><p><a href="http://tech.lede.com/2017/07/31/rd/server/TomcatShutdownProblem/" target="_blank" rel="noopener">Tomcat停机过程分析及线程处理方法</a></p>
+</li>
+</ul>
+<h2 id="GracefulShutdownConfiguration"><a href="#GracefulShutdownConfiguration" class="headerlink" title="GracefulShutdownConfiguration"></a>GracefulShutdownConfiguration</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GracefulShutdownConfiguration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> GracefulShutdown <span class="title">gracefulShutdown</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> GracefulShutdown();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TomcatEmbeddedServletContainerFactory <span class="title">webServerFactory</span><span class="params">(<span class="keyword">final</span> GracefulShutdown gracefulShutdown)</span> </span>&#123;</span><br><span class="line">        TomcatEmbeddedServletContainerFactory factory = <span class="keyword">new</span> TomcatEmbeddedServletContainerFactory();</span><br><span class="line">        factory.addConnectorCustomizers(gracefulShutdown);</span><br><span class="line">        <span class="keyword">return</span> factory;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">GracefulShutdown</span> <span class="keyword">implements</span> <span class="title">TomcatConnectorCustomizer</span>, <span class="title">ApplicationListener</span>&lt;<span class="title">ContextClosedEvent</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">volatile</span> Connector connector;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">customize</span><span class="params">(Connector connector)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.connector = connector;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onApplicationEvent</span><span class="params">(ContextClosedEvent event)</span> </span>&#123;</span><br><span class="line">            log.info(<span class="string">"signal: shutdown"</span>);</span><br><span class="line">            log.info(event.toString());</span><br><span class="line">            <span class="keyword">this</span>.connector.pause();</span><br><span class="line">            Executor executor = <span class="keyword">this</span>.connector.getProtocolHandler().getExecutor();</span><br><span class="line">            <span class="keyword">if</span> (executor <span class="keyword">instanceof</span> ThreadPoolExecutor) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) executor;</span><br><span class="line">                    threadPoolExecutor.shutdown();</span><br><span class="line">                    log.info(threadPoolExecutor.getActiveCount() + <span class="string">""</span>);</span><br><span class="line">                    <span class="keyword">if</span> (!threadPoolExecutor.awaitTermination(<span class="number">30</span>, TimeUnit.SECONDS)) &#123;</span><br><span class="line">                        log.warn(<span class="string">"Tomcat thread pool did not shut down gracefully within "</span></span><br><span class="line">                            + <span class="string">"30 seconds. Proceeding with forceful shutdown"</span>);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException ex) &#123;</span><br><span class="line">                    Thread.currentThread().interrupt();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-boot】如何优雅关闭服务/" data-id="cjs1qdqbu000k5juimstkc0dv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring-boot/">spring-boot</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/hexo-demo/2018/11/05/【redis】RedisTemplate的一点疑问/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          【redis】RedisTemplate的一点疑问
+        
+      </div>
+    </a>
+  
+  
+    <a href="/hexo-demo/2018/11/05/【spring-boot】配置grafana/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【spring-boot】配置grafana</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/beego/">beego</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/consul/">consul</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/elastic-job/">elastic-job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/eventbus/">eventbus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/feign/">feign</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/fileinput/">fileinput</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/guava/">guava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/hikari/">hikari</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/mgo/">mgo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-boot/">spring-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-cloud/">spring-cloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-data/">spring-data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/服务架构/">服务架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/hexo-demo/tags/beego/" style="font-size: 10px;">beego</a> <a href="/hexo-demo/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/hexo-demo/tags/consul/" style="font-size: 10px;">consul</a> <a href="/hexo-demo/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/hexo-demo/tags/elastic-job/" style="font-size: 10px;">elastic-job</a> <a href="/hexo-demo/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/hexo-demo/tags/feign/" style="font-size: 10px;">feign</a> <a href="/hexo-demo/tags/fileinput/" style="font-size: 10px;">fileinput</a> <a href="/hexo-demo/tags/git/" style="font-size: 10px;">git</a> <a href="/hexo-demo/tags/golang/" style="font-size: 12.5px;">golang</a> <a href="/hexo-demo/tags/guava/" style="font-size: 10px;">guava</a> <a href="/hexo-demo/tags/hikari/" style="font-size: 10px;">hikari</a> <a href="/hexo-demo/tags/mgo/" style="font-size: 10px;">mgo</a> <a href="/hexo-demo/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/hexo-demo/tags/php/" style="font-size: 10px;">php</a> <a href="/hexo-demo/tags/redis/" style="font-size: 10px;">redis</a> <a href="/hexo-demo/tags/spring/" style="font-size: 10px;">spring</a> <a href="/hexo-demo/tags/spring-boot/" style="font-size: 15px;">spring-boot</a> <a href="/hexo-demo/tags/spring-cloud/" style="font-size: 20px;">spring-cloud</a> <a href="/hexo-demo/tags/spring-data/" style="font-size: 10px;">spring-data</a> <a href="/hexo-demo/tags/服务架构/" style="font-size: 10px;">服务架构</a> <a href="/hexo-demo/tags/项目管理/" style="font-size: 17.5px;">项目管理</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/hexo-demo/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-demo/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/hexo-demo/2019/02/12/todolist/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【spring-boot】application.properties/">【spring-boot】application.properties</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【consul】docker配置/">【consul】docker配置</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【docker】创建java容器/">【docker】创建java容器</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【docker】杀不死的docker/">【docker】杀不死的docker</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Sucre Cui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/hexo-demo/" class="mobile-nav-link">Home</a>
+  
+    <a href="/hexo-demo/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/hexo-demo/fancybox/jquery.fancybox.css">
+  <script src="/hexo-demo/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/hexo-demo/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>wiki</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="just like a wiki">
+<meta name="keywords" content="wiki">
+<meta property="og:type" content="website">
+<meta property="og:title" content="wiki">
+<meta property="og:url" content="https://jpcui.github.io/hexo-demo/page/3/index.html">
+<meta property="og:site_name" content="wiki">
+<meta property="og:description" content="just like a wiki">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="wiki">
+<meta name="twitter:description" content="just like a wiki">
+  
+    <link rel="alternate" href="/hexo-demo/atom.xml" title="wiki" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/hexo-demo/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/hexo-demo/" id="logo">wiki</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/hexo-demo/" id="subtitle">just like a wiki</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/hexo-demo/">Home</a>
+        
+          <a class="main-nav-link" href="/hexo-demo/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/hexo-demo/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jpcui.github.io/hexo-demo"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-【spring-cloud】问题记录" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【spring-cloud】问题记录/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【spring-cloud】问题记录/">【spring-cloud】问题记录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>feign 请求 get 后返回 post 404 error</p>
+<ul>
+<li>检查请求路径是否正确</li>
+<li>检查是否Get请求参数为对象，@see <a href="feign%20not%20support%20object%20param%20by%20GET.md">feign not support object param by GET</a></li>
+</ul>
+</li>
+<li><p>feign 参数中有 Date 参数时，保证客户端和服务端格式一样</p>
+<p>spring boot 下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  jackson:</span><br><span class="line">    date-format: yyyy-MM-dd HH:mm:ss</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>@FeignClient 被注册为 RequestHandler，导致与服务接口 duplicate</li>
+</ul>
+<blockquote>
+<p>@FeignClient with top level @RequestMapping annotation is also registered as Spring MVC handler</p>
+</blockquote>
+<p>see: <a href="https://github.com/spring-cloud/spring-cloud-netflix/issues/466" target="_blank" rel="noopener">https://github.com/spring-cloud/spring-cloud-netflix/issues/466</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-cloud】问题记录/" data-id="cjs1qdqc6000z5juipcgdayvh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring-cloud/">spring-cloud</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【技术栈】" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【技术栈】/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【技术栈】/">技术栈</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>所需技能</p>
+<ul>
+<li><p><a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/" target="_blank" rel="noopener">spring framework</a></p>
+</li>
+<li><p><a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/" target="_blank" rel="noopener">spring boot</a></p>
+</li>
+<li><p><a href="https://projects.spring.io/spring-cloud/" target="_blank" rel="noopener">spring cloud</a></p>
+</li>
+<li><p><a href="http://www.mybatis.org/mybatis-3/zh/index.html" target="_blank" rel="noopener">mybatis</a></p>
+</li>
+<li><p><a href="http://www.redis.cn/update.html" target="_blank" rel="noopener">redis</a></p>
+</li>
+<li><p><a href="http://www.ituring.com.cn/article/56870" target="_blank" rel="noopener">git</a></p>
+</li>
+<li><p><a href="http://www.yiibai.com/maven/" target="_blank" rel="noopener">maven</a></p>
+</li>
+</ul>
+</li>
+<li><p>其他技能</p>
+<ul>
+<li><p><a href="https://zookeeper.apache.org/" target="_blank" rel="noopener">zookeeper</a></p>
+</li>
+<li><p><a href="https://ifeve.com/tcc/" target="_blank" rel="noopener">TCC</a></p>
+</li>
+<li><p><a href="http://dubbo.io/User+Guide-zh.htm" target="_blank" rel="noopener">dubbo</a></p>
+</li>
+<li><p><a href="http://www.axonframework.org/" target="_blank" rel="noopener">axon framework</a></p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【技术栈】/" data-id="cjs1qdqc700125juihk8uehn7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【服务架构】微服务与分布式的区别" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【服务架构】微服务与分布式的区别/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【服务架构】微服务与分布式的区别/">【服务架构】微服务与分布式的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>微服务:</p>
+<p>  分散能力</p>
+<p>分布式:</p>
+<p>  分散压力</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【服务架构】微服务与分布式的区别/" data-id="cjs1qdqc800145juita2uuq9d" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/服务架构/">服务架构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【技术调研】分布式任务调度框架调研" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【技术调研】分布式任务调度框架调研/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【技术调研】分布式任务调度框架调研/">【技术调研】分布式任务调度框架调研</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="现有框架对比"><a href="#现有框架对比" class="headerlink" title="现有框架对比"></a>现有框架对比</h2><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Elastic-Job</th>
+<th>Quartz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>负载均衡</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>容错</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>分片/分片一致性/分布式并行调度</td>
+<td>√</td>
+<td>×</td>
+</tr>
+<tr>
+<td>运营平台</td>
+<td>√</td>
+<td>×</td>
+</tr>
+</tbody>
+</table>
+<p>分片一致性: 同一个分片在分布式环境下, 只有一个实例运行</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【技术调研】分布式任务调度框架调研/" data-id="cjs1qdqc900175juiz1pb6swx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/elastic-job/">elastic-job</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【项目管理】git使用规范" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【项目管理】git使用规范/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【项目管理】git使用规范/">【项目管理】git使用规范</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在开工之前，我们约定一下git的开发流程，详细的可以参考这篇文章:<br><a href="https://blog.csdn.net/u012562943/article/details/79754587" target="_blank" rel="noopener">https://blog.csdn.net/u012562943/article/details/79754587</a></p>
+<p>基本原则：</p>
+<p><img src="res/git.png" alt="Git"></p>
+<p>1 分支解释：</p>
+<ul>
+<li><p>master 是受保护的分支，今后是稳定版本，用于build和线上部署，是稳定分支，不可以push。只有当代码经过验证以后，负责人才可以合并到该分支；</p>
+</li>
+<li><p>dev 分支是大家可以进行开发集成和测试的分支，原则上接受pull和push，本次大家都在 dev 分支上开发；</p>
+</li>
+</ul>
+<p>2 需要开发一个 feature 或者版本的时候，从master中创建一个分支出来，在本地进行开发，开发完毕后合并到测试（dev）分支进行验证，验证通过后才可以合并到master进行上线；</p>
+<p>  大体步骤：</p>
+<ul>
+<li>创建项目</li>
+<li>从 master 分支上开出若干环境分支，如：dev(对应测试环境), sim, online</li>
+<li>开始一个任务的 时候从gitlab界面上开feature分支(create from master), 命名规范建议是feature/jira-123</li>
+<li>在开发者本机执 行: git fetch</li>
+<li>在开发者本机执 行: git checkout origin feature/xxxx</li>
+<li>提交代码: git commit …</li>
+<li>测试验证 feature 分支是否正常；</li>
+<li>推送 feature 分支：git push origin feature/xxxx</li>
+<li><p>在 GOGS 界面上合并 feature 分支到对应的环境分支</p>
+<p>注意：</p>
+</li>
+<li><p>从 master 分支开出分支，以及合并到master这个过程建议在GOGS界面上面来做，而不是在命令行中；</p>
+</li>
+<li>本次本着迅速开发原则，dev 分支是一个初始分支，大家可以直接pull和push；但为了保证不相互冲突，鼓励大家创建自己的 feature 分支；</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】git使用规范/" data-id="cjs1qdqca00195jui4rw6z8yy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【项目管理】spring-cloud接口定义规范" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【项目管理】spring-cloud接口定义规范/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【项目管理】spring-cloud接口定义规范/">【项目管理】spring-cloud接口定义规范</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>接口分两种, 一种是服务间调用, 一种是前端调用</p>
+<p>建议 server 接口放在 controller.server 包下面</p>
+<p>server 接口禁止外网访问,所以访问路径最好区分开放接口访问路径</p>
+<h2 id="调用者配置"><a href="#调用者配置" class="headerlink" title="调用者配置"></a>调用者配置</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="string">[server]:</span></span><br><span class="line">    <span class="comment"># 服务的serviceId</span></span><br><span class="line"><span class="attr">    serviceId:</span> <span class="string">...</span></span><br><span class="line">    <span class="comment"># 服务的请求url（ip:port），方便本地调试</span></span><br><span class="line"><span class="attr">    url:</span> <span class="string">...</span></span><br></pre></td></tr></table></figure>
+<h2 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h2><p>写api的时候建议这样写，方便以后调用者调试，调用方通过Configuration注入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient</span>(value = <span class="string">"$&#123;server.pay.serviceId:oasis-ct-pay-server&#125;"</span>, url = <span class="string">"$&#123;server.pay.url:&#125;"</span>)</span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/pay-server"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PayCenterInterface</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接口是否配置 @FeignClient，调用方也有不同的配置方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br><span class="line"><span class="comment">// 1) 支付中心配置了 @FiegnClient，会自动扫描指定包下的 接口</span></span><br><span class="line"><span class="meta">@EnableFeignClients</span>(&#123;<span class="string">"cn.oasis.pay.service"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServerConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2) PayCenterInterface 没有配置 @FeignClient</span></span><br><span class="line">    <span class="meta">@FeignClient</span>(value = <span class="string">"$&#123;server.pay.serviceId:oasis-ct-pay-server&#125;"</span>, url = <span class="string">"$&#123;server.pay.url:&#125;"</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PayServer</span> <span class="keyword">extends</span> <span class="title">PayCenterInterface</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><ul>
+<li><p>偶尔会发现接口重复定义的错误(@FeignClient)</p>
+<p>  微服务接口(@FeignClient)定义的时候, 不要在类名上加 <code>@RequestMapping</code>, spring会扫描该注解, 并将所有方法映射 <code>mappingRegistry</code> 里</p>
+<p>  原理:</p>
+<p>  <code>org.springframework.web.servlet.handler.AbstractHandlerMethodMapping#initHandlerMethods</code><br>  获取所有的bean, 筛选出controller方法, 见<code>org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#isHandler</code>,<br>  所有 <code>@Controller</code> <strong>或</strong> <code>@RequestMapping</code> 的bean都将会扫描到, 这里解答了上面接口重复定义的问题,<br>  注册mapping: <code>org.springframework.web.servlet.handler.AbstractHandlerMethodMapping#registerHandlerMethod</code></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】spring-cloud接口定义规范/" data-id="cjs1qdqcb001b5juincowj3tl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【项目管理】开发规范" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【项目管理】开发规范/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【项目管理】开发规范/">【项目管理】开发规范</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>代码规范</p>
+<ul>
+<li>代码风格</li>
+</ul>
+<p>自行下载 google-style 规范, 并在此基础上修改 java、html、JavaScript 的代码缩进，444: Tab-Size [2 -&gt; 4]，Indent [2 -&gt; 4]。</p>
+<ul>
+<li>参数命名规范</li>
+</ul>
+<p>命名尽量全，一般<strong>不要使用缩写</strong>，做到<strong>望文生义</strong>，<br>一般遵循各个语言的命名规则，比如：java-&gt;驼峰命名，php-&gt;小写+下划线</p>
+<ul>
+<li>接口规范</li>
+</ul>
+<ol>
+<li>restful，url一般格式：/uri, /uri/action，一般用http method表示行为，<br>特殊行为一般在资源定位符最后标记行为，比如：publish</li>
+<li>参数名：也是尽量不使用缩写，<strong>望文生义</strong>，一般格式也是：小写+下划线</li>
+</ol>
+</li>
+<li><p>git 使用规范</p>
+<p>参考：<a href="【项目管理】git使用规范.md">git使用规范</a></p>
+</li>
+<li><p>数据库规范</p>
+<p>参考：<a href="数据库规范.md">数据库规范</a></p>
+</li>
+<li><p>idea</p>
+<p>我们自己搭建了一个jetbrains的注册服务，android studio、idea、pycharm、webstorm都可以使用。 </p>
+<blockquote>
+<p><a href="http://54.183.56.211:1027" target="_blank" rel="noopener">http://54.183.56.211:1027</a></p>
+</blockquote>
+<p>jrebel</p>
+<blockquote>
+<p><a href="http://139.199.89.239:1008/88414687-3b91-4286-89ba-2dc813b107ce" target="_blank" rel="noopener">http://139.199.89.239:1008/88414687-3b91-4286-89ba-2dc813b107ce</a></p>
+</blockquote>
+</li>
+<li><p>其他服务地址</p>
+<p><a href="http://back.oasiscare.cn/" target="_blank" rel="noopener">服务列表</a><br><a href="http://172.20.0.4:8000/" target="_blank" rel="noopener">seafile</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】开发规范/" data-id="cjs1qdqcc001d5juip4fujqre" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【项目管理】接口设计" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【项目管理】接口设计/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【项目管理】接口设计/">【项目管理】接口设计</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="服务接口设计"><a href="#服务接口设计" class="headerlink" title="服务接口设计"></a>服务接口设计</h1><ul>
+<li><p>swagger 地址</p>
+</li>
+<li><p>是否需要redis</p>
+</li>
+<li><p>是否幂等</p>
+</li>
+<li><p>时序图（服务调用）</p>
+</li>
+<li><p>接口URL</p>
+</li>
+<li><p>接口参数</p>
+</li>
+<li><p>接口返回值</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】接口设计/" data-id="cjs1qdqcc001e5jui9m5ozly4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【项目管理】数据库规范" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【项目管理】数据库规范/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【项目管理】数据库规范/">【项目管理】数据库规范</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1 建库</p>
+<p>最好每种业务，有自己的库，不要都放在同一个库里。</p>
+<p>同业务下有日志表，最好能建立（业务名_log) 这样的库，已便于以后拆分，能够很容易的将日志表剥离出来。</p>
+<p>2 建表</p>
+<ul>
+<li>统一用小写字母，用”_”进行分割，对相关功能的表应当使用相同前缀，如crm_xxx，前缀通常为库名或依赖主实体对象</li>
+<li>控制库名，表名，字段名的长度</li>
+<li>默认，都是innodb引擎</li>
+<li>默认字符集都是utf8mb4</li>
+<li>表都要有自增id 作为主键</li>
+<li>尽量不要用外键，</li>
+<li>禁用存储过程，触发器</li>
+<li>字段都要有comment，default值，not null</li>
+<li>log表提前规划好分表或者归档规则。</li>
+<li>不要跨库多表查询。</li>
+</ul>
+<p>3 索引</p>
+<p>按查询条件，大家提前规划下索引，不能裸上表。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】数据库规范/" data-id="cjs1qdqcd001g5juino2tevdy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【项目管理】错误代码定义" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【项目管理】错误代码定义/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【项目管理】错误代码定义/">【项目管理】错误代码定义</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="通用异常代码"><a href="#通用异常代码" class="headerlink" title="通用异常代码"></a>通用异常代码</h3><table>
+<thead>
+<tr>
+<th>代码</th>
+<th>错误信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-440001</td>
+<td>服务内部错误</td>
+</tr>
+<tr>
+<td>-440002</td>
+<td>服务内部错误</td>
+</tr>
+<tr>
+<td>——-</td>
+<td></td>
+</tr>
+<tr>
+<td>-330001</td>
+<td>无效参数</td>
+</tr>
+<tr>
+<td>-330002</td>
+<td>缺少参数</td>
+</tr>
+<tr>
+<td>-330003</td>
+<td>资源不存在</td>
+</tr>
+<tr>
+<td>-330004</td>
+<td>未登录</td>
+</tr>
+<tr>
+<td>-330005</td>
+<td>请求类型不支持</td>
+</tr>
+<tr>
+<td>-330006</td>
+<td>非法操作</td>
+</tr>
+<tr>
+<td>-330007</td>
+<td>未注册</td>
+</tr>
+</tbody>
+</table>
+<h3 id="服务异常定义规则"><a href="#服务异常定义规则" class="headerlink" title="服务异常定义规则"></a>服务异常定义规则</h3><p>异常代码长度为7位，组成：服务代码（2） + 业务代码（2） + 错误代码（3）</p>
+<p>比如：</p>
+<p>消息服务中发送邮件失败：1101001</p>
+<ul>
+<li>11 代表消息服务</li>
+<li>01 代表邮件业务</li>
+<li>001 代表邮件发送失败</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th>服务代码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>oasis-ct-message</td>
+<td>11</td>
+</tr>
+<tr>
+<td>oasis-ct-pay</td>
+<td>12</td>
+</tr>
+<tr>
+<td>oasis-ct-order</td>
+<td>13</td>
+</tr>
+<tr>
+<td>oasis-ct-assets</td>
+<td>14</td>
+</tr>
+<tr>
+<td>oasis-ct-product</td>
+<td>15</td>
+</tr>
+<tr>
+<td>oasis-ct-promotion</td>
+<td>16</td>
+</tr>
+<tr>
+<td>oasis-ct-medicine</td>
+<td>17</td>
+</tr>
+<tr>
+<td>oasis-ct-thirdpartner</td>
+<td>18</td>
+</tr>
+</tbody>
+</table>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://open.weibo.com/wiki/Error_code" target="_blank" rel="noopener">微博错误码定义</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】错误代码定义/" data-id="cjs1qdqce001i5juiqk3l65tq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/hexo-demo/page/2/">&laquo; Prev</a><a class="page-number" href="/hexo-demo/">1</a><a class="page-number" href="/hexo-demo/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/hexo-demo/page/4/">4</a><a class="extend next" rel="next" href="/hexo-demo/page/4/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/beego/">beego</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/consul/">consul</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/elastic-job/">elastic-job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/eventbus/">eventbus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/feign/">feign</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/fileinput/">fileinput</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/guava/">guava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/hikari/">hikari</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/mgo/">mgo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-boot/">spring-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-cloud/">spring-cloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-data/">spring-data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/服务架构/">服务架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/hexo-demo/tags/beego/" style="font-size: 10px;">beego</a> <a href="/hexo-demo/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/hexo-demo/tags/consul/" style="font-size: 10px;">consul</a> <a href="/hexo-demo/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/hexo-demo/tags/elastic-job/" style="font-size: 10px;">elastic-job</a> <a href="/hexo-demo/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/hexo-demo/tags/feign/" style="font-size: 10px;">feign</a> <a href="/hexo-demo/tags/fileinput/" style="font-size: 10px;">fileinput</a> <a href="/hexo-demo/tags/git/" style="font-size: 10px;">git</a> <a href="/hexo-demo/tags/golang/" style="font-size: 12.5px;">golang</a> <a href="/hexo-demo/tags/guava/" style="font-size: 10px;">guava</a> <a href="/hexo-demo/tags/hikari/" style="font-size: 10px;">hikari</a> <a href="/hexo-demo/tags/mgo/" style="font-size: 10px;">mgo</a> <a href="/hexo-demo/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/hexo-demo/tags/php/" style="font-size: 10px;">php</a> <a href="/hexo-demo/tags/redis/" style="font-size: 10px;">redis</a> <a href="/hexo-demo/tags/spring/" style="font-size: 10px;">spring</a> <a href="/hexo-demo/tags/spring-boot/" style="font-size: 15px;">spring-boot</a> <a href="/hexo-demo/tags/spring-cloud/" style="font-size: 20px;">spring-cloud</a> <a href="/hexo-demo/tags/spring-data/" style="font-size: 10px;">spring-data</a> <a href="/hexo-demo/tags/服务架构/" style="font-size: 10px;">服务架构</a> <a href="/hexo-demo/tags/项目管理/" style="font-size: 17.5px;">项目管理</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/hexo-demo/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-demo/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/hexo-demo/2019/02/12/todolist/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【spring-boot】application.properties/">【spring-boot】application.properties</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【consul】docker配置/">【consul】docker配置</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【docker】创建java容器/">【docker】创建java容器</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【docker】杀不死的docker/">【docker】杀不死的docker</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Sucre Cui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/hexo-demo/" class="mobile-nav-link">Home</a>
+  
+    <a href="/hexo-demo/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/hexo-demo/fancybox/jquery.fancybox.css">
+  <script src="/hexo-demo/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/hexo-demo/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -70,9 +70,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-【项目管理】错误代码定义" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-【php】参数校验" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/hexo-demo/2018/11/05/【项目管理】错误代码定义/" class="article-date">
+    <a href="/hexo-demo/2018/11/05/【php】参数校验/" class="article-date">
   <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
 </a>
     
@@ -84,7 +84,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/hexo-demo/2018/11/05/【项目管理】错误代码定义/">【项目管理】错误代码定义</a>
+      <a class="article-title" href="/hexo-demo/2018/11/05/【php】参数校验/">【php】参数校验</a>
     </h1>
   
 
@@ -92,115 +92,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="通用异常代码"><a href="#通用异常代码" class="headerlink" title="通用异常代码"></a>通用异常代码</h3><table>
-<thead>
-<tr>
-<th>代码</th>
-<th>错误信息</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-440001</td>
-<td>服务内部错误</td>
-</tr>
-<tr>
-<td>-440002</td>
-<td>服务内部错误</td>
-</tr>
-<tr>
-<td>——-</td>
-<td></td>
-</tr>
-<tr>
-<td>-330001</td>
-<td>无效参数</td>
-</tr>
-<tr>
-<td>-330002</td>
-<td>缺少参数</td>
-</tr>
-<tr>
-<td>-330003</td>
-<td>资源不存在</td>
-</tr>
-<tr>
-<td>-330004</td>
-<td>未登录</td>
-</tr>
-<tr>
-<td>-330005</td>
-<td>请求类型不支持</td>
-</tr>
-<tr>
-<td>-330006</td>
-<td>非法操作</td>
-</tr>
-<tr>
-<td>-330007</td>
-<td>未注册</td>
-</tr>
-</tbody>
-</table>
-<h3 id="服务异常定义规则"><a href="#服务异常定义规则" class="headerlink" title="服务异常定义规则"></a>服务异常定义规则</h3><p>异常代码长度为7位，组成：服务代码（2） + 业务代码（2） + 错误代码（3）</p>
-<p>比如：</p>
-<p>消息服务中发送邮件失败：1101001</p>
-<ul>
-<li>11 代表消息服务</li>
-<li>01 代表邮件业务</li>
-<li>001 代表邮件发送失败</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>服务</th>
-<th>服务代码</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>oasis-ct-message</td>
-<td>11</td>
-</tr>
-<tr>
-<td>oasis-ct-pay</td>
-<td>12</td>
-</tr>
-<tr>
-<td>oasis-ct-order</td>
-<td>13</td>
-</tr>
-<tr>
-<td>oasis-ct-assets</td>
-<td>14</td>
-</tr>
-<tr>
-<td>oasis-ct-product</td>
-<td>15</td>
-</tr>
-<tr>
-<td>oasis-ct-promotion</td>
-<td>16</td>
-</tr>
-<tr>
-<td>oasis-ct-medicine</td>
-<td>17</td>
-</tr>
-<tr>
-<td>oasis-ct-thirdpartner</td>
-<td>18</td>
-</tr>
-</tbody>
-</table>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://open.weibo.com/wiki/Error_code" target="_blank" rel="noopener">微博错误码定义</a></p>
-
+        <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">$this</span>-&gt;load-&gt;library(<span class="string">'form_validation'</span>);</span><br><span class="line"></span><br><span class="line">$data = [</span><br><span class="line">    <span class="string">'_id'</span> =&gt; <span class="keyword">$this</span>-&gt;input-&gt;get(<span class="string">"_id"</span>),</span><br><span class="line">    <span class="string">'name'</span> =&gt; <span class="keyword">$this</span>-&gt;input-&gt;get(<span class="string">"name"</span>),</span><br><span class="line">    <span class="string">'covers'</span> =&gt; <span class="keyword">$this</span>-&gt;input-&gt;get(<span class="string">"covers"</span>),</span><br><span class="line">];</span><br><span class="line"><span class="comment">// 将要验证的参数 set 进去</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;form_validation-&gt;set_data($data);</span><br><span class="line"></span><br><span class="line"><span class="comment">// validate</span></span><br><span class="line">$config = [[</span><br><span class="line">    <span class="string">'field'</span> =&gt; <span class="string">'_id'</span>,</span><br><span class="line">    <span class="string">'rules'</span> =&gt; <span class="string">'required'</span></span><br><span class="line">], [</span><br><span class="line">    <span class="string">'field'</span> =&gt; <span class="string">'name'</span>,</span><br><span class="line">    <span class="string">'rules'</span> =&gt; <span class="string">'required'</span></span><br><span class="line">], [</span><br><span class="line">    <span class="comment">// 数组需要在后面或两边加括号：covers[] 或 [covers]</span></span><br><span class="line">    <span class="string">'field'</span> =&gt; <span class="string">'covers[]'</span>,</span><br><span class="line">    <span class="string">'label'</span> =&gt; <span class="string">'cover'</span>,</span><br><span class="line">    <span class="string">'rules'</span> =&gt; <span class="string">'required'</span></span><br><span class="line">]];</span><br><span class="line"></span><br><span class="line"><span class="keyword">$this</span>-&gt;form_validation-&gt;set_rules($config);</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;form_validation-&gt;run() === <span class="keyword">false</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;form_validation-&gt;error_array();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】错误代码定义/" data-id="cjs1lb9y7000mwnui4sms33m2" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【php】参数校验/" data-id="cjs1qdqbs000g5juialmebby7" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/php/">php</a></li></ul>
 
     </footer>
   </div>
@@ -209,9 +108,9 @@
 
 
   
-    <article id="post-【项目管理】git使用规范" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-【redis】RedisTemplate的一点疑问" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/hexo-demo/2018/11/05/【项目管理】git使用规范/" class="article-date">
+    <a href="/hexo-demo/2018/11/05/【redis】RedisTemplate的一点疑问/" class="article-date">
   <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
 </a>
     
@@ -223,7 +122,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/hexo-demo/2018/11/05/【项目管理】git使用规范/">【项目管理】git使用规范</a>
+      <a class="article-title" href="/hexo-demo/2018/11/05/【redis】RedisTemplate的一点疑问/">【redis】RedisTemplate的一点疑问</a>
     </h1>
   
 
@@ -231,42 +130,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在开工之前，我们约定一下git的开发流程，详细的可以参考这篇文章:<br><a href="https://blog.csdn.net/u012562943/article/details/79754587" target="_blank" rel="noopener">https://blog.csdn.net/u012562943/article/details/79754587</a></p>
-<p>基本原则：</p>
-<p><img src="res/git.png" alt="Git"></p>
-<p>1 分支解释：</p>
+        <p>最近老是看到 redis 从pool里获取/释放的频繁操作日志, 跟踪业务发现, 每调用一次 RestTemplate.execute(callback), 都会从连接池里获取jedis连接</p>
+<p>频繁获取和释放连接, 会很浪费资源.<br>在获取资源时, 会经过下面几个操作:</p>
 <ul>
-<li><p>master 是受保护的分支，今后是稳定版本，用于build和线上部署，是稳定分支，不可以push。只有当代码经过验证以后，负责人才可以合并到该分支；</p>
-</li>
-<li><p>dev 分支是大家可以进行开发集成和测试的分支，原则上接受pull和push，本次大家都在 dev 分支上开发；</p>
-</li>
+<li>获取空闲对象(takeObject/pollObject)</li>
+<li>激活对象(activateObject)</li>
+<li>检查对象是否可用(testOnBorrow/testOnCreate/validateObject)</li>
+<li>修改统计状态(updateStatsBorrow)</li>
 </ul>
-<p>2 需要开发一个 feature 或者版本的时候，从master中创建一个分支出来，在本地进行开发，开发完毕后合并到测试（dev）分支进行验证，验证通过后才可以合并到master进行上线；</p>
-<p>  大体步骤：</p>
+<p>释放资源时:</p>
 <ul>
-<li>创建项目</li>
-<li>从 master 分支上开出若干环境分支，如：dev(对应测试环境), sim, online</li>
-<li>开始一个任务的 时候从gitlab界面上开feature分支(create from master), 命名规范建议是feature/jira-123</li>
-<li>在开发者本机执 行: git fetch</li>
-<li>在开发者本机执 行: git checkout origin feature/xxxx</li>
-<li>提交代码: git commit …</li>
-<li>测试验证 feature 分支是否正常；</li>
-<li>推送 feature 分支：git push origin feature/xxxx</li>
-<li><p>在 GOGS 界面上合并 feature 分支到对应的环境分支</p>
-<p>注意：</p>
-</li>
-<li><p>从 master 分支开出分支，以及合并到master这个过程建议在GOGS界面上面来做，而不是在命令行中；</p>
-</li>
-<li>本次本着迅速开发原则，dev 分支是一个初始分支，大家可以直接pull和push；但为了保证不相互冲突，鼓励大家创建自己的 feature 分支；</li>
+<li>检查对象是否可用(testOnReturn/validateObject)<ul>
+<li>如果不可用, 销毁(destroy), ensureIdle(1, false)</li>
 </ul>
+</li>
+<li>钝化对象(passivateObject), 意思就是刚对象刚被使用过, 让他休息一下</li>
+<li>归还对象(addFirst/addLast)</li>
+<li>修改统计状态(updateStatsBorrow)</li>
+</ul>
+<p>当然你可以把业务放在callback里处理, 感觉又不太爽, 所以还是把jedis重新封装一下, 毕竟 <a href="/oasis-ct/oasis-ct-core">oasis-ct-core</a> 里封装的 <a href="/oasis-ct/oasis-ct-core/src/master/src/main/java/cn/oasis/core/config/RedisConfiguration.java">RedisDao/RedisService</a> 也很差, 序列化的方式使用的也比较乱.</p>
+<p>这里来看下rap的一个issue, 值得借鉴:<br><a href="https://github.com/thx/RAP/pull/1008" target="_blank" rel="noopener">https://github.com/thx/RAP/pull/1008</a><br>解决:<br><a href="https://github.com/thx/RAP/commit/ebd22f2b095b9cb6983a9945e5297a4ace9d439a" target="_blank" rel="noopener">https://github.com/thx/RAP/commit/ebd22f2b095b9cb6983a9945e5297a4ace9d439a</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】git使用规范/" data-id="cjs1lb9y9000ownui4g99css4" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【redis】RedisTemplate的一点疑问/" data-id="cjs1qdqbt000i5jui5sfogksj" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring-data/">spring-data</a></li></ul>
 
     </footer>
   </div>
@@ -275,9 +166,9 @@
 
 
   
-    <article id="post-【项目管理】接口设计" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-【spring-boot】如何优雅关闭服务" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/hexo-demo/2018/11/05/【项目管理】接口设计/" class="article-date">
+    <a href="/hexo-demo/2018/11/05/【spring-boot】如何优雅关闭服务/" class="article-date">
   <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
 </a>
     
@@ -289,7 +180,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/hexo-demo/2018/11/05/【项目管理】接口设计/">【项目管理】接口设计</a>
+      <a class="article-title" href="/hexo-demo/2018/11/05/【spring-boot】如何优雅关闭服务/">【spring-boot】如何优雅关闭服务</a>
     </h1>
   
 
@@ -297,30 +188,67 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="服务接口设计"><a href="#服务接口设计" class="headerlink" title="服务接口设计"></a>服务接口设计</h1><ul>
-<li><p>swagger 地址</p>
+        <h2 id="借助-spring-boot"><a href="#借助-spring-boot" class="headerlink" title="借助 spring-boot"></a>借助 spring-boot</h2><p>开启优雅关闭终端：<code>endpoints.shutdown.enabled: true</code></p>
+<p>调用接口： <code>POST /shutdown</code></p>
+<h2 id="用docker实现"><a href="#用docker实现" class="headerlink" title="用docker实现"></a>用docker实现</h2><ul>
+<li><p>docker stop/restart [-t seconds] [container_id]</p>
+<p>发送中断信号，不会接收新的请求，之前的请求会继续运行</p>
+<ul>
+<li><p>新请求无法创建连接：因为服务不再接收新的请求，所以会报503：Service Unavailable，<br>建议Client设置一个合适的 <strong>连接超时时间</strong></p>
 </li>
-<li><p>是否需要redis</p>
+<li><p>超时时间[-t]：到达超时时间后，服务仍会立即中断，所以最好 <strong>设置一个合适的超时时间</strong></p>
 </li>
-<li><p>是否幂等</p>
-</li>
-<li><p>时序图（服务调用）</p>
-</li>
-<li><p>接口URL</p>
-</li>
-<li><p>接口参数</p>
-</li>
-<li><p>接口返回值</p>
+<li><p>日志：接收到中断信号后，log不会再打印，但 <code>log.isXXXEnabled()</code> 仍返回 <code>true</code>！<br>所以不要用log作为判断请求中断的标记，而是用<code>System.out.print</code></p>
 </li>
 </ul>
+</li>
+</ul>
+<h2 id="代码解决"><a href="#代码解决" class="headerlink" title="代码解决"></a>代码解决</h2><blockquote>
+<p>该方法只是手动关闭服务线程，前几种方法已经可以做到，不建议使用</p>
+</blockquote>
+<ul>
+<li><p>实现</p>
+<p>自定义 <a href="#GracefulShutdownConfiguration"><code>GracefulShutdownConfiguration</code></a></p>
+<p>通过 <code>@ImportAutoConfiguration(GracefulShutdownConfiguration.class)</code> 启用配置</p>
+</li>
+<li><p>问题：停止后服务仍未关闭，用<code>jstack</code>看到仍然有线程在执行（基于我当前的服务）：</p>
+<ul>
+<li><p>org.springframework.cloud.consul.config.ConfigWatch</p>
+<p>解决：<code>spring.cloud.consul.config.watch.enabled: false</code></p>
+<p>但是有些服务是需要开启的</p>
+<p>查看源码，该线程默认要等待55s来判断结束状态，时间较长</p>
+</li>
+<li><p>ch.qos.logback.classic.AsyncAppender</p>
+<p>解决：logback-spring 里加上</p>
+<p><code>&lt;shutdownHook class=&quot;ch.qos.logback.core.hook.DelayingShutdownHook&quot;/&gt;</code></p>
+<p><code>ShutdownHookBase#close</code> 里会调用 <code>Context.stop()</code> 进行关闭</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><p><a href="http://docs.api.xiaomi.com/app-engine-v2/bestpractice-pod-prestop.html" target="_blank" rel="noopener">应用优雅停止最佳实践</a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/4e13db951895" target="_blank" rel="noopener">spring boot 2.0 实现优雅停机</a></p>
+</li>
+<li><p>spring boot issue: <a href="https://github.com/spring-projects/spring-boot/issues/4657" target="_blank" rel="noopener">Shut down embedded servlet container gracefully</a></p>
+</li>
+<li><p>A graceful shutdown starter for Spring-Boot: <a href="https://github.com/corentin59/spring-boot-graceful-shutdown" target="_blank" rel="noopener">spring-boot-graceful-shutdown</a></p>
+</li>
+<li><p>graceful shutdown by impl <code>TomcatConnectorCustomizer</code>: <a href="https://dzone.com/articles/graceful-shutdown-spring-boot-applications" target="_blank" rel="noopener">Graceful Shutdown Spring Boot Applications</a></p>
+</li>
+<li><p><a href="http://tech.lede.com/2017/07/31/rd/server/TomcatShutdownProblem/" target="_blank" rel="noopener">Tomcat停机过程分析及线程处理方法</a></p>
+</li>
+</ul>
+<h2 id="GracefulShutdownConfiguration"><a href="#GracefulShutdownConfiguration" class="headerlink" title="GracefulShutdownConfiguration"></a>GracefulShutdownConfiguration</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GracefulShutdownConfiguration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> GracefulShutdown <span class="title">gracefulShutdown</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> GracefulShutdown();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TomcatEmbeddedServletContainerFactory <span class="title">webServerFactory</span><span class="params">(<span class="keyword">final</span> GracefulShutdown gracefulShutdown)</span> </span>&#123;</span><br><span class="line">        TomcatEmbeddedServletContainerFactory factory = <span class="keyword">new</span> TomcatEmbeddedServletContainerFactory();</span><br><span class="line">        factory.addConnectorCustomizers(gracefulShutdown);</span><br><span class="line">        <span class="keyword">return</span> factory;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">GracefulShutdown</span> <span class="keyword">implements</span> <span class="title">TomcatConnectorCustomizer</span>, <span class="title">ApplicationListener</span>&lt;<span class="title">ContextClosedEvent</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">volatile</span> Connector connector;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">customize</span><span class="params">(Connector connector)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.connector = connector;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onApplicationEvent</span><span class="params">(ContextClosedEvent event)</span> </span>&#123;</span><br><span class="line">            log.info(<span class="string">"signal: shutdown"</span>);</span><br><span class="line">            log.info(event.toString());</span><br><span class="line">            <span class="keyword">this</span>.connector.pause();</span><br><span class="line">            Executor executor = <span class="keyword">this</span>.connector.getProtocolHandler().getExecutor();</span><br><span class="line">            <span class="keyword">if</span> (executor <span class="keyword">instanceof</span> ThreadPoolExecutor) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) executor;</span><br><span class="line">                    threadPoolExecutor.shutdown();</span><br><span class="line">                    log.info(threadPoolExecutor.getActiveCount() + <span class="string">""</span>);</span><br><span class="line">                    <span class="keyword">if</span> (!threadPoolExecutor.awaitTermination(<span class="number">30</span>, TimeUnit.SECONDS)) &#123;</span><br><span class="line">                        log.warn(<span class="string">"Tomcat thread pool did not shut down gracefully within "</span></span><br><span class="line">                            + <span class="string">"30 seconds. Proceeding with forceful shutdown"</span>);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException ex) &#123;</span><br><span class="line">                    Thread.currentThread().interrupt();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【项目管理】接口设计/" data-id="cjs1lb9ya000qwnui55l1mw8h" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-boot】如何优雅关闭服务/" data-id="cjs1qdqbu000k5juimstkc0dv" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring-boot/">spring-boot</a></li></ul>
 
     </footer>
   </div>
@@ -329,9 +257,9 @@
 
 
   
-    <article id="post-技术栈" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-【spring-boot】配置grafana" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/hexo-demo/2018/11/05/技术栈/" class="article-date">
+    <a href="/hexo-demo/2018/11/05/【spring-boot】配置grafana/" class="article-date">
   <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
 </a>
     
@@ -343,7 +271,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/hexo-demo/2018/11/05/技术栈/">技术栈</a>
+      <a class="article-title" href="/hexo-demo/2018/11/05/【spring-boot】配置grafana/">【spring-boot】配置grafana</a>
     </h1>
   
 
@@ -351,45 +279,430 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><p>所需技能</p>
-<ul>
-<li><p><a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/" target="_blank" rel="noopener">spring framework</a></p>
-</li>
-<li><p><a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/" target="_blank" rel="noopener">spring boot</a></p>
-</li>
-<li><p><a href="https://projects.spring.io/spring-cloud/" target="_blank" rel="noopener">spring cloud</a></p>
-</li>
-<li><p><a href="http://www.mybatis.org/mybatis-3/zh/index.html" target="_blank" rel="noopener">mybatis</a></p>
-</li>
-<li><p><a href="http://www.redis.cn/update.html" target="_blank" rel="noopener">redis</a></p>
-</li>
-<li><p><a href="http://www.ituring.com.cn/article/56870" target="_blank" rel="noopener">git</a></p>
-</li>
-<li><p><a href="http://www.yiibai.com/maven/" target="_blank" rel="noopener">maven</a></p>
+        <h2 id="项目配置-spring-boot-1-5-x"><a href="#项目配置-spring-boot-1-5-x" class="headerlink" title="项目配置(spring-boot:1.5.x)"></a>项目配置(spring-boot:1.5.x)</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependecies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 1.1.1 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- prometheus相关依赖 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.micrometer<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>micrometer-spring-legacy<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.micrometer<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>micrometer-registry-prometheus<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Actuator (with security enabled) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-security<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependecies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="grafana"><a href="#grafana" class="headerlink" title="grafana"></a>grafana</h2><p><img src="../assets/grafana-01.png" alt=""></p>
+<p><img src="../assets/grafana-02.png" alt=""></p>
+<p><img src="../assets/grafana-03.png" alt=""></p>
+<p>Dashboard for Spring Boot 1.x applications, using Micrometer and Prometheus.</p>
+<h3 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h3><ul>
+<li>Overall status</li>
+<li>API stats</li>
+<li>Tomcat</li>
+<li>JVM</li>
+</ul>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>Only one variable is declared in Grafana:<br>在该dashboard中有一个变量 <code>$job</code>, 用来标识job名, 等同于<code>prometheus</code>中的<code>job_name</code>,<br>不过在监控<code>consul</code>的服务时, 用来标识服务名, 即项目里配置的 <code>spring.application.name</code></p>
+<p>配置方式:</p>
+<p>{dashboard} -&gt; settings -&gt; Variables</p>
+<h2 id="promethues-配置"><a href="#promethues-配置" class="headerlink" title="promethues 配置"></a>promethues 配置</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 监控consul</span></span><br><span class="line"><span class="attr">scrape_configs:</span></span><br><span class="line">  <span class="comment"># cousul_services</span></span><br><span class="line"><span class="attr">  - job_name:</span> <span class="string">'consul_services'</span></span><br><span class="line"><span class="attr">    consul_sd_configs:</span></span><br><span class="line"><span class="attr">      - server:</span> <span class="string">'$&#123;consul-server&#125;:8500'</span></span><br><span class="line"><span class="attr">        services:</span> <span class="string">['$&#123;server.name&#125;']</span></span><br><span class="line">  </span><br><span class="line">    <span class="comment"># 修改抓取route</span></span><br><span class="line"><span class="attr">    relabel_configs:</span></span><br><span class="line"><span class="attr">        - source_labels:</span> <span class="string">['__metrics_path__']</span></span><br><span class="line"><span class="attr">          regex:</span>         <span class="string">'/metrics'</span></span><br><span class="line"><span class="attr">          target_label:</span>  <span class="string">__metrics_path__</span></span><br><span class="line"><span class="attr">          replacement:</span>   <span class="string">'/prometheus'</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 通过consul监控所有服务</span></span><br><span class="line"><span class="attr">  - job_name:</span> <span class="string">'consul_server'</span></span><br><span class="line"><span class="attr">    metrics_path:</span> <span class="string">'/prometheus'</span></span><br><span class="line"><span class="attr">    consul_sd_configs:</span></span><br><span class="line"><span class="attr">      - server:</span> <span class="string">'$&#123;consul-server&#125;:8500'</span></span><br><span class="line"><span class="attr">        services:</span> <span class="string">['$&#123;server.name&#125;']</span></span><br><span class="line">    <span class="comment"># 修改抓取route</span></span><br><span class="line"><span class="attr">    relabel_configs:</span></span><br><span class="line"><span class="attr">        - source_labels:</span> <span class="string">['__meta_consul_service']</span></span><br><span class="line"><span class="attr">          regex:</span>         <span class="string">'(.*)'</span></span><br><span class="line"><span class="attr">          replacement:</span>   <span class="string">'$1'</span></span><br><span class="line"><span class="attr">          action:</span>        <span class="string">replace</span></span><br><span class="line"><span class="attr">          target_label:</span>  <span class="string">'job'</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 监控普通spring-boot项目</span></span><br><span class="line">  <span class="comment"># for https</span></span><br><span class="line"><span class="attr">  - job_name:</span> <span class="string">my-app-prod</span></span><br><span class="line"><span class="attr">    scheme:</span> <span class="string">https</span></span><br><span class="line"><span class="attr">    basic_auth:</span></span><br><span class="line"><span class="attr">      username:</span> <span class="string">your_actuator_user</span></span><br><span class="line"><span class="attr">      password:</span> <span class="string">your_actuator_password</span></span><br><span class="line"><span class="attr">    metrics_path:</span> <span class="string">/MyApp/actuator/prometheus</span></span><br><span class="line"><span class="attr">    static_configs:</span></span><br><span class="line"><span class="attr">      - targets:</span></span><br><span class="line"><span class="bullet">          -</span> <span class="string">"your_hostname:your_port"</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># for http</span></span><br><span class="line"><span class="attr">  - job_name:</span> <span class="string">my-app-prod</span></span><br><span class="line"><span class="attr">    scheme:</span> <span class="string">http</span></span><br><span class="line"><span class="attr">    metrics_path:</span> <span class="string">/MyApp/actuator/prometheus</span></span><br><span class="line"><span class="attr">    static_configs:</span></span><br><span class="line"><span class="attr">      - targets:</span></span><br><span class="line"><span class="bullet">          -</span> <span class="string">"your_hostname:your_port"</span></span><br></pre></td></tr></table></figure>
+<h2 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h2><p><img src="../assets/grafana-preview.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-boot】配置grafana/" data-id="cjs1qdqbx000m5jui1sf9bkka" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring-boot/">spring-boot</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【spring-cloud】ribbon探索" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【spring-cloud】ribbon探索/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【spring-cloud】ribbon探索/">【spring-cloud】ribbon探索</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 开启负载均衡重试</span><br><span class="line">spring.cloud.loadbalancer.retry.enabled: true</span><br><span class="line">ribbon:</span><br><span class="line">  # 最多重试多少台服务</span><br><span class="line">  MaxAutoRetriesNextServer: 2</span><br><span class="line">  # 每台服务器最多重试次数，但是首次调用不包括在内</span><br><span class="line">  MaxAutoRetries: 1</span><br><span class="line">  # 连接超时时间</span><br><span class="line">  ConnectTimeout: 1000</span><br><span class="line">  # 读取超时时间</span><br><span class="line">  ReadTimeout: 3000</span><br></pre></td></tr></table></figure>
+<p>如果针对某个服务做负载均衡, 可把 ribbon 配置放在该服务节点下, 比如: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">xxx-server:</span><br><span class="line">  ribbon:</span><br><span class="line">    # 最多重试多少台服务</span><br><span class="line">    MaxAutoRetriesNextServer: 2</span><br><span class="line">    # 每台服务器最多重试次数，但是首次调用不包括在内</span><br><span class="line">    MaxAutoRetries: 1</span><br><span class="line">    # 连接超时时间</span><br><span class="line">    ConnectTimeout: 1000</span><br><span class="line">    # 读取超时时间</span><br><span class="line">    ReadTimeout: 3000</span><br></pre></td></tr></table></figure>
+<p>或者使用注解: @RibbonClients, @RibbonClient(name=”xxx-server”, configuration=XXXConfiguration.class)</p>
+<h2 id="配置类源码追溯"><a href="#配置类源码追溯" class="headerlink" title="配置类源码追溯"></a>配置类源码追溯</h2><blockquote>
+<p>配置相关 key<br>com.netflix.client.config.CommonClientConfigKey</p>
+<p>ribbon ClientConfig 构造器<br>com.netflix.client.config.IClientConfig.Builder</p>
+<p>默认值(除 connectTimeout, readTimeout 外, 其他配置都使用该类中的默认值, 前面两个属性在 RibbonClientConfiguration 已经声明)<br>com.netflix.client.config.DefaultClientConfigImpl</p>
+</blockquote>
+<blockquote>
+<p>💡:bulb:<br>这里需要注意一个地方<br>connectTimeout, readTimeout 如果没有显式配置, 默认值为: 1000, 1000.</p>
+<blockquote>
+<p>org.springframework.cloud.netflix.ribbon.RibbonClientConfiguration#DEFAULT_CONNECT_TIMEOUT = 1000<br>org.springframework.cloud.netflix.ribbon.RibbonClientConfiguration#DEFAULT_READ_TIMEOUT = 1000<br>初始化 RibbonClientConfig 的位置在 org.springframework.cloud.netflix.ribbon.RibbonClientConfiguration#ribbonClientConfig.</p>
+</blockquote>
+<p>有配置的时候,自然使用配置的value, DefaultClientConfigImpl里的默认值然而并没有用到(ps: 应该在其他地方用到了: HttpClientRibbonConfiguration, OkHttpRibbonConfiguration)</p>
+<p>这大概就是为什么我们服务(牵涉到三方调用)经常出现超时的原因</p>
+</blockquote>
+<h2 id="负载均衡规则"><a href="#负载均衡规则" class="headerlink" title="负载均衡规则"></a>负载均衡规则</h2><ul>
+<li><strong>ClientConfigEnabledRoundRobinRule</strong> 内嵌了一个 <strong>RoundRobinRule</strong><ul>
+<li><strong>BestAvailableRule</strong>         最优可用: 获取其中ActiveRequestsCount最小的服务</li>
+<li><strong>PredicateBasedRule</strong>        基于 Predicate 的规则 <ul>
+<li><strong>ZoneAvoidanceRule</strong>       区域去除判定: 判断某个区域的运行性能是否可用, 提出不可用的区域(该区域下的所有服务)</li>
+<li><strong>AvailabilityFilterRule</strong>  可用性判定: 过滤掉连接数过多的server</li>
+</ul>
 </li>
 </ul>
 </li>
-<li><p>其他技能</p>
+<li><strong>RoundRobinRule</strong>              轮询<ul>
+<li><strong>WeightedResponseTimeRule</strong>  根据响应时间分配一个weight，响应时间越长，weight越小，被选中的可能性越低</li>
+<li><strong>ResponseTimeWeightTimeRule</strong> (??? use WeightedResponseTimeRule instead)</li>
+</ul>
+</li>
+<li><strong>RandomRule</strong> 随机</li>
+<li><strong>RetryRule</strong>  重试规则, 失败之后会在指定时间内以subRule继续获取服务, 默认subRule=RoundRobinRule</li>
+</ul>
+<p>规则配置方式(以 RetryRule 为例):</p>
 <ul>
-<li><p><a href="https://zookeeper.apache.org/" target="_blank" rel="noopener">zookeeper</a></p>
+<li>properties方式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ribbon:</span><br><span class="line">  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RetryRule</span><br></pre></td></tr></table></figure>
+<ul>
+<li>java config</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Bean</span><br><span class="line">IRule rule() &#123;</span><br><span class="line">    RetryRule retryRule = new RetryRule();</span><br><span class="line">    retryRule.setMaxRetryMillis(1000);</span><br><span class="line">    retryRule.setRule(subRule());</span><br><span class="line">    return retryRule;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">IRule subRule() &#123;</span><br><span class="line">    return new RoundRobinRule();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>默认规则: com.netflix.loadbalancer.AvailabilityFilteringRule</p>
+<h2 id="依赖说明"><a href="#依赖说明" class="headerlink" title="依赖说明"></a>依赖说明</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-netflix-ribbon&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">&lt;dependencyManagement&gt;</span><br><span class="line">    &lt;dependencies&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;</span><br><span class="line">          &lt;version&gt;Edgware.SR3&lt;/version&gt;</span><br><span class="line">          &lt;type&gt;pom&lt;/type&gt;</span><br><span class="line">          &lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line">    &lt;/dependencies&gt;</span><br><span class="line">&lt;/dependencyManagement&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://github.com/Netflix/ribbon/wiki/Getting-Started" target="_blank" rel="noopener">https://github.com/Netflix/ribbon/wiki/Getting-Started</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-cloud】ribbon探索/" data-id="cjs1qdqby000o5jui7bhsxjln" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring-cloud/">spring-cloud</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【spring-cloud】spring-cloud-config" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【spring-cloud】spring-cloud-config/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【spring-cloud】spring-cloud-config/">【spring-cloud】spring-cloud-config</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="server"><a href="#server" class="headerlink" title="server"></a>server</h2><ul>
+<li><p>依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-config-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p><a href="https://ifeve.com/tcc/" target="_blank" rel="noopener">TCC</a></p>
-</li>
-<li><p><a href="http://dubbo.io/User+Guide-zh.htm" target="_blank" rel="noopener">dubbo</a></p>
-</li>
-<li><p><a href="http://www.axonframework.org/" target="_blank" rel="noopener">axon framework</a></p>
+<li><p>yml配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  cloud:</span></span><br><span class="line"><span class="attr">    config:</span></span><br><span class="line"><span class="attr">      server:</span></span><br><span class="line"><span class="attr">        git:</span></span><br><span class="line">          <span class="comment"># 配置的git路径</span></span><br><span class="line"><span class="attr">          uri:</span> <span class="attr">http://xxx/oasis-ct/oasis-ct-config.git</span></span><br><span class="line">          <span class="comment"># 查找路径</span></span><br><span class="line">          <span class="comment"># 默认查找根目录, 而且只查找一级目录</span></span><br><span class="line"><span class="attr">          search-paths:</span> <span class="string">repo</span></span><br><span class="line"><span class="attr">      profile:</span> <span class="string">$&#123;spring.profiles&#125;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<blockquote>
+<p>如果想把配置中心以服务的形式配置到consul中, 可以按照服务注册的形式进行配置</p>
+</blockquote>
+<h2 id="client"><a href="#client" class="headerlink" title="client"></a>client</h2><ul>
+<li><p>依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>yml配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">    <span class="comment"># 配置中心</span></span><br><span class="line"><span class="attr">    config:</span></span><br><span class="line">      <span class="comment"># 1. 直接访问方式</span></span><br><span class="line"><span class="attr">      uri:</span> <span class="string">`&#123;config-server&#125;`</span></span><br><span class="line">      <span class="comment"># 2. 服务注册到consul, 需要按下面的方式配置      </span></span><br><span class="line"><span class="comment">#      discovery:</span></span><br><span class="line"><span class="comment">#        enabled: truegetDeliveryInfo</span></span><br><span class="line"><span class="comment">#        service-id: oasis-ct-config</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># 由于咱们的项目名比较长, 这里可以重命名, </span></span><br><span class="line">      <span class="comment"># 同时config服务里的配置文件的文件名命名方式: medicine-&#123;profile&#125;.yml</span></span><br><span class="line"><span class="attr">      name:</span> <span class="string">medicine</span></span><br><span class="line"><span class="attr">      profile:</span> <span class="string">$&#123;spring.profiles&#125;</span></span><br><span class="line"><span class="attr">      fail-fast:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-cloud】spring-cloud-config/" data-id="cjs1qdqbz000q5juilahldn6w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring-cloud/">spring-cloud</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【bootstrap】file-input" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【bootstrap】file-input/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【bootstrap】file-input/">【bootstrap】file-input</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>暂时不适用该方式上传文件</p>
+</blockquote>
+<h1 id="文件上传插件"><a href="#文件上传插件" class="headerlink" title="文件上传插件"></a>文件上传插件</h1><p>官方文档：<a href="http://plugins.krajee.com/file-input" target="_blank" rel="noopener">fileinput</a></p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><ul>
+<li><p>引入css</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"&lt;c:url value="</span>/<span class="attr">assets</span>/<span class="attr">bower_components</span>/<span class="attr">bootstrap-fileinput</span>/<span class="attr">css</span>/<span class="attr">fileinput.min.css</span>"/&gt;</span>"/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引入js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;c:url value=&quot;/assets/bower_components/bootstrap-fileinput/js/fileinput.min.js&quot;/&gt;&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;c:url value=&quot;/assets/bower_components/bootstrap-fileinput/js/locales/zh.js&quot;/&gt;&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;c:url value=&quot;/assets/bower_components/bootstrap-fileinput/js/plugins/piexif.min.js&quot;/&gt;&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>该插件需要</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"f1"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file"</span> <span class="attr">class</span>=<span class="string">"file"</span> <span class="attr">data-show-preview</span>=<span class="string">"true"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$scope.initFileinput(<span class="string">"#f1"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$scope.initFileinput = <span class="function"><span class="keyword">function</span> (<span class="params">fileinputId</span>) </span>&#123;</span><br><span class="line">    $(fileinputId).fileinput(&#123;</span><br><span class="line">        <span class="string">"uploadUrl"</span>: <span class="string">"/fileUpload/upload"</span>,</span><br><span class="line">        <span class="string">"maxFileSize"</span>: <span class="number">20480</span>,</span><br><span class="line">        <span class="string">"msgSizeTooLarge"</span>: <span class="string">"文件(&#123;name&#125; - &#123;size&#125; KB) 超过最大限制 &#123;maxSize&#125; KB. 请重新上传!"</span></span><br><span class="line">    &#125;);</span><br><span class="line">    $(fileinputId).on(<span class="string">'fileuploaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event, data, previewId, index</span>) </span>&#123;</span><br><span class="line">        $scope.taskRequest.fileName = data.response.fileName;</span><br><span class="line">        $scope.taskRequest.fileUrl = data.response.path;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【bootstrap】file-input/" data-id="cjs1qdqbb00015jui1ssm2uwx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/bootstrap/">bootstrap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/fileinput/">fileinput</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【spring-cloud】服务调用追踪" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【spring-cloud】服务调用追踪/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【spring-cloud】服务调用追踪/">【spring-cloud】服务调用追踪</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>服务监控——服务调用链追踪，帮助追踪每个请求的调用过程及每个过程的网络延迟、业务耗时等指标</p>
+<p>服务调用追踪主要是根据 traceId, spanId, parentSpanId 在个服务日志上进行标记, 一个traceId标记一个请求, spanId标记链路, parentSpanId为上一条链路的spanId, 由traceId把所有的spanId串联起来, 在第一条链路上 traceId = spanId = parentSpanId.</p>
+<h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h2><h3 id="配置-ELK-（便于查询整个请求的处理日志）"><a href="#配置-ELK-（便于查询整个请求的处理日志）" class="headerlink" title="配置 ELK （便于查询整个请求的处理日志）"></a>配置 ELK （便于查询整个请求的处理日志）</h3><ul>
+<li><p>添加依赖</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-sleuth&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>logback-spring.xml</code> 的 <code>LOGSTASH</code> 节点下添加如下配置：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;additionalField&gt;</span><br><span class="line">    &lt;key&gt;X-B3-ParentSpanId&lt;/key&gt;</span><br><span class="line">    &lt;value&gt;@&#123;X-B3-ParentSpanId&#125;&lt;/value&gt;</span><br><span class="line">&lt;/additionalField&gt;</span><br><span class="line">&lt;additionalField&gt;</span><br><span class="line">    &lt;key&gt;X-B3-SpanId&lt;/key&gt;</span><br><span class="line">    &lt;value&gt;@&#123;X-B3-SpanId&#125;&lt;/value&gt;</span><br><span class="line">&lt;/additionalField&gt;</span><br><span class="line">&lt;additionalField&gt;</span><br><span class="line">    &lt;key&gt;X-B3-TraceId&lt;/key&gt;</span><br><span class="line">    &lt;value&gt;@&#123;X-B3-TraceId&#125;&lt;/value&gt;</span><br><span class="line">&lt;/additionalField&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>参考：[oasis-ct-product-server](/oasis-ct/oasis-ct-product/src/master/oasis-ct-product-server/src/main/resources/logback-spring.xml)
+</code></pre><h3 id="配置-zipkin"><a href="#配置-zipkin" class="headerlink" title="配置 zipkin"></a>配置 zipkin</h3><ul>
+<li><p>添加依赖</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-sleuth-zipkin&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>application-dev.yml</code> / <code>application-test.yml</code> 中配置：</p>
+  <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  zipkin:</span></span><br><span class="line"><span class="attr">    enabled:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># zipkin 部署在 op 服务器</span></span><br><span class="line"><span class="attr">    base-url:</span> <span class="attr">http://10.163.149.166:11001</span></span><br><span class="line"><span class="attr">  sleuth:</span></span><br><span class="line"><span class="attr">    enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    sampler:</span></span><br><span class="line">      <span class="comment"># 采样的比例</span></span><br><span class="line"><span class="attr">      percentage:</span> <span class="number">1.0</span></span><br><span class="line"><span class="attr">    scheduled:</span></span><br><span class="line">      <span class="comment"># 关闭 scheduled 方法的采样，否则 zipkin 上一堆异步任务的 trace，尤其是 consul watch task</span></span><br><span class="line">      <span class="comment"># Refer: [scheduled_annotated_methods]</span></span><br><span class="line"><span class="attr">      enabled:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>如果某个环境没有配 zipkin, 会按照默认值进行请求zipkin, 所以最好配置enabled=false, 禁用zipkin:
+
+`spring.zipkin.enabled: false`
+</code></pre><ul>
+<li><p>检查配置是否成功</p>
+<p>  访问任意一个接口，在 [zipkin] 中查看是否有该请求的记录</p>
+<p>  查不到的原因：</p>
+<pre><code>- 配置没有成功
+- 由于采样配置不是 1.0，导致没有采样(所谓采样, 就是当前日志会不会打到 zipkin 上)
+</code></pre></li>
+<li><p>参考</p>
+<p>  <a href="/oasis-ct/oasis-ct-product/src/master/oasis-ct-product-server/src/main/resources/config/application-dev.yml">oasis-ct-product-server</a></p>
+</li>
+</ul>
+<h2 id="随机采样原理"><a href="#随机采样原理" class="headerlink" title="随机采样原理"></a>随机采样原理</h2><p>参考: <code>org.springframework.cloud.sleuth.sampler.PercentageBasedSampler#isSampled</code></p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/12817946/generate-a-random-bitset-with-n-1s" target="_blank" rel="noopener">generate-a-random-bitset-with-n-1s</a></li>
+</ul>
+<h2 id="遗留问题"><a href="#遗留问题" class="headerlink" title="遗留问题"></a>遗留问题</h2><ul>
+<li><p>可以引入消息队列帮助解耦及提升效率</p>
+</li>
+<li><p>集成 ELK 之后，在打印非请求的日志里，<code>X-B3-*</code> 相关的字段显示的是 <code>X-B3-*_NOT_FOUND</code></p>
+<p>理论上应该是 <code>-</code> 或 <code></code>（空），看源码 <code>com.cwbase.logback.JSONEventLayout#mdcSubst</code> ，是框架自己没有设置默认值的方法</p>
+<p>所以暂时先不处理，或以后改用 <code>FileAppender</code> + <code>logstash</code> 的方式收集日志</p>
+</li>
+</ul>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><ul>
+<li><p><a href="https://cloud.spring.io/spring-cloud-sleuth/1.3.x/single/spring-cloud-sleuth.html" target="_blank" rel="noopener">spring-cloud-sleuth Reference</a></p>
+</li>
+<li><p>spring-cloud-sleuth: <a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-sleuth/1.3.4.RELEASE/single/spring-cloud-sleuth.html#__scheduled_annotated_methods" target="_blank" rel="noopener">scheduled_annotated_methods</a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/6d6b52c7624f" target="_blank" rel="noopener">Spring Cloud Sleuth使用简介</a></p>
+</li>
+<li><p>Spring Cloud Sleuth does not add trace/span related headers to the Http Response for security reasons. If you need the headers, see: <a href="https://cloud.spring.io/spring-cloud-sleuth/1.3.x/single/spring-cloud-sleuth.html#_example" target="_blank" rel="noopener">在http response 中添加 trace header</a></p>
 </li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/技术栈/" data-id="cjs1lb9yb000twnuit8a2v6ex" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-cloud】服务调用追踪/" data-id="cjs1qdqc3000t5jui9ukc0moh" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring-cloud/">spring-cloud</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【spring-cloud】部署" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【spring-cloud】部署/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【spring-cloud】部署/">【spring-cloud】部署</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="构建docker容器"><a href="#构建docker容器" class="headerlink" title="构建docker容器"></a>构建docker容器</h2><p><a href="../docker/how-to-build-container.md">如何构建容器</a></p>
+<h2 id="优雅关闭服务"><a href="#优雅关闭服务" class="headerlink" title="优雅关闭服务"></a>优雅关闭服务</h2><p><a href="/spring-boot/优雅关闭服务.md">优雅关闭服务</a></p>
+<h2 id="远程调试"><a href="#远程调试" class="headerlink" title="远程调试"></a>远程调试</h2><p>修改完成后，请修改文档：<a href="../oasis-ct/基础服务列表.md">基础服务列表</a></p>
+<p>启动时，加上 <code>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=[debug port]</code></p>
+<p>注意加上远程调试前，也要在docker中配置调试端口的<strong>映射</strong></p>
+<p>下面是一个完整的配置:</p>
+<blockquote>
+<p>java<br>-Dfile.encoding=UTF-8<br>-Duser.timezone=GMT+08<br>-Dspring.profiles.active=[profile]<br>-Xdebug<br>-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=[debug port]<br>-jar [jar]</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-cloud】部署/" data-id="cjs1qdqc4000u5juir065no7z" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring-cloud/">spring-cloud</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【spring】基于hikari的多数据源配置" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【spring】基于hikari的多数据源配置/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-demo/2018/11/05/【spring】基于hikari的多数据源配置/">【spring】基于hikari的多数据源配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>问题：<code>mgmt</code>项目目前配置了多数据源，当手动配置 <code>HikariDataSource</code> 时，会出现 DataSource 使用的是 Tomcat 的 <code>DataSource</code></p>
+</blockquote>
+<h1 id="使用-Hikari-实现多数据源"><a href="#使用-Hikari-实现多数据源" class="headerlink" title="使用 Hikari 实现多数据源"></a>使用 Hikari 实现多数据源</h1><h2 id="检查数据源是否为-Hikari"><a href="#检查数据源是否为-Hikari" class="headerlink" title="检查数据源是否为 Hikari"></a>检查数据源是否为 Hikari</h2><p><code>ApplicationContext.getBeansOfType(DataSource.class)</code> 是否为 <code>HikariDataSource</code>，并在debug时，查看属性<code>pool</code>是否为 <code>HikariPool-x</code> ，</p>
+<p>如果检查不是 Hikari（有可能是 tomcat.DataSource），可按如下步骤配置</p>
+<h2 id="配置-HikariDataSource"><a href="#配置-HikariDataSource" class="headerlink" title="配置 HikariDataSource"></a>配置 HikariDataSource</h2><ul>
+<li>DataSourceConfig</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 一个默认的 DataSource</span><br><span class="line">@ConfigurationProperties(prefix = &quot;spring.datasource.hikari&quot;)</span><br><span class="line">public DataSource dataSource(DataSourceProperties properties) &#123;</span><br><span class="line">   return properties.initializeDataSourceBuilder().type(HikariDataSource.class).build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 第二个 DataSource</span><br><span class="line">@ConfigurationProperties(prefix = &quot;spring.datasource2.hikari&quot;)</span><br><span class="line">public DataSource dataSource(DataSourceProperties properties) &#123;</span><br><span class="line">   return properties.initializeDataSourceBuilder().type(HikariDataSource.class).build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>application.yml</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 这里使用了模板，可以省去一些公共配置</span></span><br><span class="line"><span class="attr">  tpl_datasource:</span> <span class="meta">&amp;tpl_datasource</span></span><br><span class="line"><span class="attr">    type:</span> <span class="string">com.zaxxer.hikari.HikariDataSource</span></span><br><span class="line"><span class="attr">    driver-class-name:</span> <span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">    url:</span> <span class="string">$url</span></span><br><span class="line"><span class="attr">    username:</span> <span class="string">$username</span></span><br><span class="line"><span class="attr">    password:</span> <span class="string">$pwd</span></span><br><span class="line"><span class="attr">    maximum-pool-size:</span> <span class="number">23</span></span><br><span class="line"><span class="attr">    connection-timeout:</span> <span class="number">55000</span></span><br><span class="line"><span class="attr">    idle-timeout:</span> <span class="number">33000</span></span><br><span class="line"><span class="attr">    testOnBorrow:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    maxLifetime:</span> <span class="number">11000</span>                  <span class="comment">#30分钟，服务器wait_timeout设置为30分钟了</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 默认的datasource，其他ds会继承该配置，有点像模板</span></span><br><span class="line"><span class="attr">  datasource:</span></span><br><span class="line">    <span class="string">&lt;&lt;:</span> <span class="meta">*tpl_datasource</span></span><br><span class="line"><span class="attr">    username:</span> <span class="string">root</span>                      <span class="comment"># 其他ds会继承</span></span><br><span class="line"><span class="attr">    password:</span> <span class="string">oasisadmin</span>                <span class="comment"># 其他ds会继承</span></span><br><span class="line"><span class="attr">    hikari:</span></span><br><span class="line"><span class="attr">      jdbc-url:</span> <span class="attr">jdbc:mysql://xxx/oasis_mgmt?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;autoReconnect=true&amp;autoReconnectForPools=true</span></span><br><span class="line"><span class="attr">      connection-init-sql:</span> <span class="string">select</span> <span class="number">1</span></span><br><span class="line"><span class="attr">      leakDetectionThreshold:</span> <span class="number">5000</span>      <span class="comment">#2s 后connection还不回归pool，则提示可能的connection leak</span></span><br><span class="line"><span class="attr">      connectionTimeout:</span> <span class="number">5000</span> <span class="comment">#5s,get connection from pool</span></span><br><span class="line"><span class="attr">      maxLifetime:</span> <span class="number">21000</span>                <span class="comment">#30分钟，服务器wait_timeout设置为30分钟了</span></span><br><span class="line"><span class="attr">      maximum-pool-size:</span> <span class="number">24</span></span><br><span class="line"><span class="attr">      data-source-properties:</span></span><br><span class="line"><span class="attr">        cachePrepStmts:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">        prepStmtCacheSize:</span> <span class="number">250</span></span><br><span class="line"><span class="attr">        prepStmtCacheSqlLimit:</span> <span class="number">2048</span></span><br><span class="line"><span class="attr">        useServerPrepStmts:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  datasource_mom:</span></span><br><span class="line">    <span class="string">&lt;&lt;:</span> <span class="meta">*tpl_datasource</span></span><br><span class="line"><span class="attr">    hikari:</span></span><br><span class="line"><span class="attr">      jdbc-url:</span> <span class="attr">jdbc:mysql://xxx/oasis_mom_formal?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;autoReconnect=true&amp;autoReconnectForPools=true</span></span><br><span class="line"><span class="attr">      connection-init-sql:</span> <span class="string">select</span> <span class="number">1</span></span><br><span class="line"><span class="attr">      leakDetectionThreshold:</span> <span class="number">5000</span>      <span class="comment">#2s 后connection还不回归pool，则提示可能的connection leak</span></span><br><span class="line"><span class="attr">      connectionTimeout:</span> <span class="number">5000</span>           <span class="comment">#5s,get connection from pool</span></span><br><span class="line"><span class="attr">      maxLifetime:</span> <span class="number">21000</span>                <span class="comment">#30分钟，服务器wait_timeout设置为30分钟了</span></span><br><span class="line"><span class="attr">      maximum-pool-size:</span> <span class="number">24</span></span><br><span class="line"><span class="attr">      data-source-properties:</span></span><br><span class="line"><span class="attr">        cachePrepStmts:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">        prepStmtCacheSize:</span> <span class="number">250</span></span><br><span class="line"><span class="attr">        prepStmtCacheSqlLimit:</span> <span class="number">2048</span></span><br><span class="line"><span class="attr">        useServerPrepStmts:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>由于 hikari使用的是 jdbc-url，所以 <code>spring.datasource.hikari.jdbc-url</code> 在每个 ds 中都要单独配置</p>
+</li>
+<li><p>由于上一条，所以 hikari 的配置无法使用 tpl模板 的方式让其他地方使用，<code>spring.datasource.hikari.*</code> 也都要单独配置</p>
+</li>
+<li><p><code>spring.datasource.*</code> 里面的配置，所有ds默认都会使用，比如 <code>hikari.jdbc-url</code> 如果没有配置，则默认使用 <code>spring.datasource.url</code></p>
+</li>
+</ul>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><ul>
+<li>org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration</li>
+<li><a href="https://gist.github.com/rhamedy/b3cb936061cc03acdfe21358b86a5bc6" target="_blank" rel="noopener">Configure HikariCP with Spring Boot JPA Hibernate and PostgreSQL as a database</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【spring】基于hikari的多数据源配置/" data-id="cjs1qdqc5000x5juih5jleim2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/hikari/">hikari</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring/">spring</a></li></ul>
+
     </footer>
   </div>
   
@@ -401,7 +714,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/hexo-demo/">&laquo; Prev</a><a class="page-number" href="/hexo-demo/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/hexo-demo/">&laquo; Prev</a><a class="page-number" href="/hexo-demo/">1</a><span class="page-number current">2</span><a class="page-number" href="/hexo-demo/page/3/">3</a><a class="page-number" href="/hexo-demo/page/4/">4</a><a class="extend next" rel="next" href="/hexo-demo/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -415,7 +728,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/elastic-job/">elastic-job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/eventbus/">eventbus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/fileinput/">fileinput</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/guava/">guava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/hikari/">hikari</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-data/">spring-data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/beego/">beego</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/consul/">consul</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/elastic-job/">elastic-job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/eventbus/">eventbus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/feign/">feign</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/fileinput/">fileinput</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/guava/">guava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/hikari/">hikari</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/mgo/">mgo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-boot/">spring-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-cloud/">spring-cloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-data/">spring-data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/服务架构/">服务架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
     </div>
   </div>
 
@@ -425,7 +738,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/hexo-demo/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/hexo-demo/tags/elastic-job/" style="font-size: 10px;">elastic-job</a> <a href="/hexo-demo/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/hexo-demo/tags/fileinput/" style="font-size: 10px;">fileinput</a> <a href="/hexo-demo/tags/git/" style="font-size: 10px;">git</a> <a href="/hexo-demo/tags/guava/" style="font-size: 10px;">guava</a> <a href="/hexo-demo/tags/hikari/" style="font-size: 10px;">hikari</a> <a href="/hexo-demo/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/hexo-demo/tags/redis/" style="font-size: 10px;">redis</a> <a href="/hexo-demo/tags/spring/" style="font-size: 10px;">spring</a> <a href="/hexo-demo/tags/spring-data/" style="font-size: 10px;">spring-data</a> <a href="/hexo-demo/tags/项目管理/" style="font-size: 20px;">项目管理</a>
+      <a href="/hexo-demo/tags/beego/" style="font-size: 10px;">beego</a> <a href="/hexo-demo/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/hexo-demo/tags/consul/" style="font-size: 10px;">consul</a> <a href="/hexo-demo/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/hexo-demo/tags/elastic-job/" style="font-size: 10px;">elastic-job</a> <a href="/hexo-demo/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/hexo-demo/tags/feign/" style="font-size: 10px;">feign</a> <a href="/hexo-demo/tags/fileinput/" style="font-size: 10px;">fileinput</a> <a href="/hexo-demo/tags/git/" style="font-size: 10px;">git</a> <a href="/hexo-demo/tags/golang/" style="font-size: 12.5px;">golang</a> <a href="/hexo-demo/tags/guava/" style="font-size: 10px;">guava</a> <a href="/hexo-demo/tags/hikari/" style="font-size: 10px;">hikari</a> <a href="/hexo-demo/tags/mgo/" style="font-size: 10px;">mgo</a> <a href="/hexo-demo/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/hexo-demo/tags/php/" style="font-size: 10px;">php</a> <a href="/hexo-demo/tags/redis/" style="font-size: 10px;">redis</a> <a href="/hexo-demo/tags/spring/" style="font-size: 10px;">spring</a> <a href="/hexo-demo/tags/spring-boot/" style="font-size: 15px;">spring-boot</a> <a href="/hexo-demo/tags/spring-cloud/" style="font-size: 20px;">spring-cloud</a> <a href="/hexo-demo/tags/spring-data/" style="font-size: 10px;">spring-data</a> <a href="/hexo-demo/tags/服务架构/" style="font-size: 10px;">服务架构</a> <a href="/hexo-demo/tags/项目管理/" style="font-size: 17.5px;">项目管理</a>
     </div>
   </div>
 
@@ -434,7 +747,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/hexo-demo/archives/2018/11/">November 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/hexo-demo/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-demo/archives/2018/11/">November 2018</a></li></ul>
     </div>
   </div>
 
@@ -447,23 +760,23 @@
       <ul>
         
           <li>
-            <a href="/hexo-demo/2018/11/05/【项目管理】开发规范/">【项目管理】开发规范</a>
+            <a href="/hexo-demo/2019/02/12/todolist/">(no title)</a>
           </li>
         
           <li>
-            <a href="/hexo-demo/2018/11/05/t/">(no title)</a>
+            <a href="/hexo-demo/2018/11/05/【spring-boot】application.properties/">【spring-boot】application.properties</a>
           </li>
         
           <li>
-            <a href="/hexo-demo/2018/11/05/【bootstrap】file-input/">【bootstrap】file-input</a>
+            <a href="/hexo-demo/2018/11/05/【consul】docker配置/">【consul】docker配置</a>
           </li>
         
           <li>
-            <a href="/hexo-demo/2018/11/05/【mybatis】通用mapper注册流程/">【mybatis】通用mapper注册流程</a>
+            <a href="/hexo-demo/2018/11/05/【docker】创建java容器/">【docker】创建java容器</a>
           </li>
         
           <li>
-            <a href="/hexo-demo/2018/11/05/【redis】RedisTemplate的一点疑问/">【redis】RedisTemplate的一点疑问</a>
+            <a href="/hexo-demo/2018/11/05/【docker】杀不死的docker/">【docker】杀不死的docker</a>
           </li>
         
       </ul>

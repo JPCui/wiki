@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>【spring-cloud】服务调用追踪 | wiki</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="服务监控——服务调用链追踪，帮助追踪每个请求的调用过程及每个过程的网络延迟、业务耗时等指标 服务调用追踪主要是根据 traceId, spanId, parentSpanId 在个服务日志上进行标记, 一个traceId标记一个请求, spanId标记链路, parentSpanId为上一条链路的spanId, 由traceId把所有的spanId串联起来, 在第一条链路上 traceId = s">
+<meta name="keywords" content="spring-cloud">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【spring-cloud】服务调用追踪">
+<meta property="og:url" content="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-cloud】服务调用追踪/index.html">
+<meta property="og:site_name" content="wiki">
+<meta property="og:description" content="服务监控——服务调用链追踪，帮助追踪每个请求的调用过程及每个过程的网络延迟、业务耗时等指标 服务调用追踪主要是根据 traceId, spanId, parentSpanId 在个服务日志上进行标记, 一个traceId标记一个请求, spanId标记链路, parentSpanId为上一条链路的spanId, 由traceId把所有的spanId串联起来, 在第一条链路上 traceId = s">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-12T12:10:22.992Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【spring-cloud】服务调用追踪">
+<meta name="twitter:description" content="服务监控——服务调用链追踪，帮助追踪每个请求的调用过程及每个过程的网络延迟、业务耗时等指标 服务调用追踪主要是根据 traceId, spanId, parentSpanId 在个服务日志上进行标记, 一个traceId标记一个请求, spanId标记链路, parentSpanId为上一条链路的spanId, 由traceId把所有的spanId串联起来, 在第一条链路上 traceId = s">
+  
+    <link rel="alternate" href="/hexo-demo/atom.xml" title="wiki" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/hexo-demo/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/hexo-demo/" id="logo">wiki</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/hexo-demo/" id="subtitle">just like a wiki</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/hexo-demo/">Home</a>
+        
+          <a class="main-nav-link" href="/hexo-demo/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/hexo-demo/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jpcui.github.io/hexo-demo"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-【spring-cloud】服务调用追踪" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【spring-cloud】服务调用追踪/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【spring-cloud】服务调用追踪
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>服务监控——服务调用链追踪，帮助追踪每个请求的调用过程及每个过程的网络延迟、业务耗时等指标</p>
+<p>服务调用追踪主要是根据 traceId, spanId, parentSpanId 在个服务日志上进行标记, 一个traceId标记一个请求, spanId标记链路, parentSpanId为上一条链路的spanId, 由traceId把所有的spanId串联起来, 在第一条链路上 traceId = spanId = parentSpanId.</p>
+<h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h2><h3 id="配置-ELK-（便于查询整个请求的处理日志）"><a href="#配置-ELK-（便于查询整个请求的处理日志）" class="headerlink" title="配置 ELK （便于查询整个请求的处理日志）"></a>配置 ELK （便于查询整个请求的处理日志）</h3><ul>
+<li><p>添加依赖</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-sleuth&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>logback-spring.xml</code> 的 <code>LOGSTASH</code> 节点下添加如下配置：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;additionalField&gt;</span><br><span class="line">    &lt;key&gt;X-B3-ParentSpanId&lt;/key&gt;</span><br><span class="line">    &lt;value&gt;@&#123;X-B3-ParentSpanId&#125;&lt;/value&gt;</span><br><span class="line">&lt;/additionalField&gt;</span><br><span class="line">&lt;additionalField&gt;</span><br><span class="line">    &lt;key&gt;X-B3-SpanId&lt;/key&gt;</span><br><span class="line">    &lt;value&gt;@&#123;X-B3-SpanId&#125;&lt;/value&gt;</span><br><span class="line">&lt;/additionalField&gt;</span><br><span class="line">&lt;additionalField&gt;</span><br><span class="line">    &lt;key&gt;X-B3-TraceId&lt;/key&gt;</span><br><span class="line">    &lt;value&gt;@&#123;X-B3-TraceId&#125;&lt;/value&gt;</span><br><span class="line">&lt;/additionalField&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>参考：[oasis-ct-product-server](/oasis-ct/oasis-ct-product/src/master/oasis-ct-product-server/src/main/resources/logback-spring.xml)
+</code></pre><h3 id="配置-zipkin"><a href="#配置-zipkin" class="headerlink" title="配置 zipkin"></a>配置 zipkin</h3><ul>
+<li><p>添加依赖</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-sleuth-zipkin&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>application-dev.yml</code> / <code>application-test.yml</code> 中配置：</p>
+  <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  zipkin:</span></span><br><span class="line"><span class="attr">    enabled:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># zipkin 部署在 op 服务器</span></span><br><span class="line"><span class="attr">    base-url:</span> <span class="attr">http://10.163.149.166:11001</span></span><br><span class="line"><span class="attr">  sleuth:</span></span><br><span class="line"><span class="attr">    enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    sampler:</span></span><br><span class="line">      <span class="comment"># 采样的比例</span></span><br><span class="line"><span class="attr">      percentage:</span> <span class="number">1.0</span></span><br><span class="line"><span class="attr">    scheduled:</span></span><br><span class="line">      <span class="comment"># 关闭 scheduled 方法的采样，否则 zipkin 上一堆异步任务的 trace，尤其是 consul watch task</span></span><br><span class="line">      <span class="comment"># Refer: [scheduled_annotated_methods]</span></span><br><span class="line"><span class="attr">      enabled:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>如果某个环境没有配 zipkin, 会按照默认值进行请求zipkin, 所以最好配置enabled=false, 禁用zipkin:
+
+`spring.zipkin.enabled: false`
+</code></pre><ul>
+<li><p>检查配置是否成功</p>
+<p>  访问任意一个接口，在 [zipkin] 中查看是否有该请求的记录</p>
+<p>  查不到的原因：</p>
+<pre><code>- 配置没有成功
+- 由于采样配置不是 1.0，导致没有采样(所谓采样, 就是当前日志会不会打到 zipkin 上)
+</code></pre></li>
+<li><p>参考</p>
+<p>  <a href="/oasis-ct/oasis-ct-product/src/master/oasis-ct-product-server/src/main/resources/config/application-dev.yml">oasis-ct-product-server</a></p>
+</li>
+</ul>
+<h2 id="随机采样原理"><a href="#随机采样原理" class="headerlink" title="随机采样原理"></a>随机采样原理</h2><p>参考: <code>org.springframework.cloud.sleuth.sampler.PercentageBasedSampler#isSampled</code></p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/12817946/generate-a-random-bitset-with-n-1s" target="_blank" rel="noopener">generate-a-random-bitset-with-n-1s</a></li>
+</ul>
+<h2 id="遗留问题"><a href="#遗留问题" class="headerlink" title="遗留问题"></a>遗留问题</h2><ul>
+<li><p>可以引入消息队列帮助解耦及提升效率</p>
+</li>
+<li><p>集成 ELK 之后，在打印非请求的日志里，<code>X-B3-*</code> 相关的字段显示的是 <code>X-B3-*_NOT_FOUND</code></p>
+<p>理论上应该是 <code>-</code> 或 <code></code>（空），看源码 <code>com.cwbase.logback.JSONEventLayout#mdcSubst</code> ，是框架自己没有设置默认值的方法</p>
+<p>所以暂时先不处理，或以后改用 <code>FileAppender</code> + <code>logstash</code> 的方式收集日志</p>
+</li>
+</ul>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><ul>
+<li><p><a href="https://cloud.spring.io/spring-cloud-sleuth/1.3.x/single/spring-cloud-sleuth.html" target="_blank" rel="noopener">spring-cloud-sleuth Reference</a></p>
+</li>
+<li><p>spring-cloud-sleuth: <a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-sleuth/1.3.4.RELEASE/single/spring-cloud-sleuth.html#__scheduled_annotated_methods" target="_blank" rel="noopener">scheduled_annotated_methods</a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/6d6b52c7624f" target="_blank" rel="noopener">Spring Cloud Sleuth使用简介</a></p>
+</li>
+<li><p>Spring Cloud Sleuth does not add trace/span related headers to the Http Response for security reasons. If you need the headers, see: <a href="https://cloud.spring.io/spring-cloud-sleuth/1.3.x/single/spring-cloud-sleuth.html#_example" target="_blank" rel="noopener">在http response 中添加 trace header</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-cloud】服务调用追踪/" data-id="cjs1qdqc3000t5jui9ukc0moh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring-cloud/">spring-cloud</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/hexo-demo/2018/11/05/【bootstrap】file-input/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          【bootstrap】file-input
+        
+      </div>
+    </a>
+  
+  
+    <a href="/hexo-demo/2018/11/05/【spring-cloud】部署/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【spring-cloud】部署</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/beego/">beego</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/consul/">consul</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/elastic-job/">elastic-job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/eventbus/">eventbus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/feign/">feign</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/fileinput/">fileinput</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/guava/">guava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/hikari/">hikari</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/mgo/">mgo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-boot/">spring-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-cloud/">spring-cloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-data/">spring-data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/服务架构/">服务架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/hexo-demo/tags/beego/" style="font-size: 10px;">beego</a> <a href="/hexo-demo/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/hexo-demo/tags/consul/" style="font-size: 10px;">consul</a> <a href="/hexo-demo/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/hexo-demo/tags/elastic-job/" style="font-size: 10px;">elastic-job</a> <a href="/hexo-demo/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/hexo-demo/tags/feign/" style="font-size: 10px;">feign</a> <a href="/hexo-demo/tags/fileinput/" style="font-size: 10px;">fileinput</a> <a href="/hexo-demo/tags/git/" style="font-size: 10px;">git</a> <a href="/hexo-demo/tags/golang/" style="font-size: 12.5px;">golang</a> <a href="/hexo-demo/tags/guava/" style="font-size: 10px;">guava</a> <a href="/hexo-demo/tags/hikari/" style="font-size: 10px;">hikari</a> <a href="/hexo-demo/tags/mgo/" style="font-size: 10px;">mgo</a> <a href="/hexo-demo/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/hexo-demo/tags/php/" style="font-size: 10px;">php</a> <a href="/hexo-demo/tags/redis/" style="font-size: 10px;">redis</a> <a href="/hexo-demo/tags/spring/" style="font-size: 10px;">spring</a> <a href="/hexo-demo/tags/spring-boot/" style="font-size: 15px;">spring-boot</a> <a href="/hexo-demo/tags/spring-cloud/" style="font-size: 20px;">spring-cloud</a> <a href="/hexo-demo/tags/spring-data/" style="font-size: 10px;">spring-data</a> <a href="/hexo-demo/tags/服务架构/" style="font-size: 10px;">服务架构</a> <a href="/hexo-demo/tags/项目管理/" style="font-size: 17.5px;">项目管理</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/hexo-demo/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-demo/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/hexo-demo/2019/02/12/todolist/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【spring-boot】application.properties/">【spring-boot】application.properties</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【consul】docker配置/">【consul】docker配置</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【docker】创建java容器/">【docker】创建java容器</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【docker】杀不死的docker/">【docker】杀不死的docker</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Sucre Cui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/hexo-demo/" class="mobile-nav-link">Home</a>
+  
+    <a href="/hexo-demo/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/hexo-demo/fancybox/jquery.fancybox.css">
+  <script src="/hexo-demo/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/hexo-demo/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

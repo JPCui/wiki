@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>【spring-cloud】ribbon探索 | wiki</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="配置1234567891011# 开启负载均衡重试spring.cloud.loadbalancer.retry.enabled: trueribbon:  # 最多重试多少台服务  MaxAutoRetriesNextServer: 2  # 每台服务器最多重试次数，但是首次调用不包括在内  MaxAutoRetries: 1  # 连接超时时间  ConnectTimeout: 1000  #">
+<meta name="keywords" content="spring-cloud">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【spring-cloud】ribbon探索">
+<meta property="og:url" content="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-cloud】ribbon探索/index.html">
+<meta property="og:site_name" content="wiki">
+<meta property="og:description" content="配置1234567891011# 开启负载均衡重试spring.cloud.loadbalancer.retry.enabled: trueribbon:  # 最多重试多少台服务  MaxAutoRetriesNextServer: 2  # 每台服务器最多重试次数，但是首次调用不包括在内  MaxAutoRetries: 1  # 连接超时时间  ConnectTimeout: 1000  #">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-12T12:08:50.111Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【spring-cloud】ribbon探索">
+<meta name="twitter:description" content="配置1234567891011# 开启负载均衡重试spring.cloud.loadbalancer.retry.enabled: trueribbon:  # 最多重试多少台服务  MaxAutoRetriesNextServer: 2  # 每台服务器最多重试次数，但是首次调用不包括在内  MaxAutoRetries: 1  # 连接超时时间  ConnectTimeout: 1000  #">
+  
+    <link rel="alternate" href="/hexo-demo/atom.xml" title="wiki" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/hexo-demo/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/hexo-demo/" id="logo">wiki</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/hexo-demo/" id="subtitle">just like a wiki</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/hexo-demo/">Home</a>
+        
+          <a class="main-nav-link" href="/hexo-demo/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/hexo-demo/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jpcui.github.io/hexo-demo"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-【spring-cloud】ribbon探索" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-demo/2018/11/05/【spring-cloud】ribbon探索/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【spring-cloud】ribbon探索
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 开启负载均衡重试</span><br><span class="line">spring.cloud.loadbalancer.retry.enabled: true</span><br><span class="line">ribbon:</span><br><span class="line">  # 最多重试多少台服务</span><br><span class="line">  MaxAutoRetriesNextServer: 2</span><br><span class="line">  # 每台服务器最多重试次数，但是首次调用不包括在内</span><br><span class="line">  MaxAutoRetries: 1</span><br><span class="line">  # 连接超时时间</span><br><span class="line">  ConnectTimeout: 1000</span><br><span class="line">  # 读取超时时间</span><br><span class="line">  ReadTimeout: 3000</span><br></pre></td></tr></table></figure>
+<p>如果针对某个服务做负载均衡, 可把 ribbon 配置放在该服务节点下, 比如: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">xxx-server:</span><br><span class="line">  ribbon:</span><br><span class="line">    # 最多重试多少台服务</span><br><span class="line">    MaxAutoRetriesNextServer: 2</span><br><span class="line">    # 每台服务器最多重试次数，但是首次调用不包括在内</span><br><span class="line">    MaxAutoRetries: 1</span><br><span class="line">    # 连接超时时间</span><br><span class="line">    ConnectTimeout: 1000</span><br><span class="line">    # 读取超时时间</span><br><span class="line">    ReadTimeout: 3000</span><br></pre></td></tr></table></figure>
+<p>或者使用注解: @RibbonClients, @RibbonClient(name=”xxx-server”, configuration=XXXConfiguration.class)</p>
+<h2 id="配置类源码追溯"><a href="#配置类源码追溯" class="headerlink" title="配置类源码追溯"></a>配置类源码追溯</h2><blockquote>
+<p>配置相关 key<br>com.netflix.client.config.CommonClientConfigKey</p>
+<p>ribbon ClientConfig 构造器<br>com.netflix.client.config.IClientConfig.Builder</p>
+<p>默认值(除 connectTimeout, readTimeout 外, 其他配置都使用该类中的默认值, 前面两个属性在 RibbonClientConfiguration 已经声明)<br>com.netflix.client.config.DefaultClientConfigImpl</p>
+</blockquote>
+<blockquote>
+<p>💡:bulb:<br>这里需要注意一个地方<br>connectTimeout, readTimeout 如果没有显式配置, 默认值为: 1000, 1000.</p>
+<blockquote>
+<p>org.springframework.cloud.netflix.ribbon.RibbonClientConfiguration#DEFAULT_CONNECT_TIMEOUT = 1000<br>org.springframework.cloud.netflix.ribbon.RibbonClientConfiguration#DEFAULT_READ_TIMEOUT = 1000<br>初始化 RibbonClientConfig 的位置在 org.springframework.cloud.netflix.ribbon.RibbonClientConfiguration#ribbonClientConfig.</p>
+</blockquote>
+<p>有配置的时候,自然使用配置的value, DefaultClientConfigImpl里的默认值然而并没有用到(ps: 应该在其他地方用到了: HttpClientRibbonConfiguration, OkHttpRibbonConfiguration)</p>
+<p>这大概就是为什么我们服务(牵涉到三方调用)经常出现超时的原因</p>
+</blockquote>
+<h2 id="负载均衡规则"><a href="#负载均衡规则" class="headerlink" title="负载均衡规则"></a>负载均衡规则</h2><ul>
+<li><strong>ClientConfigEnabledRoundRobinRule</strong> 内嵌了一个 <strong>RoundRobinRule</strong><ul>
+<li><strong>BestAvailableRule</strong>         最优可用: 获取其中ActiveRequestsCount最小的服务</li>
+<li><strong>PredicateBasedRule</strong>        基于 Predicate 的规则 <ul>
+<li><strong>ZoneAvoidanceRule</strong>       区域去除判定: 判断某个区域的运行性能是否可用, 提出不可用的区域(该区域下的所有服务)</li>
+<li><strong>AvailabilityFilterRule</strong>  可用性判定: 过滤掉连接数过多的server</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>RoundRobinRule</strong>              轮询<ul>
+<li><strong>WeightedResponseTimeRule</strong>  根据响应时间分配一个weight，响应时间越长，weight越小，被选中的可能性越低</li>
+<li><strong>ResponseTimeWeightTimeRule</strong> (??? use WeightedResponseTimeRule instead)</li>
+</ul>
+</li>
+<li><strong>RandomRule</strong> 随机</li>
+<li><strong>RetryRule</strong>  重试规则, 失败之后会在指定时间内以subRule继续获取服务, 默认subRule=RoundRobinRule</li>
+</ul>
+<p>规则配置方式(以 RetryRule 为例):</p>
+<ul>
+<li>properties方式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ribbon:</span><br><span class="line">  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RetryRule</span><br></pre></td></tr></table></figure>
+<ul>
+<li>java config</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Bean</span><br><span class="line">IRule rule() &#123;</span><br><span class="line">    RetryRule retryRule = new RetryRule();</span><br><span class="line">    retryRule.setMaxRetryMillis(1000);</span><br><span class="line">    retryRule.setRule(subRule());</span><br><span class="line">    return retryRule;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">IRule subRule() &#123;</span><br><span class="line">    return new RoundRobinRule();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>默认规则: com.netflix.loadbalancer.AvailabilityFilteringRule</p>
+<h2 id="依赖说明"><a href="#依赖说明" class="headerlink" title="依赖说明"></a>依赖说明</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-netflix-ribbon&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">&lt;dependencyManagement&gt;</span><br><span class="line">    &lt;dependencies&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;</span><br><span class="line">          &lt;version&gt;Edgware.SR3&lt;/version&gt;</span><br><span class="line">          &lt;type&gt;pom&lt;/type&gt;</span><br><span class="line">          &lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line">    &lt;/dependencies&gt;</span><br><span class="line">&lt;/dependencyManagement&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://github.com/Netflix/ribbon/wiki/Getting-Started" target="_blank" rel="noopener">https://github.com/Netflix/ribbon/wiki/Getting-Started</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/hexo-demo/2018/11/05/【spring-cloud】ribbon探索/" data-id="cjs1qdqby000o5jui7bhsxjln" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-demo/tags/spring-cloud/">spring-cloud</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/hexo-demo/2018/11/05/【spring-boot】配置grafana/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          【spring-boot】配置grafana
+        
+      </div>
+    </a>
+  
+  
+    <a href="/hexo-demo/2018/11/05/【spring-cloud】spring-cloud-config/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【spring-cloud】spring-cloud-config</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/beego/">beego</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/consul/">consul</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/elastic-job/">elastic-job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/eventbus/">eventbus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/feign/">feign</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/fileinput/">fileinput</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/guava/">guava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/hikari/">hikari</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/mgo/">mgo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-boot/">spring-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-cloud/">spring-cloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/spring-data/">spring-data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/服务架构/">服务架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-demo/tags/项目管理/">项目管理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/hexo-demo/tags/beego/" style="font-size: 10px;">beego</a> <a href="/hexo-demo/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/hexo-demo/tags/consul/" style="font-size: 10px;">consul</a> <a href="/hexo-demo/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/hexo-demo/tags/elastic-job/" style="font-size: 10px;">elastic-job</a> <a href="/hexo-demo/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/hexo-demo/tags/feign/" style="font-size: 10px;">feign</a> <a href="/hexo-demo/tags/fileinput/" style="font-size: 10px;">fileinput</a> <a href="/hexo-demo/tags/git/" style="font-size: 10px;">git</a> <a href="/hexo-demo/tags/golang/" style="font-size: 12.5px;">golang</a> <a href="/hexo-demo/tags/guava/" style="font-size: 10px;">guava</a> <a href="/hexo-demo/tags/hikari/" style="font-size: 10px;">hikari</a> <a href="/hexo-demo/tags/mgo/" style="font-size: 10px;">mgo</a> <a href="/hexo-demo/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/hexo-demo/tags/php/" style="font-size: 10px;">php</a> <a href="/hexo-demo/tags/redis/" style="font-size: 10px;">redis</a> <a href="/hexo-demo/tags/spring/" style="font-size: 10px;">spring</a> <a href="/hexo-demo/tags/spring-boot/" style="font-size: 15px;">spring-boot</a> <a href="/hexo-demo/tags/spring-cloud/" style="font-size: 20px;">spring-cloud</a> <a href="/hexo-demo/tags/spring-data/" style="font-size: 10px;">spring-data</a> <a href="/hexo-demo/tags/服务架构/" style="font-size: 10px;">服务架构</a> <a href="/hexo-demo/tags/项目管理/" style="font-size: 17.5px;">项目管理</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/hexo-demo/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-demo/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/hexo-demo/2019/02/12/todolist/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【spring-boot】application.properties/">【spring-boot】application.properties</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【consul】docker配置/">【consul】docker配置</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【docker】创建java容器/">【docker】创建java容器</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-demo/2018/11/05/【docker】杀不死的docker/">【docker】杀不死的docker</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Sucre Cui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/hexo-demo/" class="mobile-nav-link">Home</a>
+  
+    <a href="/hexo-demo/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/hexo-demo/fancybox/jquery.fancybox.css">
+  <script src="/hexo-demo/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/hexo-demo/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
