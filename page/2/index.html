@@ -70,6 +70,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-【php】参数校验" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/wiki/2018/11/05/【php】参数校验/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/2018/11/05/【php】参数校验/">
+                【php】参数校验
+            </a>
+            
+        </h1>
+    
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">$this</span>-&gt;load-&gt;library(<span class="string">'form_validation'</span>);</span><br><span class="line"></span><br><span class="line">$data = [</span><br><span class="line">    <span class="string">'_id'</span> =&gt; <span class="keyword">$this</span>-&gt;input-&gt;get(<span class="string">"_id"</span>),</span><br><span class="line">    <span class="string">'name'</span> =&gt; <span class="keyword">$this</span>-&gt;input-&gt;get(<span class="string">"name"</span>),</span><br><span class="line">    <span class="string">'covers'</span> =&gt; <span class="keyword">$this</span>-&gt;input-&gt;get(<span class="string">"covers"</span>),</span><br><span class="line">];</span><br><span class="line"><span class="comment">// 将要验证的参数 set 进去</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;form_validation-&gt;set_data($data);</span><br><span class="line"></span><br><span class="line"><span class="comment">// validate</span></span><br><span class="line">$config = [[</span><br><span class="line">    <span class="string">'field'</span> =&gt; <span class="string">'_id'</span>,</span><br><span class="line">    <span class="string">'rules'</span> =&gt; <span class="string">'required'</span></span><br><span class="line">], [</span><br><span class="line">    <span class="string">'field'</span> =&gt; <span class="string">'name'</span>,</span><br><span class="line">    <span class="string">'rules'</span> =&gt; <span class="string">'required'</span></span><br><span class="line">], [</span><br><span class="line">    <span class="comment">// 数组需要在后面或两边加括号：covers[] 或 [covers]</span></span><br><span class="line">    <span class="string">'field'</span> =&gt; <span class="string">'covers[]'</span>,</span><br><span class="line">    <span class="string">'label'</span> =&gt; <span class="string">'cover'</span>,</span><br><span class="line">    <span class="string">'rules'</span> =&gt; <span class="string">'required'</span></span><br><span class="line">]];</span><br><span class="line"></span><br><span class="line"><span class="keyword">$this</span>-&gt;form_validation-&gt;set_rules($config);</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;form_validation-&gt;run() === <span class="keyword">false</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;form_validation-&gt;error_array();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【php】参数校验/" data-id="cjs2ln90e000gi3ui9nrpzydt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-【redis】RedisTemplate的一点疑问" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/wiki/2018/11/05/【redis】RedisTemplate的一点疑问/" class="article-date">
@@ -85,9 +126,9 @@
     
         <h1 itemprop="name">
             <a class="article-title" href="/wiki/2018/11/05/【redis】RedisTemplate的一点疑问/">
-                
                 【redis】RedisTemplate的一点疑问
             </a>
+            
         </h1>
     
 
@@ -119,7 +160,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【redis】RedisTemplate的一点疑问/" data-id="cjs2lihzy000haxuixutf1lqn" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【redis】RedisTemplate的一点疑问/" data-id="cjs2ln90f000ii3ui0y9uw6op" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/spring-data/">spring-data</a></li></ul>
@@ -146,9 +187,9 @@
     
         <h1 itemprop="name">
             <a class="article-title" href="/wiki/2018/11/05/【spring-boot】如何优雅关闭服务/">
-                
                 【spring-boot】如何优雅关闭服务
             </a>
+            
         </h1>
     
 
@@ -213,51 +254,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-boot】如何优雅关闭服务/" data-id="cjs2lihzz000jaxuikren7e3v" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-boot】如何优雅关闭服务/" data-id="cjs2ln90g000ki3uixlbix8ts" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/spring-boot/">spring-boot</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-【php】参数校验" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/wiki/2018/11/05/【php】参数校验/" class="article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/2018/11/05/【php】参数校验/">
-                
-                【php】参数校验
-            </a>
-        </h1>
-    
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">$this</span>-&gt;load-&gt;library(<span class="string">'form_validation'</span>);</span><br><span class="line"></span><br><span class="line">$data = [</span><br><span class="line">    <span class="string">'_id'</span> =&gt; <span class="keyword">$this</span>-&gt;input-&gt;get(<span class="string">"_id"</span>),</span><br><span class="line">    <span class="string">'name'</span> =&gt; <span class="keyword">$this</span>-&gt;input-&gt;get(<span class="string">"name"</span>),</span><br><span class="line">    <span class="string">'covers'</span> =&gt; <span class="keyword">$this</span>-&gt;input-&gt;get(<span class="string">"covers"</span>),</span><br><span class="line">];</span><br><span class="line"><span class="comment">// 将要验证的参数 set 进去</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;form_validation-&gt;set_data($data);</span><br><span class="line"></span><br><span class="line"><span class="comment">// validate</span></span><br><span class="line">$config = [[</span><br><span class="line">    <span class="string">'field'</span> =&gt; <span class="string">'_id'</span>,</span><br><span class="line">    <span class="string">'rules'</span> =&gt; <span class="string">'required'</span></span><br><span class="line">], [</span><br><span class="line">    <span class="string">'field'</span> =&gt; <span class="string">'name'</span>,</span><br><span class="line">    <span class="string">'rules'</span> =&gt; <span class="string">'required'</span></span><br><span class="line">], [</span><br><span class="line">    <span class="comment">// 数组需要在后面或两边加括号：covers[] 或 [covers]</span></span><br><span class="line">    <span class="string">'field'</span> =&gt; <span class="string">'covers[]'</span>,</span><br><span class="line">    <span class="string">'label'</span> =&gt; <span class="string">'cover'</span>,</span><br><span class="line">    <span class="string">'rules'</span> =&gt; <span class="string">'required'</span></span><br><span class="line">]];</span><br><span class="line"></span><br><span class="line"><span class="keyword">$this</span>-&gt;form_validation-&gt;set_rules($config);</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;form_validation-&gt;run() === <span class="keyword">false</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;form_validation-&gt;error_array();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【php】参数校验/" data-id="cjs2lii01000laxuiflq73cn6" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/php/">php</a></li></ul>
 
     </footer>
   </div>
@@ -281,9 +281,9 @@
     
         <h1 itemprop="name">
             <a class="article-title" href="/wiki/2018/11/05/【spring-boot】配置grafana/">
-                
                 【spring-boot】配置grafana
             </a>
+            
         </h1>
     
 
@@ -311,169 +311,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-boot】配置grafana/" data-id="cjs2lii02000naxui19xxf7sn" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-boot】配置grafana/" data-id="cjs2ln90i000mi3uin6aaqieo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/spring-boot/">spring-boot</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-【spring-cloud】在网关中配置swagger" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/wiki/2018/11/05/【spring-cloud】在网关中配置swagger/" class="article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/2018/11/05/【spring-cloud】在网关中配置swagger/">
-                
-                【spring-cloud】在网关中配置swagger
-            </a>
-        </h1>
-    
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="TODO-LIST"><a href="#TODO-LIST" class="headerlink" title="TODO LIST"></a>TODO LIST</h2><ul>
-<li>[1/2] 在你的服务中配置swagger接口的地址</li>
-</ul>
-<p>在 application.yml 中配置</p>
-<p><code>springfox.documentation.swagger.v2.path: /{server path}/api-docs</code></p>
-<p><code>{server path}</code> 为你的服务在网关中配置的上下文路径，比如下面的订单服务在网关的配置中，上下文路径为<strong>order-server</strong>：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">order:</span></span><br><span class="line"><span class="attr">  path:</span> <span class="string">/order-server/**</span></span><br><span class="line"><span class="attr">  serviceId:</span> <span class="string">oasis-ct-order-server</span></span><br><span class="line"><span class="attr">  stripPrefix:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>[2/2] 在网关中配置接口访问URI</li>
-</ul>
-<p>在 <code>application.yml</code> 中如下配置：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">swagger:</span></span><br><span class="line"><span class="attr">  apis:</span></span><br><span class="line">    <span class="comment"># 订单系统</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">order-server</span></span><br><span class="line"><span class="attr">      location:</span> <span class="string">/order-server/api-docs</span></span><br><span class="line">    <span class="comment"># 支付系统</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">pay-server</span></span><br><span class="line"><span class="attr">      location:</span> <span class="string">/pay/api-docs</span></span><br><span class="line"><span class="string">```</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">## 原理</span></span><br><span class="line"></span><br><span class="line"><span class="string">swagger的请求处理器</span> <span class="string">`Swagger2Controller`</span> <span class="string">中有个默认接口URI</span> <span class="string">`DEFAULT_URL`，下面的注解用于替换默认URI：</span></span><br><span class="line"><span class="string">```text</span></span><br><span class="line"><span class="string">@PropertySourcedMapping(</span></span><br><span class="line">      <span class="string">value</span> <span class="string">=</span> <span class="string">"$&#123;springfox.documentation.swagger.v2.path&#125;"</span><span class="string">,</span></span><br><span class="line">      <span class="string">propertyKey</span> <span class="string">=</span> <span class="string">"springfox.documentation.swagger.v2.path"</span><span class="string">)</span></span><br></pre></td></tr></table></figure></p>
-<p>具体该注解处理方法，见 <code>PropertySourcedRequestMappingHandlerMapping</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-cloud】在网关中配置swagger/" data-id="cjs2lii03000paxuijde01lbk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/spring-cloud/">spring-cloud</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-【spring-cloud】spring-cloud-config" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/wiki/2018/11/05/【spring-cloud】spring-cloud-config/" class="article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/2018/11/05/【spring-cloud】spring-cloud-config/">
-                
-                【spring-cloud】spring-cloud-config
-            </a>
-        </h1>
-    
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="server"><a href="#server" class="headerlink" title="server"></a>server</h2><ul>
-<li><p>依赖</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-config-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>yml配置</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  cloud:</span></span><br><span class="line"><span class="attr">    config:</span></span><br><span class="line"><span class="attr">      server:</span></span><br><span class="line"><span class="attr">        git:</span></span><br><span class="line">          <span class="comment"># 配置的git路径</span></span><br><span class="line"><span class="attr">          uri:</span> <span class="attr">http://xxx/oasis-ct/oasis-ct-config.git</span></span><br><span class="line">          <span class="comment"># 查找路径</span></span><br><span class="line">          <span class="comment"># 默认查找根目录, 而且只查找一级目录</span></span><br><span class="line"><span class="attr">          search-paths:</span> <span class="string">repo</span></span><br><span class="line"><span class="attr">      profile:</span> <span class="string">$&#123;spring.profiles&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>如果想把配置中心以服务的形式配置到consul中, 可以按照服务注册的形式进行配置</p>
-</blockquote>
-<h2 id="client"><a href="#client" class="headerlink" title="client"></a>client</h2><ul>
-<li><p>依赖</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>yml配置</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">    <span class="comment"># 配置中心</span></span><br><span class="line"><span class="attr">    config:</span></span><br><span class="line">      <span class="comment"># 1. 直接访问方式</span></span><br><span class="line"><span class="attr">      uri:</span> <span class="string">`&#123;config-server&#125;`</span></span><br><span class="line">      <span class="comment"># 2. 服务注册到consul, 需要按下面的方式配置      </span></span><br><span class="line"><span class="comment">#      discovery:</span></span><br><span class="line"><span class="comment">#        enabled: truegetDeliveryInfo</span></span><br><span class="line"><span class="comment">#        service-id: oasis-ct-config</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># 由于咱们的项目名比较长, 这里可以重命名, </span></span><br><span class="line">      <span class="comment"># 同时config服务里的配置文件的文件名命名方式: medicine-&#123;profile&#125;.yml</span></span><br><span class="line"><span class="attr">      name:</span> <span class="string">medicine</span></span><br><span class="line"><span class="attr">      profile:</span> <span class="string">$&#123;spring.profiles&#125;</span></span><br><span class="line"><span class="attr">      fail-fast:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-cloud】spring-cloud-config/" data-id="cjs2lii04000qaxuitw94enss" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/spring-cloud/">spring-cloud</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-【consul】docker配置" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/wiki/2018/11/05/【consul】docker配置/" class="article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/2018/11/05/【consul】docker配置/">
-                
-                【consul】docker配置
-            </a>
-        </h1>
-    
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="server"><a href="#server" class="headerlink" title="server"></a>server</h1><blockquote>
-<p>docker run -d –name=consul_service –net=host -e ‘CONSUL_LOCAL_CONFIG={“skip_leave_on_interrupt”: true}’ consul agent -server -bind={server.ip} -join={master.ip} -ui -client 0.0.0.0</p>
-</blockquote>
-<h1 id="client"><a href="#client" class="headerlink" title="client"></a>client</h1><blockquote>
-<p>docker run -d –name=consul_client –net=host -e ‘CONSUL_LOCAL_CONFIG={“skip_leave_on_interrupt”: true}’ consul agent -bind={server.ip} -join={master.ip} -ui -client 0.0.0.0</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【consul】docker配置/" data-id="cjs2lihzk0001axui1km279ws" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/consul/">consul</a></li></ul>
 
     </footer>
   </div>
@@ -497,9 +338,9 @@
     
         <h1 itemprop="name">
             <a class="article-title" href="/wiki/2018/11/05/【spring-cloud】ribbon探索/">
-                
                 【spring-cloud】ribbon探索
             </a>
+            
         </h1>
     
 
@@ -560,7 +401,268 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-cloud】ribbon探索/" data-id="cjs2lii05000taxuiktp83zhh" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-cloud】ribbon探索/" data-id="cjs2ln90j000oi3uixgvm1dxb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/spring-cloud/">spring-cloud</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【spring-cloud】spring-cloud-config" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/wiki/2018/11/05/【spring-cloud】spring-cloud-config/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/2018/11/05/【spring-cloud】spring-cloud-config/">
+                【spring-cloud】spring-cloud-config
+            </a>
+            
+        </h1>
+    
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="server"><a href="#server" class="headerlink" title="server"></a>server</h2><ul>
+<li><p>依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-config-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>yml配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  cloud:</span></span><br><span class="line"><span class="attr">    config:</span></span><br><span class="line"><span class="attr">      server:</span></span><br><span class="line"><span class="attr">        git:</span></span><br><span class="line">          <span class="comment"># 配置的git路径</span></span><br><span class="line"><span class="attr">          uri:</span> <span class="attr">http://xxx/oasis-ct/oasis-ct-config.git</span></span><br><span class="line">          <span class="comment"># 查找路径</span></span><br><span class="line">          <span class="comment"># 默认查找根目录, 而且只查找一级目录</span></span><br><span class="line"><span class="attr">          search-paths:</span> <span class="string">repo</span></span><br><span class="line"><span class="attr">      profile:</span> <span class="string">$&#123;spring.profiles&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>如果想把配置中心以服务的形式配置到consul中, 可以按照服务注册的形式进行配置</p>
+</blockquote>
+<h2 id="client"><a href="#client" class="headerlink" title="client"></a>client</h2><ul>
+<li><p>依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>yml配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">    <span class="comment"># 配置中心</span></span><br><span class="line"><span class="attr">    config:</span></span><br><span class="line">      <span class="comment"># 1. 直接访问方式</span></span><br><span class="line"><span class="attr">      uri:</span> <span class="string">`&#123;config-server&#125;`</span></span><br><span class="line">      <span class="comment"># 2. 服务注册到consul, 需要按下面的方式配置      </span></span><br><span class="line"><span class="comment">#      discovery:</span></span><br><span class="line"><span class="comment">#        enabled: truegetDeliveryInfo</span></span><br><span class="line"><span class="comment">#        service-id: oasis-ct-config</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># 由于咱们的项目名比较长, 这里可以重命名, </span></span><br><span class="line">      <span class="comment"># 同时config服务里的配置文件的文件名命名方式: medicine-&#123;profile&#125;.yml</span></span><br><span class="line"><span class="attr">      name:</span> <span class="string">medicine</span></span><br><span class="line"><span class="attr">      profile:</span> <span class="string">$&#123;spring.profiles&#125;</span></span><br><span class="line"><span class="attr">      fail-fast:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-cloud】spring-cloud-config/" data-id="cjs2ln90j000qi3ui11gtrdlf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/spring-cloud/">spring-cloud</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【bootstrap】file-input" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/wiki/2018/11/05/【bootstrap】file-input/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/2018/11/05/【bootstrap】file-input/">
+                【bootstrap】file-input
+            </a>
+            
+        </h1>
+    
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>暂时不适用该方式上传文件</p>
+</blockquote>
+<h1 id="文件上传插件"><a href="#文件上传插件" class="headerlink" title="文件上传插件"></a>文件上传插件</h1><p>官方文档：<a href="http://plugins.krajee.com/file-input" target="_blank" rel="noopener">fileinput</a></p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><ul>
+<li><p>引入css</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"&lt;c:url value="</span>/<span class="attr">assets</span>/<span class="attr">bower_components</span>/<span class="attr">bootstrap-fileinput</span>/<span class="attr">css</span>/<span class="attr">fileinput.min.css</span>"/&gt;</span>"/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引入js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;c:url value=&quot;/assets/bower_components/bootstrap-fileinput/js/fileinput.min.js&quot;/&gt;&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;c:url value=&quot;/assets/bower_components/bootstrap-fileinput/js/locales/zh.js&quot;/&gt;&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;c:url value=&quot;/assets/bower_components/bootstrap-fileinput/js/plugins/piexif.min.js&quot;/&gt;&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>该插件需要</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"f1"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file"</span> <span class="attr">class</span>=<span class="string">"file"</span> <span class="attr">data-show-preview</span>=<span class="string">"true"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$scope.initFileinput(<span class="string">"#f1"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$scope.initFileinput = <span class="function"><span class="keyword">function</span> (<span class="params">fileinputId</span>) </span>&#123;</span><br><span class="line">    $(fileinputId).fileinput(&#123;</span><br><span class="line">        <span class="string">"uploadUrl"</span>: <span class="string">"/fileUpload/upload"</span>,</span><br><span class="line">        <span class="string">"maxFileSize"</span>: <span class="number">20480</span>,</span><br><span class="line">        <span class="string">"msgSizeTooLarge"</span>: <span class="string">"文件(&#123;name&#125; - &#123;size&#125; KB) 超过最大限制 &#123;maxSize&#125; KB. 请重新上传!"</span></span><br><span class="line">    &#125;);</span><br><span class="line">    $(fileinputId).on(<span class="string">'fileuploaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event, data, previewId, index</span>) </span>&#123;</span><br><span class="line">        $scope.taskRequest.fileName = data.response.fileName;</span><br><span class="line">        $scope.taskRequest.fileUrl = data.response.path;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【bootstrap】file-input/" data-id="cjs2ln8zy0001i3uifjdkjm6m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/bootstrap/">bootstrap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/fileinput/">fileinput</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【spring-cloud】服务调用追踪" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/wiki/2018/11/05/【spring-cloud】服务调用追踪/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/2018/11/05/【spring-cloud】服务调用追踪/">
+                【spring-cloud】服务调用追踪
+            </a>
+            
+        </h1>
+    
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>服务监控——服务调用链追踪，帮助追踪每个请求的调用过程及每个过程的网络延迟、业务耗时等指标</p>
+<p>服务调用追踪主要是根据 traceId, spanId, parentSpanId 在个服务日志上进行标记, 一个traceId标记一个请求, spanId标记链路, parentSpanId为上一条链路的spanId, 由traceId把所有的spanId串联起来, 在第一条链路上 traceId = spanId = parentSpanId.</p>
+<h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h2><h3 id="配置-ELK-（便于查询整个请求的处理日志）"><a href="#配置-ELK-（便于查询整个请求的处理日志）" class="headerlink" title="配置 ELK （便于查询整个请求的处理日志）"></a>配置 ELK （便于查询整个请求的处理日志）</h3><ul>
+<li><p>添加依赖</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-sleuth&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>logback-spring.xml</code> 的 <code>LOGSTASH</code> 节点下添加如下配置：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;additionalField&gt;</span><br><span class="line">    &lt;key&gt;X-B3-ParentSpanId&lt;/key&gt;</span><br><span class="line">    &lt;value&gt;@&#123;X-B3-ParentSpanId&#125;&lt;/value&gt;</span><br><span class="line">&lt;/additionalField&gt;</span><br><span class="line">&lt;additionalField&gt;</span><br><span class="line">    &lt;key&gt;X-B3-SpanId&lt;/key&gt;</span><br><span class="line">    &lt;value&gt;@&#123;X-B3-SpanId&#125;&lt;/value&gt;</span><br><span class="line">&lt;/additionalField&gt;</span><br><span class="line">&lt;additionalField&gt;</span><br><span class="line">    &lt;key&gt;X-B3-TraceId&lt;/key&gt;</span><br><span class="line">    &lt;value&gt;@&#123;X-B3-TraceId&#125;&lt;/value&gt;</span><br><span class="line">&lt;/additionalField&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>参考：[oasis-ct-product-server](/oasis-ct/oasis-ct-product/src/master/oasis-ct-product-server/src/main/resources/logback-spring.xml)
+</code></pre><h3 id="配置-zipkin"><a href="#配置-zipkin" class="headerlink" title="配置 zipkin"></a>配置 zipkin</h3><ul>
+<li><p>添加依赖</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-sleuth-zipkin&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>application-dev.yml</code> / <code>application-test.yml</code> 中配置：</p>
+  <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  zipkin:</span></span><br><span class="line"><span class="attr">    enabled:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># zipkin 部署在 op 服务器</span></span><br><span class="line"><span class="attr">    base-url:</span> <span class="attr">http://10.163.149.166:11001</span></span><br><span class="line"><span class="attr">  sleuth:</span></span><br><span class="line"><span class="attr">    enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    sampler:</span></span><br><span class="line">      <span class="comment"># 采样的比例</span></span><br><span class="line"><span class="attr">      percentage:</span> <span class="number">1.0</span></span><br><span class="line"><span class="attr">    scheduled:</span></span><br><span class="line">      <span class="comment"># 关闭 scheduled 方法的采样，否则 zipkin 上一堆异步任务的 trace，尤其是 consul watch task</span></span><br><span class="line">      <span class="comment"># Refer: [scheduled_annotated_methods]</span></span><br><span class="line"><span class="attr">      enabled:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>如果某个环境没有配 zipkin, 会按照默认值进行请求zipkin, 所以最好配置enabled=false, 禁用zipkin:
+
+`spring.zipkin.enabled: false`
+</code></pre><ul>
+<li><p>检查配置是否成功</p>
+<p>  访问任意一个接口，在 [zipkin] 中查看是否有该请求的记录</p>
+<p>  查不到的原因：</p>
+<pre><code>- 配置没有成功
+- 由于采样配置不是 1.0，导致没有采样(所谓采样, 就是当前日志会不会打到 zipkin 上)
+</code></pre></li>
+<li><p>参考</p>
+<p>  <a href="/oasis-ct/oasis-ct-product/src/master/oasis-ct-product-server/src/main/resources/config/application-dev.yml">oasis-ct-product-server</a></p>
+</li>
+</ul>
+<h2 id="随机采样原理"><a href="#随机采样原理" class="headerlink" title="随机采样原理"></a>随机采样原理</h2><p>参考: <code>org.springframework.cloud.sleuth.sampler.PercentageBasedSampler#isSampled</code></p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/12817946/generate-a-random-bitset-with-n-1s" target="_blank" rel="noopener">generate-a-random-bitset-with-n-1s</a></li>
+</ul>
+<h2 id="遗留问题"><a href="#遗留问题" class="headerlink" title="遗留问题"></a>遗留问题</h2><ul>
+<li><p>可以引入消息队列帮助解耦及提升效率</p>
+</li>
+<li><p>集成 ELK 之后，在打印非请求的日志里，<code>X-B3-*</code> 相关的字段显示的是 <code>X-B3-*_NOT_FOUND</code></p>
+<p>理论上应该是 <code>-</code> 或 <code></code>（空），看源码 <code>com.cwbase.logback.JSONEventLayout#mdcSubst</code> ，是框架自己没有设置默认值的方法</p>
+<p>所以暂时先不处理，或以后改用 <code>FileAppender</code> + <code>logstash</code> 的方式收集日志</p>
+</li>
+</ul>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><ul>
+<li><p><a href="https://cloud.spring.io/spring-cloud-sleuth/1.3.x/single/spring-cloud-sleuth.html" target="_blank" rel="noopener">spring-cloud-sleuth Reference</a></p>
+</li>
+<li><p>spring-cloud-sleuth: <a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-sleuth/1.3.4.RELEASE/single/spring-cloud-sleuth.html#__scheduled_annotated_methods" target="_blank" rel="noopener">scheduled_annotated_methods</a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/6d6b52c7624f" target="_blank" rel="noopener">Spring Cloud Sleuth使用简介</a></p>
+</li>
+<li><p>Spring Cloud Sleuth does not add trace/span related headers to the Http Response for security reasons. If you need the headers, see: <a href="https://cloud.spring.io/spring-cloud-sleuth/1.3.x/single/spring-cloud-sleuth.html#_example" target="_blank" rel="noopener">在http response 中添加 trace header</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-cloud】服务调用追踪/" data-id="cjs2ln90m000ti3ui0hfckljm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/spring-cloud/">spring-cloud</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【spring-cloud】部署" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/wiki/2018/11/05/【spring-cloud】部署/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/2018/11/05/【spring-cloud】部署/">
+                【spring-cloud】部署
+            </a>
+            
+        </h1>
+    
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="构建docker容器"><a href="#构建docker容器" class="headerlink" title="构建docker容器"></a>构建docker容器</h2><p><a href="../docker/how-to-build-container.md">如何构建容器</a></p>
+<h2 id="优雅关闭服务"><a href="#优雅关闭服务" class="headerlink" title="优雅关闭服务"></a>优雅关闭服务</h2><p><a href="/spring-boot/优雅关闭服务.md">优雅关闭服务</a></p>
+<h2 id="远程调试"><a href="#远程调试" class="headerlink" title="远程调试"></a>远程调试</h2><p>修改完成后，请修改文档：<a href="../oasis-ct/基础服务列表.md">基础服务列表</a></p>
+<p>启动时，加上 <code>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=[debug port]</code></p>
+<p>注意加上远程调试前，也要在docker中配置调试端口的<strong>映射</strong></p>
+<p>下面是一个完整的配置:</p>
+<blockquote>
+<p>java<br>-Dfile.encoding=UTF-8<br>-Duser.timezone=GMT+08<br>-Dspring.profiles.active=[profile]<br>-Xdebug<br>-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=[debug port]<br>-jar [jar]</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-cloud】部署/" data-id="cjs2ln90n000ui3uia7duaa8q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/spring-cloud/">spring-cloud</a></li></ul>
@@ -587,9 +689,9 @@
     
         <h1 itemprop="name">
             <a class="article-title" href="/wiki/2018/11/05/【spring-cloud】问题记录/">
-                
                 【spring-cloud】问题记录
             </a>
+            
         </h1>
     
 
@@ -620,57 +722,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-cloud】问题记录/" data-id="cjs2lii06000vaxuittd7jjjo" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/spring-cloud/">spring-cloud</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-【spring-cloud】部署" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/wiki/2018/11/05/【spring-cloud】部署/" class="article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/2018/11/05/【spring-cloud】部署/">
-                
-                【spring-cloud】部署
-            </a>
-        </h1>
-    
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="构建docker容器"><a href="#构建docker容器" class="headerlink" title="构建docker容器"></a>构建docker容器</h2><p><a href="../docker/how-to-build-container.md">如何构建容器</a></p>
-<h2 id="优雅关闭服务"><a href="#优雅关闭服务" class="headerlink" title="优雅关闭服务"></a>优雅关闭服务</h2><p><a href="/spring-boot/优雅关闭服务.md">优雅关闭服务</a></p>
-<h2 id="远程调试"><a href="#远程调试" class="headerlink" title="远程调试"></a>远程调试</h2><p>修改完成后，请修改文档：<a href="../oasis-ct/基础服务列表.md">基础服务列表</a></p>
-<p>启动时，加上 <code>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=[debug port]</code></p>
-<p>注意加上远程调试前，也要在docker中配置调试端口的<strong>映射</strong></p>
-<p>下面是一个完整的配置:</p>
-<blockquote>
-<p>java<br>-Dfile.encoding=UTF-8<br>-Duser.timezone=GMT+08<br>-Dspring.profiles.active=[profile]<br>-Xdebug<br>-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=[debug port]<br>-jar [jar]</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-cloud】部署/" data-id="cjs2lii07000xaxui27guj21n" class="article-share-link">Share</a>
+      <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-cloud】问题记录/" data-id="cjs2ln90o000xi3ui3neujkfc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/spring-cloud/">spring-cloud</a></li></ul>
@@ -736,19 +788,19 @@
           </li>
         
           <li>
-            <a href="/wiki/2018/11/05/【spring-boot】application.properties/">【spring-boot】application.properties</a>
+            <a href="/wiki/2018/11/05/【spring-cloud】在网关中配置swagger/">【spring-cloud】在网关中配置swagger</a>
           </li>
         
           <li>
-            <a href="/wiki/2018/11/05/【bootstrap】file-input/">【bootstrap】file-input</a>
-          </li>
-        
-          <li>
-            <a href="/wiki/2018/11/05/【docker】杀不死的docker/">【docker】杀不死的docker</a>
+            <a href="/wiki/2018/11/05/【consul】docker配置/">【consul】docker配置</a>
           </li>
         
           <li>
             <a href="/wiki/2018/11/05/【docker】创建java容器/">【docker】创建java容器</a>
+          </li>
+        
+          <li>
+            <a href="/wiki/2018/11/05/【docker】杀不死的docker/">【docker】杀不死的docker</a>
           </li>
         
       </ul>
