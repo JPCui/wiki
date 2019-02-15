@@ -1,669 +1,259 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-  
+<html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <meta name="author" content="董沅鑫, yuanxin.me@gmail.com">
   
-  
+
   
   <title>【mgo】mgo源码解读——cluster | wiki</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+  <meta name="description" content="定时更新服务器信息 —— syncServersLoop123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475// syncServersLoop loops while">
+<meta name="keywords" content="golang,mgo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【mgo】mgo源码解读——cluster">
+<meta property="og:url" content="https://jpcui.github.io/wiki/2018/11/05/【mgo】mgo源码解读——cluster/index.html">
+<meta property="og:site_name" content="wiki">
+<meta property="og:description" content="定时更新服务器信息 —— syncServersLoop123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475// syncServersLoop loops while">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-12T10:03:03.761Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【mgo】mgo源码解读——cluster">
+<meta name="twitter:description" content="定时更新服务器信息 —— syncServersLoop123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475// syncServersLoop loops while">
   
-    <meta name="keywords" content="golang,mgo,">
-  
-
-  <script>
-    console.log('\n%c Hexo-theme-bmw v4.0 ' + '%c 🎉 https://github.com/dongyuanxin/theme-bmw 🎉\n' + '\n%c View demo online ' + '%c 🔍 https://godbmw.com/ 🔍  \n' , 'color: #fadfa3; background: #030307; padding:3px 0;', '', 'color: #fadfa3; background: #030307; padding:3px 0;', '');
-  </script>
-
-  
-    <meta name="description" content="just like a wiki">
-  
-
-  
-
-  
-    <link rel="icon" href="/images/favicon.ico">
-    <link rel="apple-touch-icon" href="/images/touch-icon.png">
-  
-
-  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/wiki/css/base.css">
-<link rel="stylesheet" href="/wiki/icon/iconfont.css">
-<link rel="stylesheet" href="/wiki/css/github-markdown.css">
-<link rel="stylesheet" href="/wiki/css/highlight.css">
-
-  <script src="/wiki/js/util.js"></script>
-<script src="/wiki/js/valine.min.js"></script>
-
-  
-
-  
-    <link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js" async></script>
-  
-
-  
-    <link href="https://cdn.bootcss.com/social-share.js/1.0.16/css/share.min.css" rel="stylesheet">
+    <link rel="alternate" href="/wiki/atom.xml" title="wiki" type="application/atom+xml">
   
   
-  <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js" async></script>
+    <link rel="icon" href="/favicon.png">
   
   
-    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.0/dist/av-min.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/wiki/css/style.css">
 </head>
-
-  <body>
-
-    
-
-    <div id="app">
-
-      <div class="header-wrap">
-  <header>
-    <div class="site-brand">
-      <div class="site-title">
-        <a href="/wiki/">GODBMW.com</a>
-      </div>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer" class="outer">
+        <div id="header-title" class="inner">
+            <h1 id="logo-wrap">
+                <a href="/wiki/" id="logo">wiki</a>
+            </h1>
+            
+                <h2 id="subtitle-wrap">
+                    <a href="/wiki/" id="subtitle">just like a wiki</a>
+                </h2>
+            
+        </div>
+        <div id="header-inner" class="inner">
+            <nav id="main-nav">
+                <a id="main-nav-toggle" class="nav-icon"></a>
+                
+                    <a class="main-nav-link" href="/wiki/">Home</a>
+                
+                    <a class="main-nav-link" href="/wiki/archives">Archives</a>
+                
+            </nav>
+            <nav id="sub-nav">
+                
+                    <a id="nav-rss-link" class="nav-icon" href="/wiki/atom.xml" title="RSS Feed"></a>
+                
+                <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+            </nav>
+            <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jpcui.github.io/wiki"></form>
+            </div>
+        </div>
     </div>
-    <nav class="site-navigation">
-      <ul class="nav-menu">
-      
-        <li class="nav-item" data-path="/">
-          
-            <a href="/wiki/" target="_self">
-              主页
-            </a>
-          
-        </li>
-      
-        <li class="nav-item" data-path="/archives/">
-          
-            <a href="/wiki/archives/" target="_self">
-              归档
-            </a>
-          
-        </li>
-      
-        <li class="nav-item" data-path="/categories/">
-          
-            <a href="/wiki/categories/" target="_self">
-              分类
-            </a>
-          
-        </li>
-      
-        <li class="nav-item" data-path="/tags/">
-          
-            <a href="/wiki/tags/" target="_self">
-              标签
-            </a>
-          
-        </li>
-      
-        <li class="nav-item" data-path="/friends/">
-          
-            <a href="/wiki/friends/" target="_self">
-              友链
-            </a>
-          
-        </li>
-      
-        <li class="nav-item" data-path="/about/">
-          
-            <a href="/wiki/about/" target="_self">
-              关于
-            </a>
-          
-        </li>
-      
-        <li class="nav-item" data-path="">
-          
-            <a href="javascript:void(0);" v-else="">抓到我</a>
-            <ul class="nav-menu--dropdown">
-              
-                <li>
-                  <a href="https://github.com/dongyuanxin" target="_blank">
-                    Github
-                  </a>
-                </li>
-              
-                <li>
-                  <a href="https://www.zhihu.com/people/godbmw/activities" target="_blank">
-                    知乎
-                  </a>
-                </li>
-              
-            </ul>
-          
-        </li>
-      
-      </ul>
-    </nav>
-    <i class="iconfont icon-menu"></i>
-  </header>
-</div>
-
-<script>
-  let links = document.querySelectorAll('.nav-item');
-  for(let link of links){
-    let childrenLink = link.querySelector('ul');
-    link.addEventListener('mouseenter', () => {
-      if(childrenLink) {
-        childrenLink.className = "nav-menu--dropdown active";
-      }
-    })
-    link.addEventListener('mouseleave', () => {
-      if(childrenLink) {
-        childrenLink.className = "nav-menu--dropdown";
-      }
-    })
-  }
-  let rootRealPath = getRealPath(window.location.pathname, true);
-  for(let link of links) {
-    let linkPath = link.getAttribute("data-path");
-    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
-      link.className = "nav-item hover";
-    }
-  }
-
-  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
-    iconMenuClicked = false;
-  let navDOM = document.querySelector("nav.site-navigation");
-  iconMenu.addEventListener("click", () => {
-    iconMenuClicked 
-      ? navDOM.className = "site-navigation active"
-      : navDOM.className = "site-navigation";
-    iconMenuClicked = !iconMenuClicked;
-  })
-</script>
-
-      
-
-
-
-
-
-
-
-
-<div class="container post-index">
-
-  
-
-<div class="post">
-  <h1 class="article-title">
-    <span>【mgo】mgo源码解读——cluster</span>
-  </h1>
-  <div class="article-top-meta">
-    <span>
-      发布 : 
-      2018-11-05
-    </span>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-【mgo】mgo源码解读——cluster" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-meta">
+        <div class="left">
+            <a href="/wiki/2018/11/05/【mgo】mgo源码解读——cluster/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+            
+        </div>
+        <div class="right">
+            <span class="article-date right">
+                <i class="fa fa-comments">
+                    <a href="https://github.com/JPCui/wiki/issues/new" target="_blank" class="widget-title">issue</a>
+                </i>
+                <i class="fa fa-eye">
+                    <span id="busuanzi_value_page_pv"></span>
+                </i>
+            </span>
+        </div>
+    </div>
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
     
+        <h1 class="article-title" itemprop="name">
+            【mgo】mgo源码解读——cluster
+        </h1>
     
-      <span>
-        浏览 : <span class="article-timer" data-identity="【mgo】mgo源码解读——cluster"></span>
-      </span>
-    
-  </div>
 
-  
-
-  <div class="article-content">
-    <div class="markdown-body">
-      <h2 id="定时更新服务器信息-——-syncServersLoop"><a href="#定时更新服务器信息-——-syncServersLoop" class="headerlink" title="定时更新服务器信息 —— syncServersLoop"></a>定时更新服务器信息 —— syncServersLoop</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">// syncServersLoop loops while the cluster is alive to keep its idea of the server topology up-to-date.</span><br><span class="line">// 当集群处于活动状态时，以循环来保持服务的实时拓扑结构。</span><br><span class="line"></span><br><span class="line">// It must be called just once from newCluster.</span><br><span class="line">// 必须从 newCluster 调用一次。</span><br><span class="line"></span><br><span class="line">// The loop iterates once syncServersDelay has passed, or if somebody injects a value into the cluster.sync channel to force a synchronization.</span><br><span class="line">// 一段时间（syncServersDelay）的延迟过后，循环会进行一次迭代。或者在 cluster.sync 管道中注入一个值，来强制执行一次同步操作。（从最后的select管道通信可以很容易看出）</span><br><span class="line"></span><br><span class="line">// A loop iteration will contact all servers in parallel, ask them about known peers and their own role within the cluster, and then attempt to do the same with all the peers retrieved.</span><br><span class="line">// 一次循环迭代将会✨并行✨访问所有服务，查询集群中已知的对等服务及自己的角色，然后对所有对等服务尝试同样的操作。</span><br><span class="line"> </span><br><span class="line">func (cluster *mongoCluster) syncServersLoop() &#123;</span><br><span class="line">    // ✨ 死循环</span><br><span class="line">	for &#123;</span><br><span class="line">		debugf(&quot;SYNC Cluster %p is starting a sync loop iteration.&quot;, cluster)</span><br><span class="line"></span><br><span class="line">		// ✨ 上锁！</span><br><span class="line">		cluster.Lock()</span><br><span class="line">		// ✨ 集群中没有服务了（全挂了？）</span><br><span class="line">		if cluster.references == 0 &#123;</span><br><span class="line">			cluster.Unlock()</span><br><span class="line">			break</span><br><span class="line">		&#125;</span><br><span class="line">		cluster.references++ // Keep alive while syncing.</span><br><span class="line">		// ✨ ？？？</span><br><span class="line">		direct := cluster.direct</span><br><span class="line">		cluster.Unlock()</span><br><span class="line"></span><br><span class="line">		cluster.syncServersIteration(direct)</span><br><span class="line"></span><br><span class="line">		// We just synchronized, so consume any outstanding requests.</span><br><span class="line">		select &#123;</span><br><span class="line">		case &lt;-cluster.sync:</span><br><span class="line">		default:</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		cluster.Release()</span><br><span class="line"></span><br><span class="line">		// Hold off before allowing another sync. No point in</span><br><span class="line">		// burning CPU looking for down servers.</span><br><span class="line">		if !cluster.failFast &#123;</span><br><span class="line">			time.Sleep(syncShortDelay)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		cluster.Lock()</span><br><span class="line">		if cluster.references == 0 &#123;</span><br><span class="line">			cluster.Unlock()</span><br><span class="line">			break</span><br><span class="line">		&#125;</span><br><span class="line">		cluster.syncCount++</span><br><span class="line">		// Poke all waiters so they have a chance to timeout or</span><br><span class="line">		// restart syncing if they wish to.</span><br><span class="line">		cluster.serverSynced.Broadcast()</span><br><span class="line">		// Check if we have to restart immediately either way.</span><br><span class="line">		restart := !direct &amp;&amp; cluster.masters.Empty() || cluster.servers.Empty()</span><br><span class="line">		cluster.Unlock()</span><br><span class="line"></span><br><span class="line">		if restart &#123;</span><br><span class="line">			log(&quot;SYNC No masters found. Will synchronize again.&quot;)</span><br><span class="line">			time.Sleep(syncShortDelay)</span><br><span class="line">			continue</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		debugf(&quot;SYNC Cluster %p waiting for next requested or scheduled sync.&quot;, cluster)</span><br><span class="line"></span><br><span class="line">		// Hold off until somebody explicitly requests a synchronization</span><br><span class="line">		// or it&apos;s time to check for a cluster topology change again.</span><br><span class="line">		select &#123;</span><br><span class="line">		case &lt;-cluster.sync:</span><br><span class="line">		case &lt;-time.After(syncServersDelay):</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	debugf(&quot;SYNC Cluster %p is stopping its sync loop.&quot;, cluster)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                <h2 id="定时更新服务器信息-——-syncServersLoop"><a href="#定时更新服务器信息-——-syncServersLoop" class="headerlink" title="定时更新服务器信息 —— syncServersLoop"></a>定时更新服务器信息 —— syncServersLoop</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">// syncServersLoop loops while the cluster is alive to keep its idea of the server topology up-to-date.</span><br><span class="line">// 当集群处于活动状态时，以循环来保持服务的实时拓扑结构。</span><br><span class="line"></span><br><span class="line">// It must be called just once from newCluster.</span><br><span class="line">// 必须从 newCluster 调用一次。</span><br><span class="line"></span><br><span class="line">// The loop iterates once syncServersDelay has passed, or if somebody injects a value into the cluster.sync channel to force a synchronization.</span><br><span class="line">// 一段时间（syncServersDelay）的延迟过后，循环会进行一次迭代。或者在 cluster.sync 管道中注入一个值，来强制执行一次同步操作。（从最后的select管道通信可以很容易看出）</span><br><span class="line"></span><br><span class="line">// A loop iteration will contact all servers in parallel, ask them about known peers and their own role within the cluster, and then attempt to do the same with all the peers retrieved.</span><br><span class="line">// 一次循环迭代将会✨并行✨访问所有服务，查询集群中已知的对等服务及自己的角色，然后对所有对等服务尝试同样的操作。</span><br><span class="line"> </span><br><span class="line">func (cluster *mongoCluster) syncServersLoop() &#123;</span><br><span class="line">    // ✨ 死循环</span><br><span class="line">	for &#123;</span><br><span class="line">		debugf(&quot;SYNC Cluster %p is starting a sync loop iteration.&quot;, cluster)</span><br><span class="line"></span><br><span class="line">		// ✨ 上锁！</span><br><span class="line">		cluster.Lock()</span><br><span class="line">		// ✨ 集群中没有服务了（全挂了？）</span><br><span class="line">		if cluster.references == 0 &#123;</span><br><span class="line">			cluster.Unlock()</span><br><span class="line">			break</span><br><span class="line">		&#125;</span><br><span class="line">		cluster.references++ // Keep alive while syncing.</span><br><span class="line">		// ✨ ？？？</span><br><span class="line">		direct := cluster.direct</span><br><span class="line">		cluster.Unlock()</span><br><span class="line"></span><br><span class="line">		cluster.syncServersIteration(direct)</span><br><span class="line"></span><br><span class="line">		// We just synchronized, so consume any outstanding requests.</span><br><span class="line">		select &#123;</span><br><span class="line">		case &lt;-cluster.sync:</span><br><span class="line">		default:</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		cluster.Release()</span><br><span class="line"></span><br><span class="line">		// Hold off before allowing another sync. No point in</span><br><span class="line">		// burning CPU looking for down servers.</span><br><span class="line">		if !cluster.failFast &#123;</span><br><span class="line">			time.Sleep(syncShortDelay)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		cluster.Lock()</span><br><span class="line">		if cluster.references == 0 &#123;</span><br><span class="line">			cluster.Unlock()</span><br><span class="line">			break</span><br><span class="line">		&#125;</span><br><span class="line">		cluster.syncCount++</span><br><span class="line">		// Poke all waiters so they have a chance to timeout or</span><br><span class="line">		// restart syncing if they wish to.</span><br><span class="line">		cluster.serverSynced.Broadcast()</span><br><span class="line">		// Check if we have to restart immediately either way.</span><br><span class="line">		restart := !direct &amp;&amp; cluster.masters.Empty() || cluster.servers.Empty()</span><br><span class="line">		cluster.Unlock()</span><br><span class="line"></span><br><span class="line">		if restart &#123;</span><br><span class="line">			log(&quot;SYNC No masters found. Will synchronize again.&quot;)</span><br><span class="line">			time.Sleep(syncShortDelay)</span><br><span class="line">			continue</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		debugf(&quot;SYNC Cluster %p waiting for next requested or scheduled sync.&quot;, cluster)</span><br><span class="line"></span><br><span class="line">		// Hold off until somebody explicitly requests a synchronization</span><br><span class="line">		// or it&apos;s time to check for a cluster topology change again.</span><br><span class="line">		select &#123;</span><br><span class="line">		case &lt;-cluster.sync:</span><br><span class="line">		case &lt;-time.After(syncServersDelay):</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	debugf(&quot;SYNC Cluster %p is stopping its sync loop.&quot;, cluster)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="同步服务info的核心"><a href="#同步服务info的核心" class="headerlink" title="同步服务info的核心"></a>同步服务info的核心</h2><p>设计到的点</p>
 <ul>
 <li>sync.WaitGroup 并发控制</li>
 <li>sync.Mutex 这个简单</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">func (cluster *mongoCluster) syncServersIteration(direct bool) &#123;</span><br><span class="line">	log(&quot;SYNC Starting full topology synchronization...&quot;)</span><br><span class="line"></span><br><span class="line">	var wg sync.WaitGroup</span><br><span class="line">	var m sync.Mutex</span><br><span class="line">	notYetAdded := make(map[string]pendingAdd)</span><br><span class="line">	addIfFound := make(map[string]bool)</span><br><span class="line">	seen := make(map[string]bool)</span><br><span class="line">	syncKind := partialSync</span><br><span class="line"></span><br><span class="line">	var spawnSync func(addr string, byMaster bool)</span><br><span class="line">	spawnSync = func(addr string, byMaster bool) &#123;</span><br><span class="line">		// ✨ 标记开启了一个新线程</span><br><span class="line">		wg.Add(1)</span><br><span class="line">		go func() &#123;</span><br><span class="line">			defer wg.Done()</span><br><span class="line"></span><br><span class="line">			// ✨ 解析地址，这个resolveAddr实现好🐂🍺，考虑的较全面</span><br><span class="line">			// ✨ （不进去看代码了）先解析ip地址，不是ip地址就当初udp连接解析，因为拨号连接可能耗时，用了select管道并发处理，这里分别以udp4、udp6进行尝试</span><br><span class="line">			tcpaddr, err := resolveAddr(addr)</span><br><span class="line">			if err != nil &#123;</span><br><span class="line">				log(&quot;SYNC Failed to start sync of &quot;, addr, &quot;: &quot;, err.Error())</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line">			resolvedAddr := tcpaddr.String()</span><br><span class="line"></span><br><span class="line">			// ✨ 已发现地址的逻辑，要加锁</span><br><span class="line">			m.Lock()</span><br><span class="line">			if byMaster &#123;</span><br><span class="line">				if pending, ok := notYetAdded[resolvedAddr]; ok &#123;</span><br><span class="line">					delete(notYetAdded, resolvedAddr)</span><br><span class="line">					m.Unlock()</span><br><span class="line">					cluster.addServer(pending.server, pending.info, completeSync)</span><br><span class="line">					return</span><br><span class="line">				&#125;</span><br><span class="line">				addIfFound[resolvedAddr] = true</span><br><span class="line">			&#125;</span><br><span class="line">			// ✨ 如果已经发现该地址，stop</span><br><span class="line">			if seen[resolvedAddr] &#123;</span><br><span class="line">				m.Unlock()</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line">			// ✨ 标记当前地址已被发现</span><br><span class="line">			seen[resolvedAddr] = true</span><br><span class="line">			m.Unlock()</span><br><span class="line"></span><br><span class="line">			server := cluster.server(addr, tcpaddr)</span><br><span class="line">			// ✨ 同步server信息</span><br><span class="line">			info, hosts, err := cluster.syncServer(server)</span><br><span class="line">			if err != nil &#123;</span><br><span class="line">				// ✨ 同步信息出错，移除</span><br><span class="line">				cluster.removeServer(server)</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			m.Lock()</span><br><span class="line">			add := direct || info.Master || addIfFound[resolvedAddr]</span><br><span class="line">			if add &#123;</span><br><span class="line">				syncKind = completeSync</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				notYetAdded[resolvedAddr] = pendingAdd&#123;server, info&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			m.Unlock()</span><br><span class="line">			if add &#123;</span><br><span class="line">				cluster.addServer(server, info, completeSync)</span><br><span class="line">			&#125;</span><br><span class="line">			if !direct &#123;</span><br><span class="line">				for _, addr := range hosts &#123;</span><br><span class="line">					spawnSync(addr, info.Master)</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;()</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	knownAddrs := cluster.getKnownAddrs()</span><br><span class="line">	for _, addr := range knownAddrs &#123;</span><br><span class="line">		spawnSync(addr, false)</span><br><span class="line">	&#125;</span><br><span class="line">	wg.Wait()</span><br><span class="line"></span><br><span class="line">	if syncKind == completeSync &#123;</span><br><span class="line">		logf(&quot;SYNC Synchronization was complete (got data from primary).&quot;)</span><br><span class="line">		for _, pending := range notYetAdded &#123;</span><br><span class="line">			cluster.removeServer(pending.server)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		logf(&quot;SYNC Synchronization was partial (cannot talk to primary).&quot;)</span><br><span class="line">		for _, pending := range notYetAdded &#123;</span><br><span class="line">			cluster.addServer(pending.server, pending.info, partialSync)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cluster.Lock()</span><br><span class="line">	mastersLen := cluster.masters.Len()</span><br><span class="line">	logf(&quot;SYNC Synchronization completed: %d master(s) and %d slave(s) alive.&quot;, mastersLen, cluster.servers.Len()-mastersLen)</span><br><span class="line"></span><br><span class="line">	// Update dynamic seeds, but only if we have any good servers. Otherwise,</span><br><span class="line">	// leave them alone for better chances of a successful sync in the future.</span><br><span class="line">	if syncKind == completeSync &#123;</span><br><span class="line">		dynaSeeds := make([]string, cluster.servers.Len())</span><br><span class="line">		for i, server := range cluster.servers.Slice() &#123;</span><br><span class="line">			dynaSeeds[i] = server.Addr</span><br><span class="line">		&#125;</span><br><span class="line">		cluster.dynaSeeds = dynaSeeds</span><br><span class="line">		debugf(&quot;SYNC New dynamic seeds: %#v\n&quot;, dynaSeeds)</span><br><span class="line">	&#125;</span><br><span class="line">	cluster.Unlock()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            
+        </div>
+        <footer class="article-footer">
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【mgo】mgo源码解读——cluster/" data-id="cjs5idoso000956ui73ek3aci" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/mgo/">mgo</a></li></ul>
+
+        </footer>
     </div>
-  </div>
-  
-    <div class="copy-right">
-      <div class="markdown-body">
-        <blockquote>
+    
         
+    <nav id="article-nav">
         
-          本文作者 : GODBMW <br>
-        
-        原文链接 : <a href="">https://jpcui.github.io/wiki/2018/11/05/【mgo】mgo源码解读——cluster/</a><br>
-        版权声明 : 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
-        </blockquote>
-      </div>
-    </div>
-  
-  
-  
-    <div class="social-share" style="margin-top: -2rem" data-wechat-qrcode-title="<p>微信扫一扫</p>" data-wechat-qrcode-helper="<p>微信右上角, 扫一扫分享</p>" data-sites="qzone, qq, weibo, wechat, douban, google, facebook, twitter">
-  <span style="color: #6b7487; font-size: 1.4rem;">分享到: </span>
-</div>
-<script src="https://cdn.bootcss.com/social-share.js/1.0.16/js/social-share.min.js" async></script>
-  
-
-  
-    <div id="reward">
-  
-    <p id="reward-meta">知识 & 情怀 | 二者兼得</p>
-  
-  <button id="reward-btn">
-    
-    <span>投食</span>
-  </button>
-  <div id="reward-qrcode">
-    
-      <div class="reward-qrcode--container">
-        <img class="qrcode-img" src="/images/wechat.png" alt="微信扫一扫, 向我投食">
-        <p class="qrcode-meta">微信扫一扫, 向我投食</p>
-      </div>
-    
-      <div class="reward-qrcode--container">
-        <img class="qrcode-img" src="/images/alipay.png" alt="支付宝扫一扫, 向我投食">
-        <p class="qrcode-meta">支付宝扫一扫, 向我投食</p>
-      </div>
-    
-  </div>
-
-</div>
-
-<script>
-  (() => {
-    let button = document.querySelector('#reward-btn'),
-      qrcode = document.querySelector('#reward-qrcode'),
-      display = false;
-    
-    button.addEventListener('click', () => {
-      qrcode.style.display = display ? 'none' : 'block'
-      display = !display
-    }, false)
-  })()
-</script>
-  
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-      <span>
-        
-          <i class="iconfont icon-06tags"></i>标签: 
-          
-          <span class="span--tag">
-            <a href="/wiki/tags/golang/">
-              #golang
+            <a href="/wiki/2018/11/05/【feign】不支持在Get请求中使用对象传参/" id="article-nav-newer" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">Newer</strong>
+                <div class="article-nav-title">
+                    
+                        【feign】不支持在Get请求中使用对象传参
+                    
+                </div>
             </a>
-          </span>
-          
-          <span class="span--tag">
-            <a href="/wiki/tags/mgo/">
-              #mgo
-            </a>
-          </span>
-          
         
-      </span>
-    </div>
-    <div class="article-meta pull-right">
+        
+            <a href="/wiki/2018/11/05/【mybatis】通用mapper注册流程/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">Older</strong>
+                <div class="article-nav-title">【mybatis】通用mapper注册流程</div>
+            </a>
+        
+    </nav>
+
+    
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/beego/">beego</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/consul/">consul</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/elastic-job/">elastic-job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/eventbus/">eventbus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/feign/">feign</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/fileinput/">fileinput</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/guava/">guava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/hikari/">hikari</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/mgo/">mgo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/spring-boot/">spring-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/spring-cloud/">spring-cloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/spring-data/">spring-data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/服务架构/">服务架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/wiki/tags/项目管理/">项目管理</a></li></ul>
     </div>
   </div>
-</div>
 
-
-  <aside id="sidebar">
-    <p id="sidebar-header"></p>
-    <ol id="sidebar-toc"></ol>
-  </aside>
-  <script async>setTimeout(generateToc, 10);</script>
-
-
-  <nav class="post-navigation">
-    
-      <div class="nav-pre">
-        <i class="iconfont icon-prev"></i>
-        上一篇:
-        <a href="/wiki/2018/11/05/【feign】不支持在Get请求中使用对象传参/" target="_self">【feign】不支持在Get请求中使用对象传参</a>
-      </div>
-    
-    
-      <div class="nav-next">
-        下一篇:
-        <a href="/wiki/2018/11/05/【hystrix】探索/" target="_self">【hystrix】探索</a>
-        <i class="iconfont icon-next"></i>
-      </div>
-    
-  </nav>
 
   
-    <a href="#comment" class="comment-anchor"></a>
-<div class="comment-title"><i class="iconfont icon-footprint"></i> 留下足迹 <i class="iconfont icon-footprint"></i></div>
-<div id="vcomments"></div>
-
-<script defer>
-  if( true ) {
-    let path = getRealPath()
-    new Valine({
-      el: "#vcomments",
-      appId: "Hyq9wkH495DgNHWhDQCOfQSp-gzGzoHsz",
-      appKey: "WaR7nrzhliHj9aVwdQzkdlGd",
-      notify: false,
-      verify: false,
-      avatar: "robohash",
-      placeholder: "正确填写邮箱, 才能及时收到回复哦♪(^∇^*)",
-      path
-    });
-  }
-</script>
-   
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/wiki/tags/beego/" style="font-size: 10px;">beego</a> <a href="/wiki/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/wiki/tags/consul/" style="font-size: 10px;">consul</a> <a href="/wiki/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/wiki/tags/elastic-job/" style="font-size: 10px;">elastic-job</a> <a href="/wiki/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/wiki/tags/feign/" style="font-size: 10px;">feign</a> <a href="/wiki/tags/fileinput/" style="font-size: 10px;">fileinput</a> <a href="/wiki/tags/git/" style="font-size: 10px;">git</a> <a href="/wiki/tags/golang/" style="font-size: 12.5px;">golang</a> <a href="/wiki/tags/guava/" style="font-size: 10px;">guava</a> <a href="/wiki/tags/hikari/" style="font-size: 10px;">hikari</a> <a href="/wiki/tags/mgo/" style="font-size: 10px;">mgo</a> <a href="/wiki/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/wiki/tags/php/" style="font-size: 10px;">php</a> <a href="/wiki/tags/redis/" style="font-size: 10px;">redis</a> <a href="/wiki/tags/spring/" style="font-size: 10px;">spring</a> <a href="/wiki/tags/spring-boot/" style="font-size: 15px;">spring-boot</a> <a href="/wiki/tags/spring-cloud/" style="font-size: 20px;">spring-cloud</a> <a href="/wiki/tags/spring-data/" style="font-size: 10px;">spring-data</a> <a href="/wiki/tags/服务架构/" style="font-size: 10px;">服务架构</a> <a href="/wiki/tags/项目管理/" style="font-size: 17.5px;">项目管理</a>
+    </div>
+  </div>
 
   
-    <script defer>
-const valineAPI = (() => {
-  try {
-    AV.init("Hyq9wkH495DgNHWhDQCOfQSp-gzGzoHsz", "WaR7nrzhliHj9aVwdQzkdlGd");
-  } catch(error) {}
-  const isExist = (identity) => {
-    identity = identity || getRealPath();
-    let query = new AV.Query('Timer');
-    return new Promise((resolve, reject) => {
-      query.equalTo("identity", identity);
-      query.find().then(results => {
-        resolve(results.length > 0);
-      }, error => reject(error));
-    })
-  }
-
-  const _get = (identity) => {
-    let query = null;
-    if(identity && identity instanceof Array){
-      let querys = [];
-      for(let i = 0; i < identity.length; ++i) {
-        querys[i] = new AV.Query('Timer');
-        querys[i].equalTo('identity', identity[i]);
-      }
-      query = AV.Query.or.apply(null ,querys);
-    } else {
-      identity = identity || getRealPath();
-      query = new AV.Query("Timer");
-      query.equalTo("identity", identity);
-    }
-
-    return new Promise((resolve, reject) => {
-      query.find()
-      .then(results => resolve(results))
-      .catch(error => reject(error))
-    })
-  }
-
-  const create = (identity) => {
-    identity = identity || getRealPath();
-    return new Promise((resolve, reject) => {
-      let Todo = AV.Object.extend('Timer');
-      let todo = new Todo();
-      todo.set("times", 1);
-      todo.set("identity", identity);
-      todo.save().then(res => resolve(true), error => reject(error));
-    })
-  }
-
-  const update = (identity) => {
-    identity = identity || getRealPath();
-    return new Promise((resolve, reject) => {
-      let query = new AV.Query('Timer');
-      query.equalTo("identity", identity);
-      query.find().then(todos => {
-        todos.forEach(todo => {
-          todo.set("times", todo.attributes.times + 1);
-        });
-        return AV.Object.saveAll(todos);
-      }).then(todos => resolve(true), error => reject(error));
-    })
-  }
-
-  return {
-    isExist,
-    _get,
-    update,
-    create
-  }
-})()
-
-const calcAndWriteTimes = () => {
-  let isPost = true;
-
-  let timerAllDOM = document.querySelectorAll(".article-timer");
-
-  if(isPost) {
-    let identity = timerAllDOM[0].getAttribute("data-identity");
-    valineAPI.isExist(identity)
-    .then(exist => {
-      if(exist) {
-        return valineAPI.update(identity);
-      }
-      return new Promise(resolve => resolve(true));
-    })
-    .then( succuess => valineAPI._get(identity))
-    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
-    .catch(error => console.log(error.message))
-    return ;
-  }
-
-  let timerDOMCache = {};
-
-  for(let timerDOM of timerAllDOM) {
-    let identity = timerDOM.getAttribute("data-identity");
-    if(timerDOMCache.hasOwnProperty(identity)){
-      timerDOMCache[identity].dom.push(timerDOM);
-    }else{
-      timerDOMCache[identity] = {
-        dom: [timerDOM],
-        times: undefined
-      };
-    }
-  }
-
-  let identities = Object.keys(timerDOMCache);
-  valineAPI._get(identities).then(results => {
-    for(let result of results) {
-      let {identity, times} = result.attributes;
-      timerDOMCache[identity].times = times;
-      timerDOMCache[identity].dom.map(item => item.innerText = times);
-    }
-    for(let identity of identities) {
-      if(timerDOMCache[identity].times){
-        continue;
-      }
-      timerDOMCache[identity].dom.map(item => item.innerText = 1);
-      valineAPI.create(identity);
-    }
-  }).catch(error => console.log(error.message))
-}
-
-if(true){
-  calcAndWriteTimes();
-}
-</script>
-   
-
-</div>
-
-
-      <footer>
-  <p class="site-info">
-    博客已萌萌哒运行<span id="time-to-now"></span><span class="my-face">(●'◡'●)ﾉ♥</span>
-    <br>
-    Theme - <a href="https://github.com/dongyuanxin/theme-bmw">BMW</a> | Made With 💗 | Powered by <a href="https://godbmw.com/">GodBMW</a>
-    <br>
     
-  </p>
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/wiki/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/wiki/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/wiki/2019/02/12/todolist/">todolist</a>
+          </li>
+        
+          <li>
+            <a href="/wiki/2018/11/05/【spring-cloud】在网关中配置swagger/">【spring-cloud】在网关中配置swagger</a>
+          </li>
+        
+          <li>
+            <a href="/wiki/2018/11/05/【consul】docker配置/">【consul】docker配置</a>
+          </li>
+        
+          <li>
+            <a href="/wiki/2018/11/05/【docker】创建java容器/">【docker】创建java容器</a>
+          </li>
+        
+          <li>
+            <a href="/wiki/2018/11/05/【docker】杀不死的docker/">【docker】杀不死的docker</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+    
+    <div class="outer">
+        <div id="footer-info" class="left alignleft">
+            &copy; 2019 Sucre Cui
+            <br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        </div>
+        <div class="right alignright">
+            <span id="busuanzi_container_site_pv">
+                <i class="fa fa-eye" title="PV"></i> <span id="busuanzi_value_site_pv"><i class="fa fa-spinner"></i></span>
+                <br>
+                <i class="fa fa-user" title="UV"></i> <span id="busuanzi_value_site_uv"></span>
+            </span>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        </div>
+    </div>
 </footer>
-
-
-
-<script>
-const timeToNowDOM = document.querySelector("#time-to-now");
-const startTimestamp = new Date(2018, 1, 10).getTime();
-
-const updateTimeStr = () => {
-  let offset = parseInt(
-      (new Date().getTime() - startTimestamp) / 1000,
-      10
-    ),
-    day = Math.floor(offset / 86400),
-    hour = Math.floor((offset % 86400) / 3600),
-    minute = Math.floor(((offset % 86400) % 3600) / 60),
-    second = Math.floor(((offset % 86400) % 3600) % 60);
-  timeToNowDOM.innerHTML =
-    day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
-  setTimeout(updateTimeStr, 500);
-}
-
-setTimeout(updateTimeStr, 500);
-</script>
-
-
-      <div class="back-to-top hidden">
-  <span>
-    <i class="iconfont icon-60"></i><span></span>%
-  </span>
-</div>
-
-<script>
-const updateIconToTop = percent => {
-  let dom = document.querySelector(".back-to-top span span");
-  dom.innerText = percent;
-  if(percent < 1) {
-    document.querySelector(".back-to-top").className = "back-to-top hidden";
-  } else {
-    document.querySelector(".back-to-top").className = "back-to-top";
-  }
-}
-
-const handleScoll = () => {
-  let isRunning = false;
-  return () => {
-    if (isRunning) return;
-    isRunning = true;
-    window.requestAnimationFrame(timestamp => {
-      let scrollTop =
-          document.documentElement.scrollTop || document.body.scrollTop,
-        scrollHeight =
-          document.documentElement.scrollHeight ||
-          document.body.scrollHeight,
-        clientHeight =
-          document.documentElement.clientHeight ||
-          document.body.clientHeight;
-      isRunning = false;
-      if (scrollTop <= 1) {
-        updateIconToTop(0);
-        return;
-      }
-      if (scrollTop + clientHeight >= scrollHeight) {
-        updateIconToTop(100);
-      } else {
-        updateIconToTop(parseInt(
-          100 * scrollTop / (scrollHeight - clientHeight),
-          10
-        ));
-      }
-    });
-  };
-}
-
-const backToTop = () => {
-  let scrollTop =
-      document.documentElement.scrollTop || document.body.scrollTop,
-    delay = 10,
-    time = 200;
-  if (scrollTop <= 20) {
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    return;
-  }
-  let step = Math.ceil(scrollTop * delay / time);
-  let timer = setInterval(() => {
-    scrollTop =
-      document.documentElement.scrollTop || document.body.scrollTop;
-    if (scrollTop - step <= 0) {
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-      clearInterval(timer);
-    } else {
-      document.documentElement.scrollTop = scrollTop - step;
-      document.body.scrollTop = scrollTop - step;
-    }
-  }, delay);
-}
-
-document.addEventListener("scroll", handleScoll(), false);
-
-document.querySelector(".back-to-top").addEventListener("click", backToTop, false);
-
-</script>
-
     </div>
-
-    
-      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
-<script>
-  (() => {
-    const mathjaxConfig = {
-      showProcessingMessages: false, //关闭js加载过程信息
-      messageStyle: "none", //不显示信息
-      jax: ["input/TeX", "output/HTML-CSS"],
-      tex2jax: {
-        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
-        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
-        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
-      },
-      "HTML-CSS": {
-        availableFonts: ["STIX", "TeX"], //可选字体
-        showMathMenu: false //关闭右击菜单显示
-      }
-    }
-
-    let mathjaxInterval = setInterval(() => {
-      if(!window.MathJax){
-        return;
-      }
-      window.MathJax.Hub.Config(mathjaxConfig)
-      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
-
-      clearInterval(mathjaxInterval)
-    }, 10)    
-  })()
-</script>
+    <nav id="mobile-nav">
+  
+    <a href="/wiki/" class="mobile-nav-link">Home</a>
+  
+    <a href="/wiki/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
     
 
-    <script src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script>
-<script async>
-  let fancyTimer = setInterval(function(){
-    if(!window.$){
-      return;
-    }
-    $(document).ready(function() {
-      $(".post img").each(function () {
-        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
-          return;
-        }
-        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "gallery");
-        $(element).attr("href", $(this).attr("src"));
-        $(this).wrap(element);
-      });
-      
-      clearInterval(fancyTimer);
-    });
-  }, 10);
-</script>
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
 
-    
-  </body>
 
+  <link rel="stylesheet" href="/wiki/fancybox/jquery.fancybox.css">
+  <script src="/wiki/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/wiki/js/script.js"></script>
+
+
+
+  </div>
+</body>
 </html>
