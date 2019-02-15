@@ -124,7 +124,7 @@
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【beego】工作流程/" data-id="cjs5ie6pa002l6yuilbbmjn8k" class="article-share-link">Share</a>
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【beego】工作流程/" data-id="cjs5isv0t002oiuuir4drv5dy" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/beego/">beego</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/golang/">golang</a></li></ul>
@@ -177,7 +177,7 @@
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【项目管理】intellij-java-google-style-sucre/" data-id="cjs5ie6pk002p6yuiyvnsu68w" class="article-share-link">Share</a>
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【项目管理】intellij-java-google-style-sucre/" data-id="cjs5isv0z002siuui1bb2k8wk" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/项目管理/">项目管理</a></li></ul>
@@ -189,10 +189,10 @@
 
 
   
-    <article id="post-【spring-cloud】在网关中配置swagger" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-【spring-cloud】spring-cloud-config" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-meta">
         <div class="left">
-            <a href="/wiki/2018/11/05/【spring-cloud】在网关中配置swagger/" class="article-date">
+            <a href="/wiki/2018/11/05/【spring-cloud】spring-cloud-config/" class="article-date">
   <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
 </a>
             
@@ -215,8 +215,8 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/wiki/2018/11/05/【spring-cloud】在网关中配置swagger/">
-                【spring-cloud】在网关中配置swagger
+            <a class="article-title" href="/wiki/2018/11/05/【spring-cloud】spring-cloud-config/">
+                【spring-cloud】spring-cloud-config
             </a>
             
         </h1>
@@ -226,23 +226,29 @@
         
         <div class="article-entry" itemprop="articleBody">
             
-                <h2 id="TODO-LIST"><a href="#TODO-LIST" class="headerlink" title="TODO LIST"></a>TODO LIST</h2><ul>
-<li>[1/2] 在你的服务中配置swagger接口的地址</li>
+                <h2 id="server"><a href="#server" class="headerlink" title="server"></a>server</h2><ul>
+<li><p>依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-config-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>yml配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  cloud:</span></span><br><span class="line"><span class="attr">    config:</span></span><br><span class="line"><span class="attr">      server:</span></span><br><span class="line"><span class="attr">        git:</span></span><br><span class="line">          <span class="comment"># 配置的git路径</span></span><br><span class="line"><span class="attr">          uri:</span> <span class="attr">http://xxx/oasis-ct/oasis-ct-config.git</span></span><br><span class="line">          <span class="comment"># 查找路径</span></span><br><span class="line">          <span class="comment"># 默认查找根目录, 而且只查找一级目录</span></span><br><span class="line"><span class="attr">          search-paths:</span> <span class="string">repo</span></span><br><span class="line"><span class="attr">      profile:</span> <span class="string">$&#123;spring.profiles&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>在 application.yml 中配置</p>
-<p><code>springfox.documentation.swagger.v2.path: /{server path}/api-docs</code></p>
-<p><code>{server path}</code> 为你的服务在网关中配置的上下文路径，比如下面的订单服务在网关的配置中，上下文路径为<strong>order-server</strong>：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">order:</span></span><br><span class="line"><span class="attr">  path:</span> <span class="string">/order-server/**</span></span><br><span class="line"><span class="attr">  serviceId:</span> <span class="string">oasis-ct-order-server</span></span><br><span class="line"><span class="attr">  stripPrefix:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>[2/2] 在网关中配置接口访问URI</li>
+<blockquote>
+<p>如果想把配置中心以服务的形式配置到consul中, 可以按照服务注册的形式进行配置</p>
+</blockquote>
+<h2 id="client"><a href="#client" class="headerlink" title="client"></a>client</h2><ul>
+<li><p>依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>yml配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">    <span class="comment"># 配置中心</span></span><br><span class="line"><span class="attr">    config:</span></span><br><span class="line">      <span class="comment"># 1. 直接访问方式</span></span><br><span class="line"><span class="attr">      uri:</span> <span class="string">`&#123;config-server&#125;`</span></span><br><span class="line">      <span class="comment"># 2. 服务注册到consul, 需要按下面的方式配置      </span></span><br><span class="line"><span class="comment">#      discovery:</span></span><br><span class="line"><span class="comment">#        enabled: truegetDeliveryInfo</span></span><br><span class="line"><span class="comment">#        service-id: oasis-ct-config</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># 由于咱们的项目名比较长, 这里可以重命名, </span></span><br><span class="line">      <span class="comment"># 同时config服务里的配置文件的文件名命名方式: medicine-&#123;profile&#125;.yml</span></span><br><span class="line"><span class="attr">      name:</span> <span class="string">medicine</span></span><br><span class="line"><span class="attr">      profile:</span> <span class="string">$&#123;spring.profiles&#125;</span></span><br><span class="line"><span class="attr">      fail-fast:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>在 <code>application.yml</code> 中如下配置：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">swagger:</span></span><br><span class="line"><span class="attr">  apis:</span></span><br><span class="line">    <span class="comment"># 订单系统</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">order-server</span></span><br><span class="line"><span class="attr">      location:</span> <span class="string">/order-server/api-docs</span></span><br><span class="line">    <span class="comment"># 支付系统</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">pay-server</span></span><br><span class="line"><span class="attr">      location:</span> <span class="string">/pay/api-docs</span></span><br><span class="line"><span class="string">```</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">## 原理</span></span><br><span class="line"></span><br><span class="line"><span class="string">swagger的请求处理器</span> <span class="string">`Swagger2Controller`</span> <span class="string">中有个默认接口URI</span> <span class="string">`DEFAULT_URL`，下面的注解用于替换默认URI：</span></span><br><span class="line"><span class="string">```text</span></span><br><span class="line"><span class="string">@PropertySourcedMapping(</span></span><br><span class="line">      <span class="string">value</span> <span class="string">=</span> <span class="string">"$&#123;springfox.documentation.swagger.v2.path&#125;"</span><span class="string">,</span></span><br><span class="line">      <span class="string">propertyKey</span> <span class="string">=</span> <span class="string">"springfox.documentation.swagger.v2.path"</span><span class="string">)</span></span><br></pre></td></tr></table></figure></p>
-<p>具体该注解处理方法，见 <code>PropertySourcedRequestMappingHandlerMapping</code></p>
 
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-cloud】在网关中配置swagger/" data-id="cjs5ie6or000r6yuicmgjn90x" class="article-share-link">Share</a>
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-cloud】spring-cloud-config/" data-id="cjs5isv08000riuuib9gpkivi" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/spring-cloud/">spring-cloud</a></li></ul>
@@ -308,19 +314,19 @@
           </li>
         
           <li>
-            <a href="/wiki/2018/11/05/【spring-boot】application.properties/">【spring-boot】application.properties</a>
+            <a href="/wiki/2018/11/05/【spring-cloud】spring-cloud-config/">【spring-cloud】spring-cloud-config</a>
           </li>
         
           <li>
-            <a href="/wiki/2018/11/05/【consul】docker配置/">【consul】docker配置</a>
-          </li>
-        
-          <li>
-            <a href="/wiki/2018/11/05/【docker】创建java容器/">【docker】创建java容器</a>
+            <a href="/wiki/2018/11/05/【bootstrap】file-input/">【bootstrap】file-input</a>
           </li>
         
           <li>
             <a href="/wiki/2018/11/05/【docker】杀不死的docker/">【docker】杀不死的docker</a>
+          </li>
+        
+          <li>
+            <a href="/wiki/2018/11/05/【docker】创建java容器/">【docker】创建java容器</a>
           </li>
         
       </ul>

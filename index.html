@@ -141,7 +141,7 @@
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2019/02/12/todolist/" data-id="cjs5ie6o100006yui2el1c2v2" class="article-share-link">Share</a>
+            <a data-url="https://jpcui.github.io/wiki/2019/02/12/todolist/" data-id="cjs5isuzf0000iuui4nq5dhen" class="article-share-link">Share</a>
             
             
         </footer>
@@ -192,7 +192,7 @@
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-boot】application.properties/" data-id="cjs5ie6qb002r6yuipjck66ym" class="article-share-link">Share</a>
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-boot】application.properties/" data-id="cjs5isv14002uiuui5pb1ufsr" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/spring-boot/">spring-boot</a></li></ul>
@@ -204,10 +204,10 @@
 
 
   
-    <article id="post-【consul】docker配置" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-【bootstrap】file-input" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-meta">
         <div class="left">
-            <a href="/wiki/2018/11/05/【consul】docker配置/" class="article-date">
+            <a href="/wiki/2018/11/05/【bootstrap】file-input/" class="article-date">
   <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
 </a>
             
@@ -230,8 +230,8 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/wiki/2018/11/05/【consul】docker配置/">
-                【consul】docker配置
+            <a class="article-title" href="/wiki/2018/11/05/【bootstrap】file-input/">
+                【bootstrap】file-input
             </a>
             
         </h1>
@@ -241,20 +241,88 @@
         
         <div class="article-entry" itemprop="articleBody">
             
-                <h1 id="server"><a href="#server" class="headerlink" title="server"></a>server</h1><blockquote>
-<p>docker run -d –name=consul_service –net=host -e ‘CONSUL_LOCAL_CONFIG={“skip_leave_on_interrupt”: true}’ consul agent -server -bind={server.ip} -join={master.ip} -ui -client 0.0.0.0</p>
+                <blockquote>
+<p>暂时不适用该方式上传文件</p>
 </blockquote>
-<h1 id="client"><a href="#client" class="headerlink" title="client"></a>client</h1><blockquote>
-<p>docker run -d –name=consul_client –net=host -e ‘CONSUL_LOCAL_CONFIG={“skip_leave_on_interrupt”: true}’ consul agent -bind={server.ip} -join={master.ip} -ui -client 0.0.0.0</p>
-</blockquote>
+<h1 id="文件上传插件"><a href="#文件上传插件" class="headerlink" title="文件上传插件"></a>文件上传插件</h1><p>官方文档：<a href="http://plugins.krajee.com/file-input" target="_blank" rel="noopener">fileinput</a></p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><ul>
+<li><p>引入css</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"&lt;c:url value="</span>/<span class="attr">assets</span>/<span class="attr">bower_components</span>/<span class="attr">bootstrap-fileinput</span>/<span class="attr">css</span>/<span class="attr">fileinput.min.css</span>"/&gt;</span>"/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引入js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;c:url value=&quot;/assets/bower_components/bootstrap-fileinput/js/fileinput.min.js&quot;/&gt;&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;c:url value=&quot;/assets/bower_components/bootstrap-fileinput/js/locales/zh.js&quot;/&gt;&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;c:url value=&quot;/assets/bower_components/bootstrap-fileinput/js/plugins/piexif.min.js&quot;/&gt;&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>该插件需要</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"f1"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file"</span> <span class="attr">class</span>=<span class="string">"file"</span> <span class="attr">data-show-preview</span>=<span class="string">"true"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$scope.initFileinput(<span class="string">"#f1"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$scope.initFileinput = <span class="function"><span class="keyword">function</span> (<span class="params">fileinputId</span>) </span>&#123;</span><br><span class="line">    $(fileinputId).fileinput(&#123;</span><br><span class="line">        <span class="string">"uploadUrl"</span>: <span class="string">"/fileUpload/upload"</span>,</span><br><span class="line">        <span class="string">"maxFileSize"</span>: <span class="number">20480</span>,</span><br><span class="line">        <span class="string">"msgSizeTooLarge"</span>: <span class="string">"文件(&#123;name&#125; - &#123;size&#125; KB) 超过最大限制 &#123;maxSize&#125; KB. 请重新上传!"</span></span><br><span class="line">    &#125;);</span><br><span class="line">    $(fileinputId).on(<span class="string">'fileuploaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event, data, previewId, index</span>) </span>&#123;</span><br><span class="line">        $scope.taskRequest.fileName = data.response.fileName;</span><br><span class="line">        $scope.taskRequest.fileUrl = data.response.path;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【consul】docker配置/" data-id="cjs5ie6o700026yuih88u4osa" class="article-share-link">Share</a>
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【bootstrap】file-input/" data-id="cjs5isuzm0002iuui2ilclb8j" class="article-share-link">Share</a>
             
             
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/consul/">consul</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/bootstrap/">bootstrap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/fileinput/">fileinput</a></li></ul>
+
+        </footer>
+    </div>
+    
+</article>
+
+
+  
+    <article id="post-【docker】杀不死的docker" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-meta">
+        <div class="left">
+            <a href="/wiki/2018/11/05/【docker】杀不死的docker/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+            
+        </div>
+        <div class="right">
+            <span class="article-date right">
+                <i class="fa fa-comments">
+                    <a href="https://github.com/JPCui/wiki/issues/new" target="_blank" class="widget-title">issue</a>
+                </i>
+                <i class="fa fa-eye">
+                    <span id="busuanzi_value_page_pv"></span>
+                </i>
+            </span>
+        </div>
+    </div>
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/2018/11/05/【docker】杀不死的docker/">
+                【docker】杀不死的docker
+            </a>
+            
+        </h1>
+    
+
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                <p>Cannot restart container oasis-roomservice: Cannot kill container 9f34690345ddc450f8dcb60ed72fd0ceba3a9ce5196ba14e0a9b8e346082280a: connection error: desc = “transport: dial unix /var/run/docker/containerd/docker-containerd.sock: connect: connection refused”: unknown</p>
+<p>应该是内存不足导致的</p>
+<ul>
+<li><a href="https://github.com/moby/moby/issues/36002" target="_blank" rel="noopener">https://github.com/moby/moby/issues/36002</a></li>
+<li><a href="https://github.com/jwilder/nginx-proxy/issues/1034" target="_blank" rel="noopener">https://github.com/jwilder/nginx-proxy/issues/1034</a></li>
+</ul>
+
+            
+        </div>
+        <footer class="article-footer">
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【docker】杀不死的docker/" data-id="cjs5isuzp0004iuuikz3wf0rg" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/docker/">docker</a></li></ul>
 
         </footer>
     </div>
@@ -325,138 +393,10 @@
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【docker】创建java容器/" data-id="cjs5ie6oa00046yui6iggtk80" class="article-share-link">Share</a>
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【docker】创建java容器/" data-id="cjs5isuzq0005iuuil19dauju" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/docker/">docker</a></li></ul>
-
-        </footer>
-    </div>
-    
-</article>
-
-
-  
-    <article id="post-【docker】杀不死的docker" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-meta">
-        <div class="left">
-            <a href="/wiki/2018/11/05/【docker】杀不死的docker/" class="article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
-</a>
-            
-        </div>
-        <div class="right">
-            <span class="article-date right">
-                <i class="fa fa-comments">
-                    <a href="https://github.com/JPCui/wiki/issues/new" target="_blank" class="widget-title">issue</a>
-                </i>
-                <i class="fa fa-eye">
-                    <span id="busuanzi_value_page_pv"></span>
-                </i>
-            </span>
-        </div>
-    </div>
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/2018/11/05/【docker】杀不死的docker/">
-                【docker】杀不死的docker
-            </a>
-            
-        </h1>
-    
-
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-                <p>Cannot restart container oasis-roomservice: Cannot kill container 9f34690345ddc450f8dcb60ed72fd0ceba3a9ce5196ba14e0a9b8e346082280a: connection error: desc = “transport: dial unix /var/run/docker/containerd/docker-containerd.sock: connect: connection refused”: unknown</p>
-<p>应该是内存不足导致的</p>
-<ul>
-<li><a href="https://github.com/moby/moby/issues/36002" target="_blank" rel="noopener">https://github.com/moby/moby/issues/36002</a></li>
-<li><a href="https://github.com/jwilder/nginx-proxy/issues/1034" target="_blank" rel="noopener">https://github.com/jwilder/nginx-proxy/issues/1034</a></li>
-</ul>
-
-            
-        </div>
-        <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【docker】杀不死的docker/" data-id="cjs5ie6ob00056yuibxjwj865" class="article-share-link">Share</a>
-            
-            
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/docker/">docker</a></li></ul>
-
-        </footer>
-    </div>
-    
-</article>
-
-
-  
-    <article id="post-【feign】不支持在Get请求中使用对象传参" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-meta">
-        <div class="left">
-            <a href="/wiki/2018/11/05/【feign】不支持在Get请求中使用对象传参/" class="article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
-</a>
-            
-        </div>
-        <div class="right">
-            <span class="article-date right">
-                <i class="fa fa-comments">
-                    <a href="https://github.com/JPCui/wiki/issues/new" target="_blank" class="widget-title">issue</a>
-                </i>
-                <i class="fa fa-eye">
-                    <span id="busuanzi_value_page_pv"></span>
-                </i>
-            </span>
-        </div>
-    </div>
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/2018/11/05/【feign】不支持在Get请求中使用对象传参/">
-                【feign】不支持在Get请求中使用对象传参
-            </a>
-            
-        </h1>
-    
-
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-                <p>解决方法：</p>
-<ol>
-<li><p>改用 POST</p>
-</li>
-<li><p>改用 Map</p>
-</li>
-<li><p>自定义 Encoder</p>
-<ul>
-<li>@see <a href="feign-request-object.md">feign-request-object</a></li>
-<li>@see <a href="https://github.com/OpenFeign/feign/issues/520" target="_blank" rel="noopener">https://github.com/OpenFeign/feign/issues/520</a></li>
-</ul>
-</li>
-</ol>
-<h3 id="一点延伸"><a href="#一点延伸" class="headerlink" title="一点延伸"></a>一点延伸</h3><blockquote>
-<p>quote: <a href="https://source.coveo.com/2016/07/21/feign-request-object/" target="_blank" rel="noopener">https://source.coveo.com/2016/07/21/feign-request-object/</a></p>
-</blockquote>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line">Using request objects with Feign</span><br><span class="line">BY JONATHAN ROCHETTE — JULY 21, 2016</span><br><span class="line">We recently decided to move our functional tests stack from python to Java, mainly to make coding them easier (our project’s backend is coded in Java) and thus increase the number of tests getting written. We needed a few things to make this possible and one of them was a complete and comprehensive Java client for the Usage Analytics API. Since a lot of the Java API clients we use internaly are built with Netflix’s Feign, I decided to give it a go.</span><br><span class="line"></span><br><span class="line">After playing with Feign a little, I started to really like the tool. Writing an HTTP client with it is pretty easy, and it would not be a lot of work to maintain. I only had one major concern: there was no out of the box support for request objects.</span><br><span class="line"></span><br><span class="line">Using request objects is a simple pattern that help maintain methods with many optional parameters, which is the case for some our API’s methods. Without request objects, calling a method would look like this:</span><br><span class="line"></span><br><span class="line">statsApi.getCombinedData(from,</span><br><span class="line">                         to,</span><br><span class="line">                         dimensions,</span><br><span class="line">                         metrics,</span><br><span class="line">                         null,</span><br><span class="line">                         null,</span><br><span class="line">                         null,</span><br><span class="line">                         null,</span><br><span class="line">                         true,</span><br><span class="line">                         null,</span><br><span class="line">                         null,</span><br><span class="line">                         null);</span><br><span class="line">Not looking so good, right? Using a request object transforms the method call into this:</span><br><span class="line"></span><br><span class="line">statsApi.getCombinedData(new GetCombinedDataRequest(from,</span><br><span class="line">                                                    to,</span><br><span class="line">                                                    dimensions,</span><br><span class="line">                                                    metrics)</span><br><span class="line">                         .withIncludeMetadata(true));</span><br><span class="line">Way better!</span><br><span class="line"></span><br><span class="line">For the request objects, we settled for a constructor that would take the required parameters of the API call in arguments. The optional parameters can then be added to the request with setters or via the fluent interface pattern.</span><br><span class="line"></span><br><span class="line">So, this is all very nice, but it does not fix my initial concern with Feign. I have some really nice request objects, but I cannot use any of them, as they are not supported. But, since Feign is very easily extendable, I simply added support for the request objects via a homemade encoder. And thus, the ReflectionEncoder was born.</span><br><span class="line"></span><br><span class="line">public class ReflectionEncoder implements Encoder</span><br><span class="line">&#123;</span><br><span class="line">    private static final String DEFAULT_DATETIME_FORMAT = &quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSSZZ&quot;;</span><br><span class="line">    private ObjectMapper mapper;</span><br><span class="line">    private Encoder fallbackEncoder;</span><br><span class="line"></span><br><span class="line">    public ReflectionEncoder(ObjectMapper mapper,</span><br><span class="line">                             Encoder fallbackEncoder)</span><br><span class="line">    &#123;</span><br><span class="line">        this.mapper = mapper;</span><br><span class="line">        this.fallbackEncoder = fallbackEncoder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void encode(Object parametersObject, Type bodyType, RequestTemplate template)</span><br><span class="line">      throws EncodeException &#123;</span><br><span class="line">      if (Request.class.isAssignableFrom(parametersObject.getClass())) &#123;</span><br><span class="line">        Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();</span><br><span class="line">        try &#123;</span><br><span class="line">          // Prepare the requestTemplate</span><br><span class="line">          for (Method method : parametersObject.getClass().getMethods()) &#123;</span><br><span class="line">            if (method.isAnnotationPresent(QueryParam.class)) &#123;</span><br><span class="line">              String key = method.getAnnotation(QueryParam.class).value();</span><br><span class="line">              Object value = method.invoke(parametersObject);</span><br><span class="line">              if (value != null) &#123;</span><br><span class="line">                if (Collection.class.isAssignableFrom(method.getReturnType())) &#123;</span><br><span class="line">                  value =</span><br><span class="line">                      ((Collection&lt;?&gt;) value)</span><br><span class="line">                          .stream()</span><br><span class="line">                          .map(v -&gt; String.valueOf(v))</span><br><span class="line">                          .collect(Collectors.toList());</span><br><span class="line">                &#125; else if (DateTime.class.isAssignableFrom(method.getReturnType())) &#123;</span><br><span class="line">                  value = ((DateTime) value).toString(DEFAULT_DATETIME_FORMAT);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                  value = String.valueOf(value);</span><br><span class="line">                &#125;</span><br><span class="line">                params.put(key, value);</span><br><span class="line">                template.query(key, keyToTemplate(key));</span><br><span class="line">              &#125;</span><br><span class="line">            &#125; else if (method.isAnnotationPresent(PathParam.class)) &#123;</span><br><span class="line">              String key = method.getAnnotation(PathParam.class).value();</span><br><span class="line">              Object value = method.invoke(parametersObject);</span><br><span class="line">              if (value != null) &#123;</span><br><span class="line">                params.put(key, String.valueOf(value));</span><br><span class="line">              &#125;</span><br><span class="line">            &#125; else if (method.isAnnotationPresent(BodyParam.class)) &#123;</span><br><span class="line">              template.body(mapper.writeValueAsString(method.invoke(parametersObject)));</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          // Replace templates with actual values</span><br><span class="line">          template.resolve(params);</span><br><span class="line">        &#125; catch (</span><br><span class="line">            IllegalAccessException</span><br><span class="line">            | IllegalArgumentException</span><br><span class="line">            | InvocationTargetException</span><br><span class="line">            | JsonProcessingException e) &#123;</span><br><span class="line">          throw new EncodeException(&quot;Could not encode parameter object correctly&quot;, e);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        fallbackEncoder.encode(parametersObject, bodyType, template);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private String keyToTemplate(String key)</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;&#123;&quot; + key + &quot;&#125;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">It may look complicated, but it’s in fact pretty simple. Here is how it works: if the object received by the encoder is of the right type, it will use reflection to find the getters of the object, and depending on the annotation, inject the parameter at the right place in the RequestTemplate. Otherwise, it will use a fallback encoder.</span><br><span class="line"></span><br><span class="line">Now, simply set the ReflectionEncoder in your client class with the builder provided by Feign and you are ready to go!</span><br><span class="line"></span><br><span class="line">Here is a complete example of a simple client using request objects.</span><br><span class="line"></span><br><span class="line">public interface CustomDimensionsApi extends ClientFactory.Api</span><br><span class="line">&#123;</span><br><span class="line">    @RequestLine(&quot;PUT /&quot; + ApiVersion.VERSION + &quot;/dimensions/custom/&#123;apiName&#125;&quot;)</span><br><span class="line">    DimensionResponse editDimension(EditDimensionRequest request);</span><br><span class="line">&#125;</span><br><span class="line">public class EditDimensionRequest extends BaseRequest</span><br><span class="line">&#123;</span><br><span class="line">    private String apiName;</span><br><span class="line">    private Boolean updatePastEvents;</span><br><span class="line">    private CustomDimensionModel customDimensionModel;</span><br><span class="line"></span><br><span class="line">    public EditDimensionRequest(String apiName,</span><br><span class="line">                                CustomDimensionModel customDimensionModel)</span><br><span class="line">    &#123;</span><br><span class="line">        this.apiName = apiName;</span><br><span class="line">        this.customDimensionModel = customDimensionModel;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @PathParam(&quot;apiName&quot;)</span><br><span class="line">    public String getApiName() &#123; return apiName; &#125;</span><br><span class="line">    public void setApiName(String apiName) &#123; this.apiName = apiName; &#125;</span><br><span class="line"></span><br><span class="line">    @QueryParam(&quot;updatePastEvents&quot;)</span><br><span class="line">    public Boolean getUpdatePastEvents() &#123; return updatePastEvents; &#125;</span><br><span class="line">    public void setUpdatePastEvents(Boolean updatePastEvents) &#123; this.updatePastEvents = updatePastEvents; &#125;</span><br><span class="line"></span><br><span class="line">    @BodyParam</span><br><span class="line">    public CustomDimensionModel getCustomDimensionModel() &#123; return customDimensionModel; &#125;</span><br><span class="line">    public void setCustomDimensionModel(CustomDimensionModel customDimensionModel) &#123; this.customDimensionModel = customDimensionModel; &#125;</span><br><span class="line"></span><br><span class="line">    public EditDimensionRequest withUpdatePastEvents(Boolean updatePastEvents)&#123;</span><br><span class="line">        setUpdatePastEvents(updatePastEvents); return this;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">There you have it: a very simple HTTP client built with Feign, using a request object. It made coding our functional tests way easier and made them much cleaner. The next steps for us would be to combine that with better exception handling (awesome post by my friend Jacques-Etienne Beaudet, go check it out) and we would be unstoppable!</span><br></pre></td></tr></table></figure>
-            
-        </div>
-        <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【feign】不支持在Get请求中使用对象传参/" data-id="cjs5ie6oc00066yuip7qykji4" class="article-share-link">Share</a>
-            
-            
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/feign/">feign</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/spring-cloud/">spring-cloud</a></li></ul>
 
         </footer>
     </div>
@@ -554,10 +494,79 @@
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【guava】EventBus/" data-id="cjs5ie6oe00086yui4aux7vfj" class="article-share-link">Share</a>
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【guava】EventBus/" data-id="cjs5isuzr0006iuuitoqfzzfk" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/eventbus/">eventbus</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/guava/">guava</a></li></ul>
+
+        </footer>
+    </div>
+    
+</article>
+
+
+  
+    <article id="post-【feign】不支持在Get请求中使用对象传参" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-meta">
+        <div class="left">
+            <a href="/wiki/2018/11/05/【feign】不支持在Get请求中使用对象传参/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+            
+        </div>
+        <div class="right">
+            <span class="article-date right">
+                <i class="fa fa-comments">
+                    <a href="https://github.com/JPCui/wiki/issues/new" target="_blank" class="widget-title">issue</a>
+                </i>
+                <i class="fa fa-eye">
+                    <span id="busuanzi_value_page_pv"></span>
+                </i>
+            </span>
+        </div>
+    </div>
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/2018/11/05/【feign】不支持在Get请求中使用对象传参/">
+                【feign】不支持在Get请求中使用对象传参
+            </a>
+            
+        </h1>
+    
+
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                <p>解决方法：</p>
+<ol>
+<li><p>改用 POST</p>
+</li>
+<li><p>改用 Map</p>
+</li>
+<li><p>自定义 Encoder</p>
+<ul>
+<li>@see <a href="feign-request-object.md">feign-request-object</a></li>
+<li>@see <a href="https://github.com/OpenFeign/feign/issues/520" target="_blank" rel="noopener">https://github.com/OpenFeign/feign/issues/520</a></li>
+</ul>
+</li>
+</ol>
+<h3 id="一点延伸"><a href="#一点延伸" class="headerlink" title="一点延伸"></a>一点延伸</h3><blockquote>
+<p>quote: <a href="https://source.coveo.com/2016/07/21/feign-request-object/" target="_blank" rel="noopener">https://source.coveo.com/2016/07/21/feign-request-object/</a></p>
+</blockquote>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line">Using request objects with Feign</span><br><span class="line">BY JONATHAN ROCHETTE — JULY 21, 2016</span><br><span class="line">We recently decided to move our functional tests stack from python to Java, mainly to make coding them easier (our project’s backend is coded in Java) and thus increase the number of tests getting written. We needed a few things to make this possible and one of them was a complete and comprehensive Java client for the Usage Analytics API. Since a lot of the Java API clients we use internaly are built with Netflix’s Feign, I decided to give it a go.</span><br><span class="line"></span><br><span class="line">After playing with Feign a little, I started to really like the tool. Writing an HTTP client with it is pretty easy, and it would not be a lot of work to maintain. I only had one major concern: there was no out of the box support for request objects.</span><br><span class="line"></span><br><span class="line">Using request objects is a simple pattern that help maintain methods with many optional parameters, which is the case for some our API’s methods. Without request objects, calling a method would look like this:</span><br><span class="line"></span><br><span class="line">statsApi.getCombinedData(from,</span><br><span class="line">                         to,</span><br><span class="line">                         dimensions,</span><br><span class="line">                         metrics,</span><br><span class="line">                         null,</span><br><span class="line">                         null,</span><br><span class="line">                         null,</span><br><span class="line">                         null,</span><br><span class="line">                         true,</span><br><span class="line">                         null,</span><br><span class="line">                         null,</span><br><span class="line">                         null);</span><br><span class="line">Not looking so good, right? Using a request object transforms the method call into this:</span><br><span class="line"></span><br><span class="line">statsApi.getCombinedData(new GetCombinedDataRequest(from,</span><br><span class="line">                                                    to,</span><br><span class="line">                                                    dimensions,</span><br><span class="line">                                                    metrics)</span><br><span class="line">                         .withIncludeMetadata(true));</span><br><span class="line">Way better!</span><br><span class="line"></span><br><span class="line">For the request objects, we settled for a constructor that would take the required parameters of the API call in arguments. The optional parameters can then be added to the request with setters or via the fluent interface pattern.</span><br><span class="line"></span><br><span class="line">So, this is all very nice, but it does not fix my initial concern with Feign. I have some really nice request objects, but I cannot use any of them, as they are not supported. But, since Feign is very easily extendable, I simply added support for the request objects via a homemade encoder. And thus, the ReflectionEncoder was born.</span><br><span class="line"></span><br><span class="line">public class ReflectionEncoder implements Encoder</span><br><span class="line">&#123;</span><br><span class="line">    private static final String DEFAULT_DATETIME_FORMAT = &quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSSZZ&quot;;</span><br><span class="line">    private ObjectMapper mapper;</span><br><span class="line">    private Encoder fallbackEncoder;</span><br><span class="line"></span><br><span class="line">    public ReflectionEncoder(ObjectMapper mapper,</span><br><span class="line">                             Encoder fallbackEncoder)</span><br><span class="line">    &#123;</span><br><span class="line">        this.mapper = mapper;</span><br><span class="line">        this.fallbackEncoder = fallbackEncoder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void encode(Object parametersObject, Type bodyType, RequestTemplate template)</span><br><span class="line">      throws EncodeException &#123;</span><br><span class="line">      if (Request.class.isAssignableFrom(parametersObject.getClass())) &#123;</span><br><span class="line">        Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();</span><br><span class="line">        try &#123;</span><br><span class="line">          // Prepare the requestTemplate</span><br><span class="line">          for (Method method : parametersObject.getClass().getMethods()) &#123;</span><br><span class="line">            if (method.isAnnotationPresent(QueryParam.class)) &#123;</span><br><span class="line">              String key = method.getAnnotation(QueryParam.class).value();</span><br><span class="line">              Object value = method.invoke(parametersObject);</span><br><span class="line">              if (value != null) &#123;</span><br><span class="line">                if (Collection.class.isAssignableFrom(method.getReturnType())) &#123;</span><br><span class="line">                  value =</span><br><span class="line">                      ((Collection&lt;?&gt;) value)</span><br><span class="line">                          .stream()</span><br><span class="line">                          .map(v -&gt; String.valueOf(v))</span><br><span class="line">                          .collect(Collectors.toList());</span><br><span class="line">                &#125; else if (DateTime.class.isAssignableFrom(method.getReturnType())) &#123;</span><br><span class="line">                  value = ((DateTime) value).toString(DEFAULT_DATETIME_FORMAT);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                  value = String.valueOf(value);</span><br><span class="line">                &#125;</span><br><span class="line">                params.put(key, value);</span><br><span class="line">                template.query(key, keyToTemplate(key));</span><br><span class="line">              &#125;</span><br><span class="line">            &#125; else if (method.isAnnotationPresent(PathParam.class)) &#123;</span><br><span class="line">              String key = method.getAnnotation(PathParam.class).value();</span><br><span class="line">              Object value = method.invoke(parametersObject);</span><br><span class="line">              if (value != null) &#123;</span><br><span class="line">                params.put(key, String.valueOf(value));</span><br><span class="line">              &#125;</span><br><span class="line">            &#125; else if (method.isAnnotationPresent(BodyParam.class)) &#123;</span><br><span class="line">              template.body(mapper.writeValueAsString(method.invoke(parametersObject)));</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          // Replace templates with actual values</span><br><span class="line">          template.resolve(params);</span><br><span class="line">        &#125; catch (</span><br><span class="line">            IllegalAccessException</span><br><span class="line">            | IllegalArgumentException</span><br><span class="line">            | InvocationTargetException</span><br><span class="line">            | JsonProcessingException e) &#123;</span><br><span class="line">          throw new EncodeException(&quot;Could not encode parameter object correctly&quot;, e);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        fallbackEncoder.encode(parametersObject, bodyType, template);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private String keyToTemplate(String key)</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;&#123;&quot; + key + &quot;&#125;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">It may look complicated, but it’s in fact pretty simple. Here is how it works: if the object received by the encoder is of the right type, it will use reflection to find the getters of the object, and depending on the annotation, inject the parameter at the right place in the RequestTemplate. Otherwise, it will use a fallback encoder.</span><br><span class="line"></span><br><span class="line">Now, simply set the ReflectionEncoder in your client class with the builder provided by Feign and you are ready to go!</span><br><span class="line"></span><br><span class="line">Here is a complete example of a simple client using request objects.</span><br><span class="line"></span><br><span class="line">public interface CustomDimensionsApi extends ClientFactory.Api</span><br><span class="line">&#123;</span><br><span class="line">    @RequestLine(&quot;PUT /&quot; + ApiVersion.VERSION + &quot;/dimensions/custom/&#123;apiName&#125;&quot;)</span><br><span class="line">    DimensionResponse editDimension(EditDimensionRequest request);</span><br><span class="line">&#125;</span><br><span class="line">public class EditDimensionRequest extends BaseRequest</span><br><span class="line">&#123;</span><br><span class="line">    private String apiName;</span><br><span class="line">    private Boolean updatePastEvents;</span><br><span class="line">    private CustomDimensionModel customDimensionModel;</span><br><span class="line"></span><br><span class="line">    public EditDimensionRequest(String apiName,</span><br><span class="line">                                CustomDimensionModel customDimensionModel)</span><br><span class="line">    &#123;</span><br><span class="line">        this.apiName = apiName;</span><br><span class="line">        this.customDimensionModel = customDimensionModel;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @PathParam(&quot;apiName&quot;)</span><br><span class="line">    public String getApiName() &#123; return apiName; &#125;</span><br><span class="line">    public void setApiName(String apiName) &#123; this.apiName = apiName; &#125;</span><br><span class="line"></span><br><span class="line">    @QueryParam(&quot;updatePastEvents&quot;)</span><br><span class="line">    public Boolean getUpdatePastEvents() &#123; return updatePastEvents; &#125;</span><br><span class="line">    public void setUpdatePastEvents(Boolean updatePastEvents) &#123; this.updatePastEvents = updatePastEvents; &#125;</span><br><span class="line"></span><br><span class="line">    @BodyParam</span><br><span class="line">    public CustomDimensionModel getCustomDimensionModel() &#123; return customDimensionModel; &#125;</span><br><span class="line">    public void setCustomDimensionModel(CustomDimensionModel customDimensionModel) &#123; this.customDimensionModel = customDimensionModel; &#125;</span><br><span class="line"></span><br><span class="line">    public EditDimensionRequest withUpdatePastEvents(Boolean updatePastEvents)&#123;</span><br><span class="line">        setUpdatePastEvents(updatePastEvents); return this;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">There you have it: a very simple HTTP client built with Feign, using a request object. It made coding our functional tests way easier and made them much cleaner. The next steps for us would be to combine that with better exception handling (awesome post by my friend Jacques-Etienne Beaudet, go check it out) and we would be unstoppable!</span><br></pre></td></tr></table></figure>
+            
+        </div>
+        <footer class="article-footer">
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【feign】不支持在Get请求中使用对象传参/" data-id="cjs5isuzs0009iuuia9b2u9rz" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/feign/">feign</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/spring-cloud/">spring-cloud</a></li></ul>
 
         </footer>
     </div>
@@ -616,68 +625,9 @@
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【hystrix】探索/" data-id="cjs5ie6of00096yuijwmyggwp" class="article-share-link">Share</a>
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【hystrix】探索/" data-id="cjs5isuzt000aiuui5efovs4h" class="article-share-link">Share</a>
             
             
-        </footer>
-    </div>
-    
-</article>
-
-
-  
-    <article id="post-【mgo】mgo源码解读——cluster" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-meta">
-        <div class="left">
-            <a href="/wiki/2018/11/05/【mgo】mgo源码解读——cluster/" class="article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
-</a>
-            
-        </div>
-        <div class="right">
-            <span class="article-date right">
-                <i class="fa fa-comments">
-                    <a href="https://github.com/JPCui/wiki/issues/new" target="_blank" class="widget-title">issue</a>
-                </i>
-                <i class="fa fa-eye">
-                    <span id="busuanzi_value_page_pv"></span>
-                </i>
-            </span>
-        </div>
-    </div>
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/2018/11/05/【mgo】mgo源码解读——cluster/">
-                【mgo】mgo源码解读——cluster
-            </a>
-            
-        </h1>
-    
-
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-                <h2 id="定时更新服务器信息-——-syncServersLoop"><a href="#定时更新服务器信息-——-syncServersLoop" class="headerlink" title="定时更新服务器信息 —— syncServersLoop"></a>定时更新服务器信息 —— syncServersLoop</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">// syncServersLoop loops while the cluster is alive to keep its idea of the server topology up-to-date.</span><br><span class="line">// 当集群处于活动状态时，以循环来保持服务的实时拓扑结构。</span><br><span class="line"></span><br><span class="line">// It must be called just once from newCluster.</span><br><span class="line">// 必须从 newCluster 调用一次。</span><br><span class="line"></span><br><span class="line">// The loop iterates once syncServersDelay has passed, or if somebody injects a value into the cluster.sync channel to force a synchronization.</span><br><span class="line">// 一段时间（syncServersDelay）的延迟过后，循环会进行一次迭代。或者在 cluster.sync 管道中注入一个值，来强制执行一次同步操作。（从最后的select管道通信可以很容易看出）</span><br><span class="line"></span><br><span class="line">// A loop iteration will contact all servers in parallel, ask them about known peers and their own role within the cluster, and then attempt to do the same with all the peers retrieved.</span><br><span class="line">// 一次循环迭代将会✨并行✨访问所有服务，查询集群中已知的对等服务及自己的角色，然后对所有对等服务尝试同样的操作。</span><br><span class="line"> </span><br><span class="line">func (cluster *mongoCluster) syncServersLoop() &#123;</span><br><span class="line">    // ✨ 死循环</span><br><span class="line">	for &#123;</span><br><span class="line">		debugf(&quot;SYNC Cluster %p is starting a sync loop iteration.&quot;, cluster)</span><br><span class="line"></span><br><span class="line">		// ✨ 上锁！</span><br><span class="line">		cluster.Lock()</span><br><span class="line">		// ✨ 集群中没有服务了（全挂了？）</span><br><span class="line">		if cluster.references == 0 &#123;</span><br><span class="line">			cluster.Unlock()</span><br><span class="line">			break</span><br><span class="line">		&#125;</span><br><span class="line">		cluster.references++ // Keep alive while syncing.</span><br><span class="line">		// ✨ ？？？</span><br><span class="line">		direct := cluster.direct</span><br><span class="line">		cluster.Unlock()</span><br><span class="line"></span><br><span class="line">		cluster.syncServersIteration(direct)</span><br><span class="line"></span><br><span class="line">		// We just synchronized, so consume any outstanding requests.</span><br><span class="line">		select &#123;</span><br><span class="line">		case &lt;-cluster.sync:</span><br><span class="line">		default:</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		cluster.Release()</span><br><span class="line"></span><br><span class="line">		// Hold off before allowing another sync. No point in</span><br><span class="line">		// burning CPU looking for down servers.</span><br><span class="line">		if !cluster.failFast &#123;</span><br><span class="line">			time.Sleep(syncShortDelay)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		cluster.Lock()</span><br><span class="line">		if cluster.references == 0 &#123;</span><br><span class="line">			cluster.Unlock()</span><br><span class="line">			break</span><br><span class="line">		&#125;</span><br><span class="line">		cluster.syncCount++</span><br><span class="line">		// Poke all waiters so they have a chance to timeout or</span><br><span class="line">		// restart syncing if they wish to.</span><br><span class="line">		cluster.serverSynced.Broadcast()</span><br><span class="line">		// Check if we have to restart immediately either way.</span><br><span class="line">		restart := !direct &amp;&amp; cluster.masters.Empty() || cluster.servers.Empty()</span><br><span class="line">		cluster.Unlock()</span><br><span class="line"></span><br><span class="line">		if restart &#123;</span><br><span class="line">			log(&quot;SYNC No masters found. Will synchronize again.&quot;)</span><br><span class="line">			time.Sleep(syncShortDelay)</span><br><span class="line">			continue</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		debugf(&quot;SYNC Cluster %p waiting for next requested or scheduled sync.&quot;, cluster)</span><br><span class="line"></span><br><span class="line">		// Hold off until somebody explicitly requests a synchronization</span><br><span class="line">		// or it&apos;s time to check for a cluster topology change again.</span><br><span class="line">		select &#123;</span><br><span class="line">		case &lt;-cluster.sync:</span><br><span class="line">		case &lt;-time.After(syncServersDelay):</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	debugf(&quot;SYNC Cluster %p is stopping its sync loop.&quot;, cluster)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="同步服务info的核心"><a href="#同步服务info的核心" class="headerlink" title="同步服务info的核心"></a>同步服务info的核心</h2><p>设计到的点</p>
-<ul>
-<li>sync.WaitGroup 并发控制</li>
-<li>sync.Mutex 这个简单</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">func (cluster *mongoCluster) syncServersIteration(direct bool) &#123;</span><br><span class="line">	log(&quot;SYNC Starting full topology synchronization...&quot;)</span><br><span class="line"></span><br><span class="line">	var wg sync.WaitGroup</span><br><span class="line">	var m sync.Mutex</span><br><span class="line">	notYetAdded := make(map[string]pendingAdd)</span><br><span class="line">	addIfFound := make(map[string]bool)</span><br><span class="line">	seen := make(map[string]bool)</span><br><span class="line">	syncKind := partialSync</span><br><span class="line"></span><br><span class="line">	var spawnSync func(addr string, byMaster bool)</span><br><span class="line">	spawnSync = func(addr string, byMaster bool) &#123;</span><br><span class="line">		// ✨ 标记开启了一个新线程</span><br><span class="line">		wg.Add(1)</span><br><span class="line">		go func() &#123;</span><br><span class="line">			defer wg.Done()</span><br><span class="line"></span><br><span class="line">			// ✨ 解析地址，这个resolveAddr实现好🐂🍺，考虑的较全面</span><br><span class="line">			// ✨ （不进去看代码了）先解析ip地址，不是ip地址就当初udp连接解析，因为拨号连接可能耗时，用了select管道并发处理，这里分别以udp4、udp6进行尝试</span><br><span class="line">			tcpaddr, err := resolveAddr(addr)</span><br><span class="line">			if err != nil &#123;</span><br><span class="line">				log(&quot;SYNC Failed to start sync of &quot;, addr, &quot;: &quot;, err.Error())</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line">			resolvedAddr := tcpaddr.String()</span><br><span class="line"></span><br><span class="line">			// ✨ 已发现地址的逻辑，要加锁</span><br><span class="line">			m.Lock()</span><br><span class="line">			if byMaster &#123;</span><br><span class="line">				if pending, ok := notYetAdded[resolvedAddr]; ok &#123;</span><br><span class="line">					delete(notYetAdded, resolvedAddr)</span><br><span class="line">					m.Unlock()</span><br><span class="line">					cluster.addServer(pending.server, pending.info, completeSync)</span><br><span class="line">					return</span><br><span class="line">				&#125;</span><br><span class="line">				addIfFound[resolvedAddr] = true</span><br><span class="line">			&#125;</span><br><span class="line">			// ✨ 如果已经发现该地址，stop</span><br><span class="line">			if seen[resolvedAddr] &#123;</span><br><span class="line">				m.Unlock()</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line">			// ✨ 标记当前地址已被发现</span><br><span class="line">			seen[resolvedAddr] = true</span><br><span class="line">			m.Unlock()</span><br><span class="line"></span><br><span class="line">			server := cluster.server(addr, tcpaddr)</span><br><span class="line">			// ✨ 同步server信息</span><br><span class="line">			info, hosts, err := cluster.syncServer(server)</span><br><span class="line">			if err != nil &#123;</span><br><span class="line">				// ✨ 同步信息出错，移除</span><br><span class="line">				cluster.removeServer(server)</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			m.Lock()</span><br><span class="line">			add := direct || info.Master || addIfFound[resolvedAddr]</span><br><span class="line">			if add &#123;</span><br><span class="line">				syncKind = completeSync</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				notYetAdded[resolvedAddr] = pendingAdd&#123;server, info&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			m.Unlock()</span><br><span class="line">			if add &#123;</span><br><span class="line">				cluster.addServer(server, info, completeSync)</span><br><span class="line">			&#125;</span><br><span class="line">			if !direct &#123;</span><br><span class="line">				for _, addr := range hosts &#123;</span><br><span class="line">					spawnSync(addr, info.Master)</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;()</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	knownAddrs := cluster.getKnownAddrs()</span><br><span class="line">	for _, addr := range knownAddrs &#123;</span><br><span class="line">		spawnSync(addr, false)</span><br><span class="line">	&#125;</span><br><span class="line">	wg.Wait()</span><br><span class="line"></span><br><span class="line">	if syncKind == completeSync &#123;</span><br><span class="line">		logf(&quot;SYNC Synchronization was complete (got data from primary).&quot;)</span><br><span class="line">		for _, pending := range notYetAdded &#123;</span><br><span class="line">			cluster.removeServer(pending.server)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		logf(&quot;SYNC Synchronization was partial (cannot talk to primary).&quot;)</span><br><span class="line">		for _, pending := range notYetAdded &#123;</span><br><span class="line">			cluster.addServer(pending.server, pending.info, partialSync)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cluster.Lock()</span><br><span class="line">	mastersLen := cluster.masters.Len()</span><br><span class="line">	logf(&quot;SYNC Synchronization completed: %d master(s) and %d slave(s) alive.&quot;, mastersLen, cluster.servers.Len()-mastersLen)</span><br><span class="line"></span><br><span class="line">	// Update dynamic seeds, but only if we have any good servers. Otherwise,</span><br><span class="line">	// leave them alone for better chances of a successful sync in the future.</span><br><span class="line">	if syncKind == completeSync &#123;</span><br><span class="line">		dynaSeeds := make([]string, cluster.servers.Len())</span><br><span class="line">		for i, server := range cluster.servers.Slice() &#123;</span><br><span class="line">			dynaSeeds[i] = server.Addr</span><br><span class="line">		&#125;</span><br><span class="line">		cluster.dynaSeeds = dynaSeeds</span><br><span class="line">		debugf(&quot;SYNC New dynamic seeds: %#v\n&quot;, dynaSeeds)</span><br><span class="line">	&#125;</span><br><span class="line">	cluster.Unlock()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-            
-        </div>
-        <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【mgo】mgo源码解读——cluster/" data-id="cjs5ie6og000b6yui2hdrq15j" class="article-share-link">Share</a>
-            
-            
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/mgo/">mgo</a></li></ul>
-
         </footer>
     </div>
     
@@ -732,10 +682,69 @@
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【mybatis】通用mapper注册流程/" data-id="cjs5ie6oi000d6yuiedy03uo4" class="article-share-link">Share</a>
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【mybatis】通用mapper注册流程/" data-id="cjs5isuzu000ciuuizc1j3kj9" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/mybatis/">mybatis</a></li></ul>
+
+        </footer>
+    </div>
+    
+</article>
+
+
+  
+    <article id="post-【mgo】mgo源码解读——cluster" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-meta">
+        <div class="left">
+            <a href="/wiki/2018/11/05/【mgo】mgo源码解读——cluster/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+            
+        </div>
+        <div class="right">
+            <span class="article-date right">
+                <i class="fa fa-comments">
+                    <a href="https://github.com/JPCui/wiki/issues/new" target="_blank" class="widget-title">issue</a>
+                </i>
+                <i class="fa fa-eye">
+                    <span id="busuanzi_value_page_pv"></span>
+                </i>
+            </span>
+        </div>
+    </div>
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/2018/11/05/【mgo】mgo源码解读——cluster/">
+                【mgo】mgo源码解读——cluster
+            </a>
+            
+        </h1>
+    
+
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                <h2 id="定时更新服务器信息-——-syncServersLoop"><a href="#定时更新服务器信息-——-syncServersLoop" class="headerlink" title="定时更新服务器信息 —— syncServersLoop"></a>定时更新服务器信息 —— syncServersLoop</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">// syncServersLoop loops while the cluster is alive to keep its idea of the server topology up-to-date.</span><br><span class="line">// 当集群处于活动状态时，以循环来保持服务的实时拓扑结构。</span><br><span class="line"></span><br><span class="line">// It must be called just once from newCluster.</span><br><span class="line">// 必须从 newCluster 调用一次。</span><br><span class="line"></span><br><span class="line">// The loop iterates once syncServersDelay has passed, or if somebody injects a value into the cluster.sync channel to force a synchronization.</span><br><span class="line">// 一段时间（syncServersDelay）的延迟过后，循环会进行一次迭代。或者在 cluster.sync 管道中注入一个值，来强制执行一次同步操作。（从最后的select管道通信可以很容易看出）</span><br><span class="line"></span><br><span class="line">// A loop iteration will contact all servers in parallel, ask them about known peers and their own role within the cluster, and then attempt to do the same with all the peers retrieved.</span><br><span class="line">// 一次循环迭代将会✨并行✨访问所有服务，查询集群中已知的对等服务及自己的角色，然后对所有对等服务尝试同样的操作。</span><br><span class="line"> </span><br><span class="line">func (cluster *mongoCluster) syncServersLoop() &#123;</span><br><span class="line">    // ✨ 死循环</span><br><span class="line">	for &#123;</span><br><span class="line">		debugf(&quot;SYNC Cluster %p is starting a sync loop iteration.&quot;, cluster)</span><br><span class="line"></span><br><span class="line">		// ✨ 上锁！</span><br><span class="line">		cluster.Lock()</span><br><span class="line">		// ✨ 集群中没有服务了（全挂了？）</span><br><span class="line">		if cluster.references == 0 &#123;</span><br><span class="line">			cluster.Unlock()</span><br><span class="line">			break</span><br><span class="line">		&#125;</span><br><span class="line">		cluster.references++ // Keep alive while syncing.</span><br><span class="line">		// ✨ ？？？</span><br><span class="line">		direct := cluster.direct</span><br><span class="line">		cluster.Unlock()</span><br><span class="line"></span><br><span class="line">		cluster.syncServersIteration(direct)</span><br><span class="line"></span><br><span class="line">		// We just synchronized, so consume any outstanding requests.</span><br><span class="line">		select &#123;</span><br><span class="line">		case &lt;-cluster.sync:</span><br><span class="line">		default:</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		cluster.Release()</span><br><span class="line"></span><br><span class="line">		// Hold off before allowing another sync. No point in</span><br><span class="line">		// burning CPU looking for down servers.</span><br><span class="line">		if !cluster.failFast &#123;</span><br><span class="line">			time.Sleep(syncShortDelay)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		cluster.Lock()</span><br><span class="line">		if cluster.references == 0 &#123;</span><br><span class="line">			cluster.Unlock()</span><br><span class="line">			break</span><br><span class="line">		&#125;</span><br><span class="line">		cluster.syncCount++</span><br><span class="line">		// Poke all waiters so they have a chance to timeout or</span><br><span class="line">		// restart syncing if they wish to.</span><br><span class="line">		cluster.serverSynced.Broadcast()</span><br><span class="line">		// Check if we have to restart immediately either way.</span><br><span class="line">		restart := !direct &amp;&amp; cluster.masters.Empty() || cluster.servers.Empty()</span><br><span class="line">		cluster.Unlock()</span><br><span class="line"></span><br><span class="line">		if restart &#123;</span><br><span class="line">			log(&quot;SYNC No masters found. Will synchronize again.&quot;)</span><br><span class="line">			time.Sleep(syncShortDelay)</span><br><span class="line">			continue</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		debugf(&quot;SYNC Cluster %p waiting for next requested or scheduled sync.&quot;, cluster)</span><br><span class="line"></span><br><span class="line">		// Hold off until somebody explicitly requests a synchronization</span><br><span class="line">		// or it&apos;s time to check for a cluster topology change again.</span><br><span class="line">		select &#123;</span><br><span class="line">		case &lt;-cluster.sync:</span><br><span class="line">		case &lt;-time.After(syncServersDelay):</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	debugf(&quot;SYNC Cluster %p is stopping its sync loop.&quot;, cluster)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="同步服务info的核心"><a href="#同步服务info的核心" class="headerlink" title="同步服务info的核心"></a>同步服务info的核心</h2><p>设计到的点</p>
+<ul>
+<li>sync.WaitGroup 并发控制</li>
+<li>sync.Mutex 这个简单</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">func (cluster *mongoCluster) syncServersIteration(direct bool) &#123;</span><br><span class="line">	log(&quot;SYNC Starting full topology synchronization...&quot;)</span><br><span class="line"></span><br><span class="line">	var wg sync.WaitGroup</span><br><span class="line">	var m sync.Mutex</span><br><span class="line">	notYetAdded := make(map[string]pendingAdd)</span><br><span class="line">	addIfFound := make(map[string]bool)</span><br><span class="line">	seen := make(map[string]bool)</span><br><span class="line">	syncKind := partialSync</span><br><span class="line"></span><br><span class="line">	var spawnSync func(addr string, byMaster bool)</span><br><span class="line">	spawnSync = func(addr string, byMaster bool) &#123;</span><br><span class="line">		// ✨ 标记开启了一个新线程</span><br><span class="line">		wg.Add(1)</span><br><span class="line">		go func() &#123;</span><br><span class="line">			defer wg.Done()</span><br><span class="line"></span><br><span class="line">			// ✨ 解析地址，这个resolveAddr实现好🐂🍺，考虑的较全面</span><br><span class="line">			// ✨ （不进去看代码了）先解析ip地址，不是ip地址就当初udp连接解析，因为拨号连接可能耗时，用了select管道并发处理，这里分别以udp4、udp6进行尝试</span><br><span class="line">			tcpaddr, err := resolveAddr(addr)</span><br><span class="line">			if err != nil &#123;</span><br><span class="line">				log(&quot;SYNC Failed to start sync of &quot;, addr, &quot;: &quot;, err.Error())</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line">			resolvedAddr := tcpaddr.String()</span><br><span class="line"></span><br><span class="line">			// ✨ 已发现地址的逻辑，要加锁</span><br><span class="line">			m.Lock()</span><br><span class="line">			if byMaster &#123;</span><br><span class="line">				if pending, ok := notYetAdded[resolvedAddr]; ok &#123;</span><br><span class="line">					delete(notYetAdded, resolvedAddr)</span><br><span class="line">					m.Unlock()</span><br><span class="line">					cluster.addServer(pending.server, pending.info, completeSync)</span><br><span class="line">					return</span><br><span class="line">				&#125;</span><br><span class="line">				addIfFound[resolvedAddr] = true</span><br><span class="line">			&#125;</span><br><span class="line">			// ✨ 如果已经发现该地址，stop</span><br><span class="line">			if seen[resolvedAddr] &#123;</span><br><span class="line">				m.Unlock()</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line">			// ✨ 标记当前地址已被发现</span><br><span class="line">			seen[resolvedAddr] = true</span><br><span class="line">			m.Unlock()</span><br><span class="line"></span><br><span class="line">			server := cluster.server(addr, tcpaddr)</span><br><span class="line">			// ✨ 同步server信息</span><br><span class="line">			info, hosts, err := cluster.syncServer(server)</span><br><span class="line">			if err != nil &#123;</span><br><span class="line">				// ✨ 同步信息出错，移除</span><br><span class="line">				cluster.removeServer(server)</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			m.Lock()</span><br><span class="line">			add := direct || info.Master || addIfFound[resolvedAddr]</span><br><span class="line">			if add &#123;</span><br><span class="line">				syncKind = completeSync</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				notYetAdded[resolvedAddr] = pendingAdd&#123;server, info&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			m.Unlock()</span><br><span class="line">			if add &#123;</span><br><span class="line">				cluster.addServer(server, info, completeSync)</span><br><span class="line">			&#125;</span><br><span class="line">			if !direct &#123;</span><br><span class="line">				for _, addr := range hosts &#123;</span><br><span class="line">					spawnSync(addr, info.Master)</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;()</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	knownAddrs := cluster.getKnownAddrs()</span><br><span class="line">	for _, addr := range knownAddrs &#123;</span><br><span class="line">		spawnSync(addr, false)</span><br><span class="line">	&#125;</span><br><span class="line">	wg.Wait()</span><br><span class="line"></span><br><span class="line">	if syncKind == completeSync &#123;</span><br><span class="line">		logf(&quot;SYNC Synchronization was complete (got data from primary).&quot;)</span><br><span class="line">		for _, pending := range notYetAdded &#123;</span><br><span class="line">			cluster.removeServer(pending.server)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		logf(&quot;SYNC Synchronization was partial (cannot talk to primary).&quot;)</span><br><span class="line">		for _, pending := range notYetAdded &#123;</span><br><span class="line">			cluster.addServer(pending.server, pending.info, partialSync)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cluster.Lock()</span><br><span class="line">	mastersLen := cluster.masters.Len()</span><br><span class="line">	logf(&quot;SYNC Synchronization completed: %d master(s) and %d slave(s) alive.&quot;, mastersLen, cluster.servers.Len()-mastersLen)</span><br><span class="line"></span><br><span class="line">	// Update dynamic seeds, but only if we have any good servers. Otherwise,</span><br><span class="line">	// leave them alone for better chances of a successful sync in the future.</span><br><span class="line">	if syncKind == completeSync &#123;</span><br><span class="line">		dynaSeeds := make([]string, cluster.servers.Len())</span><br><span class="line">		for i, server := range cluster.servers.Slice() &#123;</span><br><span class="line">			dynaSeeds[i] = server.Addr</span><br><span class="line">		&#125;</span><br><span class="line">		cluster.dynaSeeds = dynaSeeds</span><br><span class="line">		debugf(&quot;SYNC New dynamic seeds: %#v\n&quot;, dynaSeeds)</span><br><span class="line">	&#125;</span><br><span class="line">	cluster.Unlock()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            
+        </div>
+        <footer class="article-footer">
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【mgo】mgo源码解读——cluster/" data-id="cjs5isuzw000diuuim3ethki1" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/mgo/">mgo</a></li></ul>
 
         </footer>
     </div>
@@ -798,19 +807,19 @@
           </li>
         
           <li>
-            <a href="/wiki/2018/11/05/【spring-boot】application.properties/">【spring-boot】application.properties</a>
+            <a href="/wiki/2018/11/05/【spring-cloud】spring-cloud-config/">【spring-cloud】spring-cloud-config</a>
           </li>
         
           <li>
-            <a href="/wiki/2018/11/05/【consul】docker配置/">【consul】docker配置</a>
-          </li>
-        
-          <li>
-            <a href="/wiki/2018/11/05/【docker】创建java容器/">【docker】创建java容器</a>
+            <a href="/wiki/2018/11/05/【bootstrap】file-input/">【bootstrap】file-input</a>
           </li>
         
           <li>
             <a href="/wiki/2018/11/05/【docker】杀不死的docker/">【docker】杀不死的docker</a>
+          </li>
+        
+          <li>
+            <a href="/wiki/2018/11/05/【docker】创建java容器/">【docker】创建java容器</a>
           </li>
         
       </ul>
