@@ -141,7 +141,7 @@
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2019/02/12/todolist/" data-id="cjs5idosc000056ui1kzgny3b" class="article-share-link">Share</a>
+            <a data-url="https://jpcui.github.io/wiki/2019/02/12/todolist/" data-id="cjs5ie6o100006yui2el1c2v2" class="article-share-link">Share</a>
             
             
         </footer>
@@ -192,7 +192,7 @@
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-boot】application.properties/" data-id="cjs5idouk002r56uiybv98ib4" class="article-share-link">Share</a>
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-boot】application.properties/" data-id="cjs5ie6qb002r6yuipjck66ym" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/spring-boot/">spring-boot</a></li></ul>
@@ -251,7 +251,7 @@
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【consul】docker配置/" data-id="cjs5idosi000256uik0hplb2a" class="article-share-link">Share</a>
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【consul】docker配置/" data-id="cjs5ie6o700026yuih88u4osa" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/consul/">consul</a></li></ul>
@@ -325,7 +325,7 @@
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【docker】创建java容器/" data-id="cjs5idosk000456uiogh6n24s" class="article-share-link">Share</a>
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【docker】创建java容器/" data-id="cjs5ie6oa00046yui6iggtk80" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/docker/">docker</a></li></ul>
@@ -384,71 +384,11 @@
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【docker】杀不死的docker/" data-id="cjs5idosl000556uinxs9lit4" class="article-share-link">Share</a>
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【docker】杀不死的docker/" data-id="cjs5ie6ob00056yuibxjwj865" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/docker/">docker</a></li></ul>
 
-        </footer>
-    </div>
-    
-</article>
-
-
-  
-    <article id="post-【hystrix】探索" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-meta">
-        <div class="left">
-            <a href="/wiki/2018/11/05/【hystrix】探索/" class="article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
-</a>
-            
-        </div>
-        <div class="right">
-            <span class="article-date right">
-                <i class="fa fa-comments">
-                    <a href="https://github.com/JPCui/wiki/issues/new" target="_blank" class="widget-title">issue</a>
-                </i>
-                <i class="fa fa-eye">
-                    <span id="busuanzi_value_page_pv"></span>
-                </i>
-            </span>
-        </div>
-    </div>
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/2018/11/05/【hystrix】探索/">
-                【hystrix】探索
-            </a>
-            
-        </h1>
-    
-
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-                <h1 id="断路器"><a href="#断路器" class="headerlink" title="断路器"></a>断路器</h1><p>作用: 防止一个服务接口错误可能会导致级联故障. </p>
-<p>触发条件: 当<strong>一个周期</strong>内, 单个接口调用次数超过<strong>请求调用阈值</strong>, 或失败率达到<strong>失败百分比阈值</strong>,<br>断路器将会打开, 并且请求会失败.</p>
-<p>降级: 为了防止失败和断路, 开发中可以提供一个回调函数.<br>回调函数可以是另一个受Hystrix保护的接口, 静态数据或空值. </p>
-<p><img src="https://raw.githubusercontent.com/spring-cloud/spring-cloud-netflix/1.4.x/docs/src/main/asciidoc/images/HystrixFallback.png" alt=""></p>
-<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><p>引入依赖:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;spring-cloud-starter-netflix-hystrix&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
-<p>启用:</p>
-<p><code>@EnableCircuitBreaker</code></p>
-<p>See <a href="https://github.com/Netflix/Hystrix/tree/master/hystrix-contrib/hystrix-javanica#configuration" target="_blank" rel="noopener">here</a> for more.</p>
-<p>See the <a href="https://github.com/Netflix/Hystrix/wiki/Configuration" target="_blank" rel="noopener">Hystrix wiki</a> for details on the properties available.</p>
-
-            
-        </div>
-        <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【hystrix】探索/" data-id="cjs5idosm000656uiqfosvqn3" class="article-share-link">Share</a>
-            
-            
         </footer>
     </div>
     
@@ -513,128 +453,10 @@
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【feign】不支持在Get请求中使用对象传参/" data-id="cjs5idosn000856ui0lgvvdlo" class="article-share-link">Share</a>
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【feign】不支持在Get请求中使用对象传参/" data-id="cjs5ie6oc00066yuip7qykji4" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/feign/">feign</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/spring-cloud/">spring-cloud</a></li></ul>
-
-        </footer>
-    </div>
-    
-</article>
-
-
-  
-    <article id="post-【mgo】mgo源码解读——cluster" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-meta">
-        <div class="left">
-            <a href="/wiki/2018/11/05/【mgo】mgo源码解读——cluster/" class="article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
-</a>
-            
-        </div>
-        <div class="right">
-            <span class="article-date right">
-                <i class="fa fa-comments">
-                    <a href="https://github.com/JPCui/wiki/issues/new" target="_blank" class="widget-title">issue</a>
-                </i>
-                <i class="fa fa-eye">
-                    <span id="busuanzi_value_page_pv"></span>
-                </i>
-            </span>
-        </div>
-    </div>
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/2018/11/05/【mgo】mgo源码解读——cluster/">
-                【mgo】mgo源码解读——cluster
-            </a>
-            
-        </h1>
-    
-
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-                <h2 id="定时更新服务器信息-——-syncServersLoop"><a href="#定时更新服务器信息-——-syncServersLoop" class="headerlink" title="定时更新服务器信息 —— syncServersLoop"></a>定时更新服务器信息 —— syncServersLoop</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">// syncServersLoop loops while the cluster is alive to keep its idea of the server topology up-to-date.</span><br><span class="line">// 当集群处于活动状态时，以循环来保持服务的实时拓扑结构。</span><br><span class="line"></span><br><span class="line">// It must be called just once from newCluster.</span><br><span class="line">// 必须从 newCluster 调用一次。</span><br><span class="line"></span><br><span class="line">// The loop iterates once syncServersDelay has passed, or if somebody injects a value into the cluster.sync channel to force a synchronization.</span><br><span class="line">// 一段时间（syncServersDelay）的延迟过后，循环会进行一次迭代。或者在 cluster.sync 管道中注入一个值，来强制执行一次同步操作。（从最后的select管道通信可以很容易看出）</span><br><span class="line"></span><br><span class="line">// A loop iteration will contact all servers in parallel, ask them about known peers and their own role within the cluster, and then attempt to do the same with all the peers retrieved.</span><br><span class="line">// 一次循环迭代将会✨并行✨访问所有服务，查询集群中已知的对等服务及自己的角色，然后对所有对等服务尝试同样的操作。</span><br><span class="line"> </span><br><span class="line">func (cluster *mongoCluster) syncServersLoop() &#123;</span><br><span class="line">    // ✨ 死循环</span><br><span class="line">	for &#123;</span><br><span class="line">		debugf(&quot;SYNC Cluster %p is starting a sync loop iteration.&quot;, cluster)</span><br><span class="line"></span><br><span class="line">		// ✨ 上锁！</span><br><span class="line">		cluster.Lock()</span><br><span class="line">		// ✨ 集群中没有服务了（全挂了？）</span><br><span class="line">		if cluster.references == 0 &#123;</span><br><span class="line">			cluster.Unlock()</span><br><span class="line">			break</span><br><span class="line">		&#125;</span><br><span class="line">		cluster.references++ // Keep alive while syncing.</span><br><span class="line">		// ✨ ？？？</span><br><span class="line">		direct := cluster.direct</span><br><span class="line">		cluster.Unlock()</span><br><span class="line"></span><br><span class="line">		cluster.syncServersIteration(direct)</span><br><span class="line"></span><br><span class="line">		// We just synchronized, so consume any outstanding requests.</span><br><span class="line">		select &#123;</span><br><span class="line">		case &lt;-cluster.sync:</span><br><span class="line">		default:</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		cluster.Release()</span><br><span class="line"></span><br><span class="line">		// Hold off before allowing another sync. No point in</span><br><span class="line">		// burning CPU looking for down servers.</span><br><span class="line">		if !cluster.failFast &#123;</span><br><span class="line">			time.Sleep(syncShortDelay)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		cluster.Lock()</span><br><span class="line">		if cluster.references == 0 &#123;</span><br><span class="line">			cluster.Unlock()</span><br><span class="line">			break</span><br><span class="line">		&#125;</span><br><span class="line">		cluster.syncCount++</span><br><span class="line">		// Poke all waiters so they have a chance to timeout or</span><br><span class="line">		// restart syncing if they wish to.</span><br><span class="line">		cluster.serverSynced.Broadcast()</span><br><span class="line">		// Check if we have to restart immediately either way.</span><br><span class="line">		restart := !direct &amp;&amp; cluster.masters.Empty() || cluster.servers.Empty()</span><br><span class="line">		cluster.Unlock()</span><br><span class="line"></span><br><span class="line">		if restart &#123;</span><br><span class="line">			log(&quot;SYNC No masters found. Will synchronize again.&quot;)</span><br><span class="line">			time.Sleep(syncShortDelay)</span><br><span class="line">			continue</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		debugf(&quot;SYNC Cluster %p waiting for next requested or scheduled sync.&quot;, cluster)</span><br><span class="line"></span><br><span class="line">		// Hold off until somebody explicitly requests a synchronization</span><br><span class="line">		// or it&apos;s time to check for a cluster topology change again.</span><br><span class="line">		select &#123;</span><br><span class="line">		case &lt;-cluster.sync:</span><br><span class="line">		case &lt;-time.After(syncServersDelay):</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	debugf(&quot;SYNC Cluster %p is stopping its sync loop.&quot;, cluster)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="同步服务info的核心"><a href="#同步服务info的核心" class="headerlink" title="同步服务info的核心"></a>同步服务info的核心</h2><p>设计到的点</p>
-<ul>
-<li>sync.WaitGroup 并发控制</li>
-<li>sync.Mutex 这个简单</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">func (cluster *mongoCluster) syncServersIteration(direct bool) &#123;</span><br><span class="line">	log(&quot;SYNC Starting full topology synchronization...&quot;)</span><br><span class="line"></span><br><span class="line">	var wg sync.WaitGroup</span><br><span class="line">	var m sync.Mutex</span><br><span class="line">	notYetAdded := make(map[string]pendingAdd)</span><br><span class="line">	addIfFound := make(map[string]bool)</span><br><span class="line">	seen := make(map[string]bool)</span><br><span class="line">	syncKind := partialSync</span><br><span class="line"></span><br><span class="line">	var spawnSync func(addr string, byMaster bool)</span><br><span class="line">	spawnSync = func(addr string, byMaster bool) &#123;</span><br><span class="line">		// ✨ 标记开启了一个新线程</span><br><span class="line">		wg.Add(1)</span><br><span class="line">		go func() &#123;</span><br><span class="line">			defer wg.Done()</span><br><span class="line"></span><br><span class="line">			// ✨ 解析地址，这个resolveAddr实现好🐂🍺，考虑的较全面</span><br><span class="line">			// ✨ （不进去看代码了）先解析ip地址，不是ip地址就当初udp连接解析，因为拨号连接可能耗时，用了select管道并发处理，这里分别以udp4、udp6进行尝试</span><br><span class="line">			tcpaddr, err := resolveAddr(addr)</span><br><span class="line">			if err != nil &#123;</span><br><span class="line">				log(&quot;SYNC Failed to start sync of &quot;, addr, &quot;: &quot;, err.Error())</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line">			resolvedAddr := tcpaddr.String()</span><br><span class="line"></span><br><span class="line">			// ✨ 已发现地址的逻辑，要加锁</span><br><span class="line">			m.Lock()</span><br><span class="line">			if byMaster &#123;</span><br><span class="line">				if pending, ok := notYetAdded[resolvedAddr]; ok &#123;</span><br><span class="line">					delete(notYetAdded, resolvedAddr)</span><br><span class="line">					m.Unlock()</span><br><span class="line">					cluster.addServer(pending.server, pending.info, completeSync)</span><br><span class="line">					return</span><br><span class="line">				&#125;</span><br><span class="line">				addIfFound[resolvedAddr] = true</span><br><span class="line">			&#125;</span><br><span class="line">			// ✨ 如果已经发现该地址，stop</span><br><span class="line">			if seen[resolvedAddr] &#123;</span><br><span class="line">				m.Unlock()</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line">			// ✨ 标记当前地址已被发现</span><br><span class="line">			seen[resolvedAddr] = true</span><br><span class="line">			m.Unlock()</span><br><span class="line"></span><br><span class="line">			server := cluster.server(addr, tcpaddr)</span><br><span class="line">			// ✨ 同步server信息</span><br><span class="line">			info, hosts, err := cluster.syncServer(server)</span><br><span class="line">			if err != nil &#123;</span><br><span class="line">				// ✨ 同步信息出错，移除</span><br><span class="line">				cluster.removeServer(server)</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			m.Lock()</span><br><span class="line">			add := direct || info.Master || addIfFound[resolvedAddr]</span><br><span class="line">			if add &#123;</span><br><span class="line">				syncKind = completeSync</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				notYetAdded[resolvedAddr] = pendingAdd&#123;server, info&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			m.Unlock()</span><br><span class="line">			if add &#123;</span><br><span class="line">				cluster.addServer(server, info, completeSync)</span><br><span class="line">			&#125;</span><br><span class="line">			if !direct &#123;</span><br><span class="line">				for _, addr := range hosts &#123;</span><br><span class="line">					spawnSync(addr, info.Master)</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;()</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	knownAddrs := cluster.getKnownAddrs()</span><br><span class="line">	for _, addr := range knownAddrs &#123;</span><br><span class="line">		spawnSync(addr, false)</span><br><span class="line">	&#125;</span><br><span class="line">	wg.Wait()</span><br><span class="line"></span><br><span class="line">	if syncKind == completeSync &#123;</span><br><span class="line">		logf(&quot;SYNC Synchronization was complete (got data from primary).&quot;)</span><br><span class="line">		for _, pending := range notYetAdded &#123;</span><br><span class="line">			cluster.removeServer(pending.server)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		logf(&quot;SYNC Synchronization was partial (cannot talk to primary).&quot;)</span><br><span class="line">		for _, pending := range notYetAdded &#123;</span><br><span class="line">			cluster.addServer(pending.server, pending.info, partialSync)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cluster.Lock()</span><br><span class="line">	mastersLen := cluster.masters.Len()</span><br><span class="line">	logf(&quot;SYNC Synchronization completed: %d master(s) and %d slave(s) alive.&quot;, mastersLen, cluster.servers.Len()-mastersLen)</span><br><span class="line"></span><br><span class="line">	// Update dynamic seeds, but only if we have any good servers. Otherwise,</span><br><span class="line">	// leave them alone for better chances of a successful sync in the future.</span><br><span class="line">	if syncKind == completeSync &#123;</span><br><span class="line">		dynaSeeds := make([]string, cluster.servers.Len())</span><br><span class="line">		for i, server := range cluster.servers.Slice() &#123;</span><br><span class="line">			dynaSeeds[i] = server.Addr</span><br><span class="line">		&#125;</span><br><span class="line">		cluster.dynaSeeds = dynaSeeds</span><br><span class="line">		debugf(&quot;SYNC New dynamic seeds: %#v\n&quot;, dynaSeeds)</span><br><span class="line">	&#125;</span><br><span class="line">	cluster.Unlock()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-            
-        </div>
-        <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【mgo】mgo源码解读——cluster/" data-id="cjs5idoso000956ui73ek3aci" class="article-share-link">Share</a>
-            
-            
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/mgo/">mgo</a></li></ul>
-
-        </footer>
-    </div>
-    
-</article>
-
-
-  
-    <article id="post-【mybatis】通用mapper注册流程" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-meta">
-        <div class="left">
-            <a href="/wiki/2018/11/05/【mybatis】通用mapper注册流程/" class="article-date">
-  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
-</a>
-            
-        </div>
-        <div class="right">
-            <span class="article-date right">
-                <i class="fa fa-comments">
-                    <a href="https://github.com/JPCui/wiki/issues/new" target="_blank" class="widget-title">issue</a>
-                </i>
-                <i class="fa fa-eye">
-                    <span id="busuanzi_value_page_pv"></span>
-                </i>
-            </span>
-        </div>
-    </div>
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/2018/11/05/【mybatis】通用mapper注册流程/">
-                【mybatis】通用mapper注册流程
-            </a>
-            
-        </h1>
-    
-
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-                <blockquote>
-<p><a href="https://github.com/abel533/Mapper" target="_blank" rel="noopener">https://github.com/abel533/Mapper</a><br>/oasis-o2o/Mapper</p>
-</blockquote>
-<h2 id="通用mapper注册流程"><a href="#通用mapper注册流程" class="headerlink" title="通用mapper注册流程"></a>通用mapper注册流程</h2><p>使用咱们自己的mapper扩展插件时, 想自定义mapper实现批量插入(见:InsertListMapper), 发现无法实例化 <code>SpecialProvider</code>, </p>
-<p><code>org.apache.ibatis.builder.BuilderException: Error invoking SqlProvider method</code></p>
-<p>研究其mapper注册流程发现, 在 <code>MapperScannerConfigurer</code> 中未配置 <code>mappers</code> 时, 默认注册 <code>tk.mybatis.mapper.common.Mapper</code>, 代码见 <code>tk.mybatis.mapper.mapperhelper.MapperHelper#ifEmptyRegisterDefaultInterface</code>, 如果指定了 <code>mappers</code>, 则在 <code>setProperties</code> 时就开始注册了, 代码见 <code>tk.mybatis.mapper.mapperhelper.MapperHelper#setProperties</code></p>
-
-            
-        </div>
-        <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【mybatis】通用mapper注册流程/" data-id="cjs5idosp000b56uictxjbro4" class="article-share-link">Share</a>
-            
-            
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/mybatis/">mybatis</a></li></ul>
 
         </footer>
     </div>
@@ -732,10 +554,188 @@
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【guava】EventBus/" data-id="cjs5idosr000d56ui8xdppslr" class="article-share-link">Share</a>
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【guava】EventBus/" data-id="cjs5ie6oe00086yui4aux7vfj" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/eventbus/">eventbus</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/guava/">guava</a></li></ul>
+
+        </footer>
+    </div>
+    
+</article>
+
+
+  
+    <article id="post-【hystrix】探索" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-meta">
+        <div class="left">
+            <a href="/wiki/2018/11/05/【hystrix】探索/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+            
+        </div>
+        <div class="right">
+            <span class="article-date right">
+                <i class="fa fa-comments">
+                    <a href="https://github.com/JPCui/wiki/issues/new" target="_blank" class="widget-title">issue</a>
+                </i>
+                <i class="fa fa-eye">
+                    <span id="busuanzi_value_page_pv"></span>
+                </i>
+            </span>
+        </div>
+    </div>
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/2018/11/05/【hystrix】探索/">
+                【hystrix】探索
+            </a>
+            
+        </h1>
+    
+
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                <h1 id="断路器"><a href="#断路器" class="headerlink" title="断路器"></a>断路器</h1><p>作用: 防止一个服务接口错误可能会导致级联故障. </p>
+<p>触发条件: 当<strong>一个周期</strong>内, 单个接口调用次数超过<strong>请求调用阈值</strong>, 或失败率达到<strong>失败百分比阈值</strong>,<br>断路器将会打开, 并且请求会失败.</p>
+<p>降级: 为了防止失败和断路, 开发中可以提供一个回调函数.<br>回调函数可以是另一个受Hystrix保护的接口, 静态数据或空值. </p>
+<p><img src="https://raw.githubusercontent.com/spring-cloud/spring-cloud-netflix/1.4.x/docs/src/main/asciidoc/images/HystrixFallback.png" alt=""></p>
+<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><p>引入依赖:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;spring-cloud-starter-netflix-hystrix&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<p>启用:</p>
+<p><code>@EnableCircuitBreaker</code></p>
+<p>See <a href="https://github.com/Netflix/Hystrix/tree/master/hystrix-contrib/hystrix-javanica#configuration" target="_blank" rel="noopener">here</a> for more.</p>
+<p>See the <a href="https://github.com/Netflix/Hystrix/wiki/Configuration" target="_blank" rel="noopener">Hystrix wiki</a> for details on the properties available.</p>
+
+            
+        </div>
+        <footer class="article-footer">
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【hystrix】探索/" data-id="cjs5ie6of00096yuijwmyggwp" class="article-share-link">Share</a>
+            
+            
+        </footer>
+    </div>
+    
+</article>
+
+
+  
+    <article id="post-【mgo】mgo源码解读——cluster" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-meta">
+        <div class="left">
+            <a href="/wiki/2018/11/05/【mgo】mgo源码解读——cluster/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+            
+        </div>
+        <div class="right">
+            <span class="article-date right">
+                <i class="fa fa-comments">
+                    <a href="https://github.com/JPCui/wiki/issues/new" target="_blank" class="widget-title">issue</a>
+                </i>
+                <i class="fa fa-eye">
+                    <span id="busuanzi_value_page_pv"></span>
+                </i>
+            </span>
+        </div>
+    </div>
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/2018/11/05/【mgo】mgo源码解读——cluster/">
+                【mgo】mgo源码解读——cluster
+            </a>
+            
+        </h1>
+    
+
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                <h2 id="定时更新服务器信息-——-syncServersLoop"><a href="#定时更新服务器信息-——-syncServersLoop" class="headerlink" title="定时更新服务器信息 —— syncServersLoop"></a>定时更新服务器信息 —— syncServersLoop</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">// syncServersLoop loops while the cluster is alive to keep its idea of the server topology up-to-date.</span><br><span class="line">// 当集群处于活动状态时，以循环来保持服务的实时拓扑结构。</span><br><span class="line"></span><br><span class="line">// It must be called just once from newCluster.</span><br><span class="line">// 必须从 newCluster 调用一次。</span><br><span class="line"></span><br><span class="line">// The loop iterates once syncServersDelay has passed, or if somebody injects a value into the cluster.sync channel to force a synchronization.</span><br><span class="line">// 一段时间（syncServersDelay）的延迟过后，循环会进行一次迭代。或者在 cluster.sync 管道中注入一个值，来强制执行一次同步操作。（从最后的select管道通信可以很容易看出）</span><br><span class="line"></span><br><span class="line">// A loop iteration will contact all servers in parallel, ask them about known peers and their own role within the cluster, and then attempt to do the same with all the peers retrieved.</span><br><span class="line">// 一次循环迭代将会✨并行✨访问所有服务，查询集群中已知的对等服务及自己的角色，然后对所有对等服务尝试同样的操作。</span><br><span class="line"> </span><br><span class="line">func (cluster *mongoCluster) syncServersLoop() &#123;</span><br><span class="line">    // ✨ 死循环</span><br><span class="line">	for &#123;</span><br><span class="line">		debugf(&quot;SYNC Cluster %p is starting a sync loop iteration.&quot;, cluster)</span><br><span class="line"></span><br><span class="line">		// ✨ 上锁！</span><br><span class="line">		cluster.Lock()</span><br><span class="line">		// ✨ 集群中没有服务了（全挂了？）</span><br><span class="line">		if cluster.references == 0 &#123;</span><br><span class="line">			cluster.Unlock()</span><br><span class="line">			break</span><br><span class="line">		&#125;</span><br><span class="line">		cluster.references++ // Keep alive while syncing.</span><br><span class="line">		// ✨ ？？？</span><br><span class="line">		direct := cluster.direct</span><br><span class="line">		cluster.Unlock()</span><br><span class="line"></span><br><span class="line">		cluster.syncServersIteration(direct)</span><br><span class="line"></span><br><span class="line">		// We just synchronized, so consume any outstanding requests.</span><br><span class="line">		select &#123;</span><br><span class="line">		case &lt;-cluster.sync:</span><br><span class="line">		default:</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		cluster.Release()</span><br><span class="line"></span><br><span class="line">		// Hold off before allowing another sync. No point in</span><br><span class="line">		// burning CPU looking for down servers.</span><br><span class="line">		if !cluster.failFast &#123;</span><br><span class="line">			time.Sleep(syncShortDelay)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		cluster.Lock()</span><br><span class="line">		if cluster.references == 0 &#123;</span><br><span class="line">			cluster.Unlock()</span><br><span class="line">			break</span><br><span class="line">		&#125;</span><br><span class="line">		cluster.syncCount++</span><br><span class="line">		// Poke all waiters so they have a chance to timeout or</span><br><span class="line">		// restart syncing if they wish to.</span><br><span class="line">		cluster.serverSynced.Broadcast()</span><br><span class="line">		// Check if we have to restart immediately either way.</span><br><span class="line">		restart := !direct &amp;&amp; cluster.masters.Empty() || cluster.servers.Empty()</span><br><span class="line">		cluster.Unlock()</span><br><span class="line"></span><br><span class="line">		if restart &#123;</span><br><span class="line">			log(&quot;SYNC No masters found. Will synchronize again.&quot;)</span><br><span class="line">			time.Sleep(syncShortDelay)</span><br><span class="line">			continue</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		debugf(&quot;SYNC Cluster %p waiting for next requested or scheduled sync.&quot;, cluster)</span><br><span class="line"></span><br><span class="line">		// Hold off until somebody explicitly requests a synchronization</span><br><span class="line">		// or it&apos;s time to check for a cluster topology change again.</span><br><span class="line">		select &#123;</span><br><span class="line">		case &lt;-cluster.sync:</span><br><span class="line">		case &lt;-time.After(syncServersDelay):</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	debugf(&quot;SYNC Cluster %p is stopping its sync loop.&quot;, cluster)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="同步服务info的核心"><a href="#同步服务info的核心" class="headerlink" title="同步服务info的核心"></a>同步服务info的核心</h2><p>设计到的点</p>
+<ul>
+<li>sync.WaitGroup 并发控制</li>
+<li>sync.Mutex 这个简单</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">func (cluster *mongoCluster) syncServersIteration(direct bool) &#123;</span><br><span class="line">	log(&quot;SYNC Starting full topology synchronization...&quot;)</span><br><span class="line"></span><br><span class="line">	var wg sync.WaitGroup</span><br><span class="line">	var m sync.Mutex</span><br><span class="line">	notYetAdded := make(map[string]pendingAdd)</span><br><span class="line">	addIfFound := make(map[string]bool)</span><br><span class="line">	seen := make(map[string]bool)</span><br><span class="line">	syncKind := partialSync</span><br><span class="line"></span><br><span class="line">	var spawnSync func(addr string, byMaster bool)</span><br><span class="line">	spawnSync = func(addr string, byMaster bool) &#123;</span><br><span class="line">		// ✨ 标记开启了一个新线程</span><br><span class="line">		wg.Add(1)</span><br><span class="line">		go func() &#123;</span><br><span class="line">			defer wg.Done()</span><br><span class="line"></span><br><span class="line">			// ✨ 解析地址，这个resolveAddr实现好🐂🍺，考虑的较全面</span><br><span class="line">			// ✨ （不进去看代码了）先解析ip地址，不是ip地址就当初udp连接解析，因为拨号连接可能耗时，用了select管道并发处理，这里分别以udp4、udp6进行尝试</span><br><span class="line">			tcpaddr, err := resolveAddr(addr)</span><br><span class="line">			if err != nil &#123;</span><br><span class="line">				log(&quot;SYNC Failed to start sync of &quot;, addr, &quot;: &quot;, err.Error())</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line">			resolvedAddr := tcpaddr.String()</span><br><span class="line"></span><br><span class="line">			// ✨ 已发现地址的逻辑，要加锁</span><br><span class="line">			m.Lock()</span><br><span class="line">			if byMaster &#123;</span><br><span class="line">				if pending, ok := notYetAdded[resolvedAddr]; ok &#123;</span><br><span class="line">					delete(notYetAdded, resolvedAddr)</span><br><span class="line">					m.Unlock()</span><br><span class="line">					cluster.addServer(pending.server, pending.info, completeSync)</span><br><span class="line">					return</span><br><span class="line">				&#125;</span><br><span class="line">				addIfFound[resolvedAddr] = true</span><br><span class="line">			&#125;</span><br><span class="line">			// ✨ 如果已经发现该地址，stop</span><br><span class="line">			if seen[resolvedAddr] &#123;</span><br><span class="line">				m.Unlock()</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line">			// ✨ 标记当前地址已被发现</span><br><span class="line">			seen[resolvedAddr] = true</span><br><span class="line">			m.Unlock()</span><br><span class="line"></span><br><span class="line">			server := cluster.server(addr, tcpaddr)</span><br><span class="line">			// ✨ 同步server信息</span><br><span class="line">			info, hosts, err := cluster.syncServer(server)</span><br><span class="line">			if err != nil &#123;</span><br><span class="line">				// ✨ 同步信息出错，移除</span><br><span class="line">				cluster.removeServer(server)</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			m.Lock()</span><br><span class="line">			add := direct || info.Master || addIfFound[resolvedAddr]</span><br><span class="line">			if add &#123;</span><br><span class="line">				syncKind = completeSync</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				notYetAdded[resolvedAddr] = pendingAdd&#123;server, info&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			m.Unlock()</span><br><span class="line">			if add &#123;</span><br><span class="line">				cluster.addServer(server, info, completeSync)</span><br><span class="line">			&#125;</span><br><span class="line">			if !direct &#123;</span><br><span class="line">				for _, addr := range hosts &#123;</span><br><span class="line">					spawnSync(addr, info.Master)</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;()</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	knownAddrs := cluster.getKnownAddrs()</span><br><span class="line">	for _, addr := range knownAddrs &#123;</span><br><span class="line">		spawnSync(addr, false)</span><br><span class="line">	&#125;</span><br><span class="line">	wg.Wait()</span><br><span class="line"></span><br><span class="line">	if syncKind == completeSync &#123;</span><br><span class="line">		logf(&quot;SYNC Synchronization was complete (got data from primary).&quot;)</span><br><span class="line">		for _, pending := range notYetAdded &#123;</span><br><span class="line">			cluster.removeServer(pending.server)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		logf(&quot;SYNC Synchronization was partial (cannot talk to primary).&quot;)</span><br><span class="line">		for _, pending := range notYetAdded &#123;</span><br><span class="line">			cluster.addServer(pending.server, pending.info, partialSync)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cluster.Lock()</span><br><span class="line">	mastersLen := cluster.masters.Len()</span><br><span class="line">	logf(&quot;SYNC Synchronization completed: %d master(s) and %d slave(s) alive.&quot;, mastersLen, cluster.servers.Len()-mastersLen)</span><br><span class="line"></span><br><span class="line">	// Update dynamic seeds, but only if we have any good servers. Otherwise,</span><br><span class="line">	// leave them alone for better chances of a successful sync in the future.</span><br><span class="line">	if syncKind == completeSync &#123;</span><br><span class="line">		dynaSeeds := make([]string, cluster.servers.Len())</span><br><span class="line">		for i, server := range cluster.servers.Slice() &#123;</span><br><span class="line">			dynaSeeds[i] = server.Addr</span><br><span class="line">		&#125;</span><br><span class="line">		cluster.dynaSeeds = dynaSeeds</span><br><span class="line">		debugf(&quot;SYNC New dynamic seeds: %#v\n&quot;, dynaSeeds)</span><br><span class="line">	&#125;</span><br><span class="line">	cluster.Unlock()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            
+        </div>
+        <footer class="article-footer">
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【mgo】mgo源码解读——cluster/" data-id="cjs5ie6og000b6yui2hdrq15j" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/mgo/">mgo</a></li></ul>
+
+        </footer>
+    </div>
+    
+</article>
+
+
+  
+    <article id="post-【mybatis】通用mapper注册流程" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-meta">
+        <div class="left">
+            <a href="/wiki/2018/11/05/【mybatis】通用mapper注册流程/" class="article-date">
+  <time datetime="2018-11-05T07:11:52.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+            
+        </div>
+        <div class="right">
+            <span class="article-date right">
+                <i class="fa fa-comments">
+                    <a href="https://github.com/JPCui/wiki/issues/new" target="_blank" class="widget-title">issue</a>
+                </i>
+                <i class="fa fa-eye">
+                    <span id="busuanzi_value_page_pv"></span>
+                </i>
+            </span>
+        </div>
+    </div>
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/2018/11/05/【mybatis】通用mapper注册流程/">
+                【mybatis】通用mapper注册流程
+            </a>
+            
+        </h1>
+    
+
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                <blockquote>
+<p><a href="https://github.com/abel533/Mapper" target="_blank" rel="noopener">https://github.com/abel533/Mapper</a><br>/oasis-o2o/Mapper</p>
+</blockquote>
+<h2 id="通用mapper注册流程"><a href="#通用mapper注册流程" class="headerlink" title="通用mapper注册流程"></a>通用mapper注册流程</h2><p>使用咱们自己的mapper扩展插件时, 想自定义mapper实现批量插入(见:InsertListMapper), 发现无法实例化 <code>SpecialProvider</code>, </p>
+<p><code>org.apache.ibatis.builder.BuilderException: Error invoking SqlProvider method</code></p>
+<p>研究其mapper注册流程发现, 在 <code>MapperScannerConfigurer</code> 中未配置 <code>mappers</code> 时, 默认注册 <code>tk.mybatis.mapper.common.Mapper</code>, 代码见 <code>tk.mybatis.mapper.mapperhelper.MapperHelper#ifEmptyRegisterDefaultInterface</code>, 如果指定了 <code>mappers</code>, 则在 <code>setProperties</code> 时就开始注册了, 代码见 <code>tk.mybatis.mapper.mapperhelper.MapperHelper#setProperties</code></p>
+
+            
+        </div>
+        <footer class="article-footer">
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【mybatis】通用mapper注册流程/" data-id="cjs5ie6oi000d6yuiedy03uo4" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/mybatis/">mybatis</a></li></ul>
 
         </footer>
     </div>
@@ -798,7 +798,7 @@
           </li>
         
           <li>
-            <a href="/wiki/2018/11/05/【spring-cloud】在网关中配置swagger/">【spring-cloud】在网关中配置swagger</a>
+            <a href="/wiki/2018/11/05/【spring-boot】application.properties/">【spring-boot】application.properties</a>
           </li>
         
           <li>

@@ -15,15 +15,15 @@
 <meta property="og:site_name" content="wiki">
 <meta property="og:description" content="项目配置(spring-boot:1.5.x)12345678910111213141516171819202122232425&amp;lt;dependecies&amp;gt;    &amp;lt;!-- 1.1.1 --&amp;gt;    &amp;lt;!-- prometheus相关依赖 --&amp;gt;    &amp;lt;dependency&amp;gt;        &amp;lt;groupId&amp;gt;io.micrometer&amp;l">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://jpcui.github.io/wiki/2018/11/05/assets/grafana-01.png">
-<meta property="og:image" content="https://jpcui.github.io/wiki/2018/11/05/assets/grafana-02.png">
-<meta property="og:image" content="https://jpcui.github.io/wiki/2018/11/05/assets/grafana-03.png">
-<meta property="og:image" content="https://jpcui.github.io/wiki/2018/11/05/assets/grafana-preview.png">
-<meta property="og:updated_time" content="2019-02-12T10:58:52.497Z">
+<meta property="og:image" content="https://jpcui.github.io/wiki/assets/grafana-01.png">
+<meta property="og:image" content="https://jpcui.github.io/wiki/assets/grafana-02.png">
+<meta property="og:image" content="https://jpcui.github.io/wiki/assets/grafana-03.png">
+<meta property="og:image" content="https://jpcui.github.io/wiki/assets/grafana-preview.png">
+<meta property="og:updated_time" content="2019-02-15T03:52:30.858Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【spring-boot】配置grafana">
 <meta name="twitter:description" content="项目配置(spring-boot:1.5.x)12345678910111213141516171819202122232425&amp;lt;dependecies&amp;gt;    &amp;lt;!-- 1.1.1 --&amp;gt;    &amp;lt;!-- prometheus相关依赖 --&amp;gt;    &amp;lt;dependency&amp;gt;        &amp;lt;groupId&amp;gt;io.micrometer&amp;l">
-<meta name="twitter:image" content="https://jpcui.github.io/wiki/2018/11/05/assets/grafana-01.png">
+<meta name="twitter:image" content="https://jpcui.github.io/wiki/assets/grafana-01.png">
   
     <link rel="alternate" href="/wiki/atom.xml" title="wiki" type="application/atom+xml">
   
@@ -110,9 +110,9 @@
         <div class="article-entry" itemprop="articleBody">
             
                 <h2 id="项目配置-spring-boot-1-5-x"><a href="#项目配置-spring-boot-1-5-x" class="headerlink" title="项目配置(spring-boot:1.5.x)"></a>项目配置(spring-boot:1.5.x)</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependecies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 1.1.1 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- prometheus相关依赖 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.micrometer<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>micrometer-spring-legacy<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.micrometer<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>micrometer-registry-prometheus<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Actuator (with security enabled) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-security<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependecies</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="grafana"><a href="#grafana" class="headerlink" title="grafana"></a>grafana</h2><p><img src="../assets/grafana-01.png" alt=""></p>
-<p><img src="../assets/grafana-02.png" alt=""></p>
-<p><img src="../assets/grafana-03.png" alt=""></p>
+<h2 id="grafana"><a href="#grafana" class="headerlink" title="grafana"></a>grafana</h2><p><img src="/wiki/assets/grafana-01.png" alt=""></p>
+<p><img src="/wiki/assets/grafana-02.png" alt=""></p>
+<p><img src="/wiki/assets/grafana-03.png" alt=""></p>
 <p>Dashboard for Spring Boot 1.x applications, using Micrometer and Prometheus.</p>
 <h3 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h3><ul>
 <li>Overall status</li>
@@ -124,12 +124,12 @@
 <p>配置方式:</p>
 <p>{dashboard} -&gt; settings -&gt; Variables</p>
 <h2 id="promethues-配置"><a href="#promethues-配置" class="headerlink" title="promethues 配置"></a>promethues 配置</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 监控consul</span></span><br><span class="line"><span class="attr">scrape_configs:</span></span><br><span class="line">  <span class="comment"># cousul_services</span></span><br><span class="line"><span class="attr">  - job_name:</span> <span class="string">'consul_services'</span></span><br><span class="line"><span class="attr">    consul_sd_configs:</span></span><br><span class="line"><span class="attr">      - server:</span> <span class="string">'$&#123;consul-server&#125;:8500'</span></span><br><span class="line"><span class="attr">        services:</span> <span class="string">['$&#123;server.name&#125;']</span></span><br><span class="line">  </span><br><span class="line">    <span class="comment"># 修改抓取route</span></span><br><span class="line"><span class="attr">    relabel_configs:</span></span><br><span class="line"><span class="attr">        - source_labels:</span> <span class="string">['__metrics_path__']</span></span><br><span class="line"><span class="attr">          regex:</span>         <span class="string">'/metrics'</span></span><br><span class="line"><span class="attr">          target_label:</span>  <span class="string">__metrics_path__</span></span><br><span class="line"><span class="attr">          replacement:</span>   <span class="string">'/prometheus'</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 通过consul监控所有服务</span></span><br><span class="line"><span class="attr">  - job_name:</span> <span class="string">'consul_server'</span></span><br><span class="line"><span class="attr">    metrics_path:</span> <span class="string">'/prometheus'</span></span><br><span class="line"><span class="attr">    consul_sd_configs:</span></span><br><span class="line"><span class="attr">      - server:</span> <span class="string">'$&#123;consul-server&#125;:8500'</span></span><br><span class="line"><span class="attr">        services:</span> <span class="string">['$&#123;server.name&#125;']</span></span><br><span class="line">    <span class="comment"># 修改抓取route</span></span><br><span class="line"><span class="attr">    relabel_configs:</span></span><br><span class="line"><span class="attr">        - source_labels:</span> <span class="string">['__meta_consul_service']</span></span><br><span class="line"><span class="attr">          regex:</span>         <span class="string">'(.*)'</span></span><br><span class="line"><span class="attr">          replacement:</span>   <span class="string">'$1'</span></span><br><span class="line"><span class="attr">          action:</span>        <span class="string">replace</span></span><br><span class="line"><span class="attr">          target_label:</span>  <span class="string">'job'</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 监控普通spring-boot项目</span></span><br><span class="line">  <span class="comment"># for https</span></span><br><span class="line"><span class="attr">  - job_name:</span> <span class="string">my-app-prod</span></span><br><span class="line"><span class="attr">    scheme:</span> <span class="string">https</span></span><br><span class="line"><span class="attr">    basic_auth:</span></span><br><span class="line"><span class="attr">      username:</span> <span class="string">your_actuator_user</span></span><br><span class="line"><span class="attr">      password:</span> <span class="string">your_actuator_password</span></span><br><span class="line"><span class="attr">    metrics_path:</span> <span class="string">/MyApp/actuator/prometheus</span></span><br><span class="line"><span class="attr">    static_configs:</span></span><br><span class="line"><span class="attr">      - targets:</span></span><br><span class="line"><span class="bullet">          -</span> <span class="string">"your_hostname:your_port"</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># for http</span></span><br><span class="line"><span class="attr">  - job_name:</span> <span class="string">my-app-prod</span></span><br><span class="line"><span class="attr">    scheme:</span> <span class="string">http</span></span><br><span class="line"><span class="attr">    metrics_path:</span> <span class="string">/MyApp/actuator/prometheus</span></span><br><span class="line"><span class="attr">    static_configs:</span></span><br><span class="line"><span class="attr">      - targets:</span></span><br><span class="line"><span class="bullet">          -</span> <span class="string">"your_hostname:your_port"</span></span><br></pre></td></tr></table></figure>
-<h2 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h2><p><img src="../assets/grafana-preview.png" alt=""></p>
+<h2 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h2><p><img src="/wiki/assets/grafana-preview.png" alt=""></p>
 
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-boot】配置grafana/" data-id="cjs5idosu000k56uips4psi8k" class="article-share-link">Share</a>
+            <a data-url="https://jpcui.github.io/wiki/2018/11/05/【spring-boot】配置grafana/" data-id="cjs5ie6op000m6yuihxzy8d0n" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wiki/tags/spring-boot/">spring-boot</a></li></ul>
@@ -140,19 +140,19 @@
         
     <nav id="article-nav">
         
-            <a href="/wiki/2018/11/05/【redis】RedisTemplate的一点疑问/" id="article-nav-newer" class="article-nav-link-wrap">
+            <a href="/wiki/2018/11/05/【spring-boot】如何优雅关闭服务/" id="article-nav-newer" class="article-nav-link-wrap">
                 <strong class="article-nav-caption">Newer</strong>
                 <div class="article-nav-title">
                     
-                        【redis】RedisTemplate的一点疑问
+                        【spring-boot】如何优雅关闭服务
                     
                 </div>
             </a>
         
         
-            <a href="/wiki/2018/11/05/【spring-boot】如何优雅关闭服务/" id="article-nav-older" class="article-nav-link-wrap">
+            <a href="/wiki/2018/11/05/【spring-cloud】ribbon探索/" id="article-nav-older" class="article-nav-link-wrap">
                 <strong class="article-nav-caption">Older</strong>
-                <div class="article-nav-title">【spring-boot】如何优雅关闭服务</div>
+                <div class="article-nav-title">【spring-cloud】ribbon探索</div>
             </a>
         
     </nav>
@@ -207,7 +207,7 @@
           </li>
         
           <li>
-            <a href="/wiki/2018/11/05/【spring-cloud】在网关中配置swagger/">【spring-cloud】在网关中配置swagger</a>
+            <a href="/wiki/2018/11/05/【spring-boot】application.properties/">【spring-boot】application.properties</a>
           </li>
         
           <li>
